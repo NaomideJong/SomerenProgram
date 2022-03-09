@@ -13,7 +13,7 @@ namespace SomerenDAL
     {
         public List<Room> GetAllRooms()
         {
-            string query = "SELECT student_id, student_name FROM [TABLE]";
+            string query = "SELECT roomId, capacity, roomType FROM [Room]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
