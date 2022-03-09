@@ -28,7 +28,7 @@ namespace SomerenDAL
                 {
                     Number = (int)dr["roomId"],
                     Capacity = (int)dr["iets"],
-                    Type = (bool)(dr["iets"])
+                    Type = (bool)(dr["roomType"])
                 };
                 rooms.Add(room);
             }
