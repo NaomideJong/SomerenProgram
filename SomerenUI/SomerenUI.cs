@@ -21,6 +21,7 @@ namespace SomerenUI
 
         private void SomerenUI_Load(object sender, EventArgs e)
         {
+            // call method showpanel and send the panel name
             showPanel("Dashboard");
         }
 
@@ -57,6 +58,7 @@ namespace SomerenUI
                     // clear the listview before filling it again
                     listViewStudents.Clear();
 
+                    // give the columns appropriate names
                     listViewStudents.View = View.Details;
                     listViewStudents.Columns.Add("Student ID", 100);
                     listViewStudents.Columns.Add("Student Name", 200);
@@ -64,6 +66,7 @@ namespace SomerenUI
                     listViewStudents.Columns.Add("Student DateOfBirth", 200);
                     listViewStudents.Columns.Add("Student Room ID", 200);
 
+                    // check each student in the student list and show the contents of the database in the UI
                     foreach (Student s in studentList)
                     {
                         ListViewItem liStudents = new ListViewItem(s.StudentId.ToString());
@@ -76,6 +79,7 @@ namespace SomerenUI
                 }
                 catch (Exception e)
                 {
+                    // catch a error when something went wrong with the UI
                     MessageBox.Show("Something went wrong while loading the students: " + e.Message);
                 }
             }
@@ -99,12 +103,13 @@ namespace SomerenUI
                     // clear the listview before filling it again
                     listViewRooms.Clear();
 
-                    // adding details to the listview
+                    // give the columns appropriate names
                     listViewRooms.View = View.Details;
                     listViewRooms.Columns.Add("Room ID", 100);
                     listViewRooms.Columns.Add("Room Type/Teacher or Student", 200);
                     listViewRooms.Columns.Add("Room Capacity/Number of beds", 200);
 
+                    // check each room in the roomList and show the contents of the database in the UI
                     foreach (Room r in roomList)
                     {
                         ListViewItem liRooms = new ListViewItem(r.RoomId.ToString());
@@ -115,6 +120,7 @@ namespace SomerenUI
                 }
                 catch (Exception e)
                 {
+                    // catch a error when something went wrong with the UI
                     MessageBox.Show("Something went wrong while loading the rooms: " + e.Message);
                 }
             }
@@ -126,24 +132,25 @@ namespace SomerenUI
                 pnlStudents.Hide();
                 pnlRooms.Hide();
 
-                // show students
+                // show teachers
                 pnlTeachers.Show();
 
                 try
                 {
-                    // fill the students listview within the students panel with a list of students
+                    // fill the teacher listview within the teachers panel with a list of teachers
                     TeacherService lecService = new TeacherService(); ;
                     List<Teacher> teacherList = lecService.GetTeachers(); ;
 
                     // clear the listview before filling it again
                     listViewTeachers.Clear();
 
+                    // give the columns appropriate names
                     listViewTeachers.View = View.Details;
                     listViewTeachers.Columns.Add("Teacher ID", 100);
                     listViewTeachers.Columns.Add("Teacher Name", 200);
                     listViewTeachers.Columns.Add("Teacher Course", 200);
 
-
+                    // check each teacher in the teacherlist and show the contents of the database in the UI
                     foreach (Teacher t in teacherList)
                     {
                         ListViewItem liTeachers = new ListViewItem(t.TeacherId.ToString());
@@ -156,6 +163,7 @@ namespace SomerenUI
                 }
                 catch (Exception e)
                 {
+                    // catch a error when something went wrong with the UI
                     MessageBox.Show("Something went wrong while loading the students: " + e.Message);
                 }
             }
@@ -173,6 +181,7 @@ namespace SomerenUI
 
         private void dashboardToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            // call method showpanel and send the panel name
             showPanel("Dashboard");
         }
 
@@ -188,16 +197,19 @@ namespace SomerenUI
 
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // call method showpanel and send the panel name
             showPanel("Students");
         }
 
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // call method showpanel and send the panel name
             showPanel("Rooms");
         }
 
         private void lecturersToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // call method showpanel and send the panel name
             showPanel("Teachers");
         }
 

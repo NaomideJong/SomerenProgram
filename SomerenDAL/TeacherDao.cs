@@ -13,6 +13,7 @@ namespace SomerenDAL
     {
         public List<Teacher> GetAllTeachers()
         {
+            // select the query from the Teachers database
             string query = "SELECT teacherId, teacherName, teacherCourse FROM [Teachers]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
@@ -22,6 +23,7 @@ namespace SomerenDAL
         {
             List<Teacher> teachers = new List<Teacher>();
 
+            // check each row of the DataTable
             foreach (DataRow dr in dataTable.Rows)
             {
                 Teacher teacher = new Teacher()
@@ -30,6 +32,7 @@ namespace SomerenDAL
                     TeacherName = (string)(dr["teacherName"]),
                     TeacherCourse = (string)(dr["teacherCourse"])
                 };
+                // add the teacher to the list
                 teachers.Add(teacher);
             }
             return teachers;

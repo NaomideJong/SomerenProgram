@@ -20,6 +20,7 @@ namespace SomerenLogic
 
         public List<Teacher> GetTeachers()
         {
+            // return the list of teacher
             List<Teacher> teachers = teacherdb.GetAllTeachers();
             return teachers;
         }

@@ -10,6 +10,6 @@ namespace SomerenModel
     {
         public int RoomId { get; set; } // RoomNumber, e.g. 206
         public int RoomCapacity { get; set; } // number of beds, either 4,6,8,12 or 16
-        public string RoomType { get; set; } // student = false, teacher = true
+        public string RoomType { get; set; } // Teacher room or Student Room
     }
 }
