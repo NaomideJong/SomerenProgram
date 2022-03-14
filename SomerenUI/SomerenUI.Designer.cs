@@ -39,6 +39,7 @@
             this.lecturersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.activitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.drinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDashboard = new System.Windows.Forms.Panel();
             this.lbl_Dashboard = new System.Windows.Forms.Label();
             this.pnlStudents = new System.Windows.Forms.Panel();
@@ -62,7 +63,6 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblRooms = new System.Windows.Forms.Label();
-            this.drinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDrinks = new System.Windows.Forms.Panel();
             this.listViewDrinks = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -70,6 +70,18 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lblDrinks = new System.Windows.Forms.Label();
+            this.pnlCashRegister = new System.Windows.Forms.Panel();
+            this.listViewCashRegisterStudents = new System.Windows.Forms.ListView();
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.lblCashRegister = new System.Windows.Forms.Label();
+            this.listViewCashRegisterDrinks = new System.Windows.Forms.ListView();
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cashRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -81,6 +93,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnlDrinks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.pnlCashRegister.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // imgDashboard
@@ -102,7 +116,8 @@
             this.lecturersToolStripMenuItem,
             this.activitiesToolStripMenuItem,
             this.roomsToolStripMenuItem,
-            this.drinksToolStripMenuItem});
+            this.drinksToolStripMenuItem,
+            this.cashRegisterToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1283, 28);
@@ -116,7 +131,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(100, 24);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(100, 26);
             this.dashboardToolStripMenuItem.Text = "Application";
             this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
@@ -142,29 +157,36 @@
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(80, 26);
             this.studentsToolStripMenuItem.Text = "Students";
             this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
             // 
             // lecturersToolStripMenuItem
             // 
             this.lecturersToolStripMenuItem.Name = "lecturersToolStripMenuItem";
-            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
+            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(82, 26);
             this.lecturersToolStripMenuItem.Text = "Lecturers";
             this.lecturersToolStripMenuItem.Click += new System.EventHandler(this.lecturersToolStripMenuItem_Click);
             // 
             // activitiesToolStripMenuItem
             // 
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
-            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
+            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(83, 26);
             this.activitiesToolStripMenuItem.Text = "Activities";
             // 
             // roomsToolStripMenuItem
             // 
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(69, 26);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
+            // 
+            // drinksToolStripMenuItem
+            // 
+            this.drinksToolStripMenuItem.Name = "drinksToolStripMenuItem";
+            this.drinksToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
+            this.drinksToolStripMenuItem.Text = "Drinks";
+            this.drinksToolStripMenuItem.Click += new System.EventHandler(this.drinksToolStripMenuItem_Click);
             // 
             // pnlDashboard
             // 
@@ -368,13 +390,6 @@
             this.lblRooms.TabIndex = 3;
             this.lblRooms.Text = "Rooms";
             // 
-            // drinksToolStripMenuItem
-            // 
-            this.drinksToolStripMenuItem.Name = "drinksToolStripMenuItem";
-            this.drinksToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
-            this.drinksToolStripMenuItem.Text = "Drinks";
-            this.drinksToolStripMenuItem.Click += new System.EventHandler(this.drinksToolStripMenuItem_Click);
-            // 
             // pnlDrinks
             // 
             this.pnlDrinks.Controls.Add(this.listViewDrinks);
@@ -435,11 +450,109 @@
             this.lblDrinks.TabIndex = 3;
             this.lblDrinks.Text = "Drinks";
             // 
+            // pnlCashRegister
+            // 
+            this.pnlCashRegister.Controls.Add(this.listViewCashRegisterDrinks);
+            this.pnlCashRegister.Controls.Add(this.listViewCashRegisterStudents);
+            this.pnlCashRegister.Controls.Add(this.pictureBox5);
+            this.pnlCashRegister.Controls.Add(this.lblCashRegister);
+            this.pnlCashRegister.Location = new System.Drawing.Point(4, 33);
+            this.pnlCashRegister.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlCashRegister.Name = "pnlCashRegister";
+            this.pnlCashRegister.Size = new System.Drawing.Size(1251, 574);
+            this.pnlCashRegister.TabIndex = 7;
+            // 
+            // listViewCashRegisterStudents
+            // 
+            this.listViewCashRegisterStudents.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader10,
+            this.columnHeader11,
+            this.columnHeader12});
+            this.listViewCashRegisterStudents.FullRowSelect = true;
+            this.listViewCashRegisterStudents.GridLines = true;
+            this.listViewCashRegisterStudents.HideSelection = false;
+            this.listViewCashRegisterStudents.Location = new System.Drawing.Point(52, 52);
+            this.listViewCashRegisterStudents.Margin = new System.Windows.Forms.Padding(4);
+            this.listViewCashRegisterStudents.Name = "listViewCashRegisterStudents";
+            this.listViewCashRegisterStudents.Size = new System.Drawing.Size(393, 377);
+            this.listViewCashRegisterStudents.TabIndex = 5;
+            this.listViewCashRegisterStudents.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "ID";
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Name";
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Date of Birth";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBox5.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.InitialImage")));
+            this.pictureBox5.Location = new System.Drawing.Point(1073, 0);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(173, 151);
+            this.pictureBox5.TabIndex = 0;
+            this.pictureBox5.TabStop = false;
+            // 
+            // lblCashRegister
+            // 
+            this.lblCashRegister.AutoSize = true;
+            this.lblCashRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCashRegister.Location = new System.Drawing.Point(461, 14);
+            this.lblCashRegister.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCashRegister.Name = "lblCashRegister";
+            this.lblCashRegister.Size = new System.Drawing.Size(200, 33);
+            this.lblCashRegister.TabIndex = 3;
+            this.lblCashRegister.Text = "Cash Register";
+            // 
+            // listViewCashRegisterDrinks
+            // 
+            this.listViewCashRegisterDrinks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader13,
+            this.columnHeader14,
+            this.columnHeader15});
+            this.listViewCashRegisterDrinks.FullRowSelect = true;
+            this.listViewCashRegisterDrinks.GridLines = true;
+            this.listViewCashRegisterDrinks.HideSelection = false;
+            this.listViewCashRegisterDrinks.Location = new System.Drawing.Point(657, 52);
+            this.listViewCashRegisterDrinks.Margin = new System.Windows.Forms.Padding(4);
+            this.listViewCashRegisterDrinks.Name = "listViewCashRegisterDrinks";
+            this.listViewCashRegisterDrinks.Size = new System.Drawing.Size(393, 377);
+            this.listViewCashRegisterDrinks.TabIndex = 6;
+            this.listViewCashRegisterDrinks.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "ID";
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Name";
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Date of Birth";
+            // 
+            // cashRegisterToolStripMenuItem
+            // 
+            this.cashRegisterToolStripMenuItem.Name = "cashRegisterToolStripMenuItem";
+            this.cashRegisterToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.cashRegisterToolStripMenuItem.Text = "Cash Register";
+            this.cashRegisterToolStripMenuItem.Click += new System.EventHandler(this.cashRegisterToolStripMenuItem_Click);
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 622);
+            this.Controls.Add(this.pnlCashRegister);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlRooms);
@@ -470,6 +583,9 @@
             this.pnlDrinks.ResumeLayout(false);
             this.pnlDrinks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.pnlCashRegister.ResumeLayout(false);
+            this.pnlCashRegister.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -518,6 +634,18 @@
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label lblDrinks;
+        private System.Windows.Forms.Panel pnlCashRegister;
+        private System.Windows.Forms.ListView listViewCashRegisterDrinks;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.ListView listViewCashRegisterStudents;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label lblCashRegister;
+        private System.Windows.Forms.ToolStripMenuItem cashRegisterToolStripMenuItem;
     }
 }
 

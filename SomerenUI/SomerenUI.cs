@@ -34,6 +34,7 @@ namespace SomerenUI
                 pnlRooms.Hide();
                 pnlTeachers.Hide();
                 pnlDrinks.Hide();
+                pnlCashRegister.Hide();
 
                 // show dashboard
                 pnlDashboard.Show();
@@ -47,6 +48,7 @@ namespace SomerenUI
                 pnlRooms.Hide();
                 pnlTeachers.Hide();
                 pnlDrinks.Hide();
+                pnlCashRegister.Hide();
 
                 // show students
                 pnlStudents.Show();
@@ -93,6 +95,7 @@ namespace SomerenUI
                 pnlStudents.Hide();
                 pnlTeachers.Hide();
                 pnlDrinks.Hide();
+                pnlCashRegister.Hide();
 
                 // show rooms
                 pnlRooms.Show();
@@ -135,6 +138,7 @@ namespace SomerenUI
                 pnlStudents.Hide();
                 pnlRooms.Hide();
                 pnlDrinks.Hide();
+                pnlCashRegister.Hide();
 
                 // show teachers
                 pnlTeachers.Show();
@@ -171,9 +175,6 @@ namespace SomerenUI
                     MessageBox.Show("Something went wrong while loading the students: " + e.Message);
                 }
             }
-
-
-
             else if (panelName == "Drinks")
             {
                 // hide all other panels
@@ -181,14 +182,15 @@ namespace SomerenUI
                 imgDashboard.Hide();
                 pnlStudents.Hide();
                 pnlRooms.Hide();
-                pnlTeachers.Show();
+                pnlTeachers.Hide();
+                pnlCashRegister.Hide();
 
-                // show teachers
+                // show drinks
                 pnlDrinks.Show();
 
                 try
                 {
-                    // fill the teacher listview within the teachers panel with a list of teachers
+                    // fill the drink listview within the drinks panel with a list of drinks
                     DrinkService drinkService = new DrinkService(); ;
                     List<Drink> drinkList = drinkService.GetDrinks(); ;
 
@@ -203,7 +205,7 @@ namespace SomerenUI
                     listViewDrinks.Columns.Add("Stock", 100);
                     listViewDrinks.Columns.Add("VAT", 100);
 
-                    // check each teacher in the teacherlist and show the contents of the database in the UI
+                    // check each drink in the drinklist and show the contents of the database in the UI
                     foreach (Drink d in drinkList)
                     {
                         ListViewItem liDrinks = new ListViewItem(d.DrinkId.ToString());
@@ -213,6 +215,74 @@ namespace SomerenUI
                         liDrinks.SubItems.Add(d.DrinkVAT.ToString());
 
                         listViewDrinks.Items.Add(liDrinks);
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    // catch a error when something went wrong with the UI
+                    MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+                }
+            }
+            else if(panelName == "Cash Register")
+            {
+                // hide all other panels
+                pnlDashboard.Hide();
+                imgDashboard.Hide();
+                pnlStudents.Hide();
+                pnlRooms.Hide();
+                pnlTeachers.Hide();
+                pnlDrinks.Hide();
+
+                // show drinks
+                pnlCashRegister.Show();
+
+                try
+                {
+                    // fill the drink listview within the drinks panel with a list of drinks
+                    StudentService studentService = new StudentService();
+                    DrinkService drinkService = new DrinkService();
+
+                    List<Student> studentList = studentService.GetStudents();
+                    List<Drink> drinkList = drinkService.GetDrinks();
+
+                    // clear the listview before filling it again
+                    listViewCashRegisterStudents.Clear();
+                    listViewCashRegisterDrinks.Clear();
+
+                    // give the columns appropriate names
+                    listViewCashRegisterStudents.View = View.Details;
+                    listViewCashRegisterDrinks.View = View.Details;
+
+                    listViewCashRegisterStudents.Columns.Add("Student ID", 100);
+                    listViewCashRegisterStudents.Columns.Add("Name", 100);
+                    listViewCashRegisterStudents.Columns.Add("Date Of Birth", 100);
+
+                    listViewCashRegisterDrinks.Columns.Add("Drink ID", 100);
+                    listViewCashRegisterDrinks.Columns.Add("Name", 50);
+                    listViewCashRegisterDrinks.Columns.Add("Price", 50);
+                    listViewCashRegisterDrinks.Columns.Add("Stock", 50);
+                    listViewCashRegisterDrinks.Columns.Add("VAT", 50);
+
+                    // check each drink in the drinklist and show the contents of the database in the UI
+                    foreach (Student s in studentList)
+                    {
+                        ListViewItem liStudents = new ListViewItem(s.StudentId.ToString());
+                        liStudents.SubItems.Add(s.StudentName);
+                        liStudents.SubItems.Add(s.StudentDateOfBirth.ToString("dd/MM/yyyy"));
+
+                        listViewCashRegisterStudents.Items.Add(liStudents);
+                    }
+
+                    foreach (Drink d in drinkList)
+                    {
+                        ListViewItem liDrinks = new ListViewItem(d.DrinkId.ToString());
+                        liDrinks.SubItems.Add(d.DrinkName);
+                        liDrinks.SubItems.Add(d.DrinkPrice.ToString());
+                        liDrinks.SubItems.Add(d.DrinkStock.ToString());
+                        liDrinks.SubItems.Add(d.DrinkVAT.ToString());
+
+                        listViewCashRegisterDrinks.Items.Add(liDrinks);
                     }
 
                 }
@@ -276,6 +346,11 @@ namespace SomerenUI
         private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Drinks");
+        }
+
+        private void cashRegisterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Cash Register");
         }
     }
 }
