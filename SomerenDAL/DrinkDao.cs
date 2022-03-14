@@ -28,10 +28,10 @@ namespace SomerenDAL
                 Drink drink = new Drink()
                 {
                     DrinkId = (int)dr["drinkId"],
-                    DrinkName = (string)dr["..."],
-                    DrinkPrice = (double)dr["..."],
-                    DrinkStock = (int)dr["..."],
-                    DrinkVAT = (double)dr["..."],
+                    DrinkName = (string)dr["drinkName"],
+                    DrinkPrice = (decimal)dr["drinkPrice"],
+                    DrinkStock = (int)dr["drinkStock"],
+                    DrinkVAT = (decimal)dr["drinkVAT"],
                 };
                 // add the drink to the list
                 drinks.Add(drink);

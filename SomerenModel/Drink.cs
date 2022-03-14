@@ -10,8 +10,8 @@ namespace SomerenModel
     {
         public int DrinkId { get; set; } // DrinkId, e.g. 2
         public string DrinkName { get; set; } // Drinkname, e.g. Fanta, Cola
-        public double DrinkPrice  { get; set; } // DrinkPrice, e.g. Math, 3.99, 5.00
+        public decimal DrinkPrice  { get; set; } // DrinkPrice, e.g. Math, 3.99, 5.00
         public int DrinkStock { get; set; } // DrinkStock, e.g. 20, 60
-        public double DrinkVAT { get; set; } // DrinkVAT, e.g. 21%
+        public decimal DrinkVAT { get; set; } // DrinkVAT, e.g. 21%
     }
 }

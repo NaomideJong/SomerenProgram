@@ -33,6 +33,7 @@ namespace SomerenUI
                 pnlStudents.Hide();
                 pnlRooms.Hide();
                 pnlTeachers.Hide();
+                pnlDrinks.Hide();
 
                 // show dashboard
                 pnlDashboard.Show();
@@ -45,6 +46,7 @@ namespace SomerenUI
                 imgDashboard.Hide();
                 pnlRooms.Hide();
                 pnlTeachers.Hide();
+                pnlDrinks.Hide();
 
                 // show students
                 pnlStudents.Show();
@@ -61,10 +63,10 @@ namespace SomerenUI
                     // give the columns appropriate names
                     listViewStudents.View = View.Details;
                     listViewStudents.Columns.Add("Student ID", 100);
-                    listViewStudents.Columns.Add("Student Name", 200);
-                    listViewStudents.Columns.Add("Student Language", 200);
-                    listViewStudents.Columns.Add("Student DateOfBirth", 200);
-                    listViewStudents.Columns.Add("Student Room ID", 200);
+                    listViewStudents.Columns.Add("Name", 100);
+                    listViewStudents.Columns.Add("Language", 100);
+                    listViewStudents.Columns.Add("Date Of Birth", 100);
+                    listViewStudents.Columns.Add("Student Room ID", 100);
 
                     // check each student in the student list and show the contents of the database in the UI
                     foreach (Student s in studentList)
@@ -90,6 +92,7 @@ namespace SomerenUI
                 imgDashboard.Hide();
                 pnlStudents.Hide();
                 pnlTeachers.Hide();
+                pnlDrinks.Hide();
 
                 // show rooms
                 pnlRooms.Show();
@@ -106,8 +109,8 @@ namespace SomerenUI
                     // give the columns appropriate names
                     listViewRooms.View = View.Details;
                     listViewRooms.Columns.Add("Room ID", 100);
-                    listViewRooms.Columns.Add("Room Type/Teacher or Student", 200);
-                    listViewRooms.Columns.Add("Room Capacity/Number of beds", 200);
+                    listViewRooms.Columns.Add("Type of room", 100);
+                    listViewRooms.Columns.Add("Capacity", 100);
 
                     // check each room in the roomList and show the contents of the database in the UI
                     foreach (Room r in roomList)
@@ -131,6 +134,7 @@ namespace SomerenUI
                 imgDashboard.Hide();
                 pnlStudents.Hide();
                 pnlRooms.Hide();
+                pnlDrinks.Hide();
 
                 // show teachers
                 pnlTeachers.Show();
@@ -147,8 +151,8 @@ namespace SomerenUI
                     // give the columns appropriate names
                     listViewTeachers.View = View.Details;
                     listViewTeachers.Columns.Add("Teacher ID", 100);
-                    listViewTeachers.Columns.Add("Teacher Name", 200);
-                    listViewTeachers.Columns.Add("Teacher Course", 200);
+                    listViewTeachers.Columns.Add("Name", 100);
+                    listViewTeachers.Columns.Add("Course", 100);
 
                     // check each teacher in the teacherlist and show the contents of the database in the UI
                     foreach (Teacher t in teacherList)
@@ -158,6 +162,57 @@ namespace SomerenUI
                         liTeachers.SubItems.Add(t.TeacherCourse);
                         listViewTeachers.Items.Add(liTeachers);
 
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    // catch a error when something went wrong with the UI
+                    MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+                }
+            }
+
+
+
+            else if (panelName == "Drinks")
+            {
+                // hide all other panels
+                pnlDashboard.Hide();
+                imgDashboard.Hide();
+                pnlStudents.Hide();
+                pnlRooms.Hide();
+                pnlTeachers.Show();
+
+                // show teachers
+                pnlDrinks.Show();
+
+                try
+                {
+                    // fill the teacher listview within the teachers panel with a list of teachers
+                    DrinkService drinkService = new DrinkService(); ;
+                    List<Drink> drinkList = drinkService.GetDrinks(); ;
+
+                    // clear the listview before filling it again
+                    listViewDrinks.Clear();
+
+                    // give the columns appropriate names
+                    listViewDrinks.View = View.Details;
+                    listViewDrinks.Columns.Add("Drink ID", 100);
+                    listViewDrinks.Columns.Add("Name", 100);
+                    listViewDrinks.Columns.Add("Price", 100);
+                    listViewDrinks.Columns.Add("Stock", 100);
+                    listViewDrinks.Columns.Add("VAT", 100);
+
+                    // check each teacher in the teacherlist and show the contents of the database in the UI
+                    foreach (Drink d in drinkList)
+                    {
+                        ListViewItem liDrinks = new ListViewItem(d.DrinkId.ToString());
+                        liDrinks.SubItems.Add(d.DrinkName);
+                        liDrinks.SubItems.Add(d.DrinkPrice.ToString());
+                        liDrinks.SubItems.Add(d.DrinkStock.ToString());
+                        liDrinks.SubItems.Add(d.DrinkVAT.ToString());
+
+                        listViewDrinks.Items.Add(liDrinks);
                     }
 
                 }
@@ -216,6 +271,11 @@ namespace SomerenUI
         private void pnlTeachers_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void drinksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Drinks");
         }
     }
 }
