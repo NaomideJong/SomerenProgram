@@ -502,12 +502,13 @@
             // 
             // buttonCheckout
             // 
+            this.buttonCheckout.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonCheckout.Location = new System.Drawing.Point(493, 183);
             this.buttonCheckout.Name = "buttonCheckout";
             this.buttonCheckout.Size = new System.Drawing.Size(122, 59);
             this.buttonCheckout.TabIndex = 7;
             this.buttonCheckout.Text = "Checkout";
-            this.buttonCheckout.UseVisualStyleBackColor = true;
+            this.buttonCheckout.UseVisualStyleBackColor = false;
             this.buttonCheckout.Click += new System.EventHandler(this.buttonCheckout_Click);
             // 
             // listViewCashRegisterDrinks
@@ -558,7 +559,7 @@
             this.listViewCashRegisterStudents.FullRowSelect = true;
             this.listViewCashRegisterStudents.GridLines = true;
             this.listViewCashRegisterStudents.HideSelection = false;
-            this.listViewCashRegisterStudents.Location = new System.Drawing.Point(52, 52);
+            this.listViewCashRegisterStudents.Location = new System.Drawing.Point(68, 52);
             this.listViewCashRegisterStudents.Margin = new System.Windows.Forms.Padding(4);
             this.listViewCashRegisterStudents.MultiSelect = false;
             this.listViewCashRegisterStudents.Name = "listViewCashRegisterStudents";
