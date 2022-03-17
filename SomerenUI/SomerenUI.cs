@@ -318,7 +318,7 @@ namespace SomerenUI
                 if (listViewCashRegisterStudents.SelectedItems[0].Focused && listViewCashRegisterDrinks.SelectedItems[0].Focused)
                 {
                     MessageBox.Show("2 items have been selected");
-                    Order order = new Order(order1.StudentId, order2.DrinkId);
+                    Order order = new Order(order1.StudentId, order2.DrinkId, DateTime.Now);
                     OrderService orderService = new OrderService();
                     orderService.AddOrders(order);
                     MessageBox.Show($"Succesfully added: {studentItem} and {drinkItem}");
