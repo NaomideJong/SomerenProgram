@@ -69,24 +69,24 @@
             this.columnHeaderDrinkId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDrinkName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDrinkPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDrinkStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDrinkVAT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lblDrinks = new System.Windows.Forms.Label();
             this.pnlCashRegister = new System.Windows.Forms.Panel();
+            this.buttonCheckout = new System.Windows.Forms.Button();
             this.listViewCashRegisterDrinks = new System.Windows.Forms.ListView();
             this.columnHeaderCashRegisterDrinkId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCashRegisterDrinkName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCashRegisterDrinkPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderCashRegisterDrinkStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderCashRegisterDrinkVAT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewCashRegisterStudents = new System.Windows.Forms.ListView();
             this.columnHeaderCashRegisterStudentId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCashRegisterStudentName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCashRegisterStudentDateOfBirth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lblCashRegister = new System.Windows.Forms.Label();
-            this.buttonCheckout = new System.Windows.Forms.Button();
-            this.columnHeaderCashRegisterDrinkStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderCashRegisterDrinkVAT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderDrinkStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderDrinkVAT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -455,6 +455,16 @@
             this.columnHeaderDrinkPrice.Text = "Price";
             this.columnHeaderDrinkPrice.Width = 100;
             // 
+            // columnHeaderDrinkStock
+            // 
+            this.columnHeaderDrinkStock.Text = "Stock";
+            this.columnHeaderDrinkStock.Width = 100;
+            // 
+            // columnHeaderDrinkVAT
+            // 
+            this.columnHeaderDrinkVAT.Text = "VAT";
+            this.columnHeaderDrinkVAT.Width = 100;
+            // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::SomerenUI.Properties.Resources.someren;
@@ -490,6 +500,16 @@
             this.pnlCashRegister.Size = new System.Drawing.Size(1251, 574);
             this.pnlCashRegister.TabIndex = 7;
             // 
+            // buttonCheckout
+            // 
+            this.buttonCheckout.Location = new System.Drawing.Point(493, 183);
+            this.buttonCheckout.Name = "buttonCheckout";
+            this.buttonCheckout.Size = new System.Drawing.Size(122, 59);
+            this.buttonCheckout.TabIndex = 7;
+            this.buttonCheckout.Text = "Checkout";
+            this.buttonCheckout.UseVisualStyleBackColor = true;
+            this.buttonCheckout.Click += new System.EventHandler(this.buttonCheckout_Click);
+            // 
             // listViewCashRegisterDrinks
             // 
             this.listViewCashRegisterDrinks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -503,7 +523,6 @@
             this.listViewCashRegisterDrinks.HideSelection = false;
             this.listViewCashRegisterDrinks.Location = new System.Drawing.Point(657, 52);
             this.listViewCashRegisterDrinks.Margin = new System.Windows.Forms.Padding(4);
-            this.listViewCashRegisterDrinks.MultiSelect = false;
             this.listViewCashRegisterDrinks.Name = "listViewCashRegisterDrinks";
             this.listViewCashRegisterDrinks.Size = new System.Drawing.Size(393, 377);
             this.listViewCashRegisterDrinks.TabIndex = 6;
@@ -521,6 +540,14 @@
             // columnHeaderCashRegisterDrinkPrice
             // 
             this.columnHeaderCashRegisterDrinkPrice.Text = "Price";
+            // 
+            // columnHeaderCashRegisterDrinkStock
+            // 
+            this.columnHeaderCashRegisterDrinkStock.Text = "Stock";
+            // 
+            // columnHeaderCashRegisterDrinkVAT
+            // 
+            this.columnHeaderCashRegisterDrinkVAT.Text = "VAT";
             // 
             // listViewCashRegisterStudents
             // 
@@ -576,33 +603,6 @@
             this.lblCashRegister.Size = new System.Drawing.Size(200, 33);
             this.lblCashRegister.TabIndex = 3;
             this.lblCashRegister.Text = "Cash Register";
-            // 
-            // buttonCheckout
-            // 
-            this.buttonCheckout.Location = new System.Drawing.Point(493, 183);
-            this.buttonCheckout.Name = "buttonCheckout";
-            this.buttonCheckout.Size = new System.Drawing.Size(122, 59);
-            this.buttonCheckout.TabIndex = 7;
-            this.buttonCheckout.Text = "Checkout";
-            this.buttonCheckout.UseVisualStyleBackColor = true;
-            // 
-            // columnHeaderCashRegisterDrinkStock
-            // 
-            this.columnHeaderCashRegisterDrinkStock.Text = "Stock";
-            // 
-            // columnHeaderCashRegisterDrinkVAT
-            // 
-            this.columnHeaderCashRegisterDrinkVAT.Text = "VAT";
-            // 
-            // columnHeaderDrinkStock
-            // 
-            this.columnHeaderDrinkStock.Text = "Stock";
-            this.columnHeaderDrinkStock.Width = 100;
-            // 
-            // columnHeaderDrinkVAT
-            // 
-            this.columnHeaderDrinkVAT.Text = "VAT";
-            this.columnHeaderDrinkVAT.Width = 100;
             // 
             // SomerenUI
             // 

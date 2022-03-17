@@ -221,6 +221,7 @@ namespace SomerenUI
                     ListViewItem liStudents = new ListViewItem(s.StudentId.ToString());
                     liStudents.SubItems.Add(s.StudentName);
                     liStudents.SubItems.Add(s.StudentDateOfBirth.ToString("dd/MM/yyyy"));
+                    liStudents.Tag = s;
 
                     listViewCashRegisterStudents.Items.Add(liStudents);
                 }
@@ -232,6 +233,7 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkPrice.ToString());
                     liDrinks.SubItems.Add(d.DrinkStock.ToString());
                     liDrinks.SubItems.Add(d.DrinkVAT.ToString());
+                    liDrinks.Tag = d;
 
                     listViewCashRegisterDrinks.Items.Add(liDrinks);
                 }
@@ -301,6 +303,37 @@ namespace SomerenUI
         private void cashRegisterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Cash Register");
+        }
+
+        private void buttonCheckout_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string studentItem = listViewCashRegisterStudents.SelectedItems[0].SubItems[1].Text;
+                string drinkItem = listViewCashRegisterDrinks.SelectedItems[0].SubItems[1].Text;
+
+                Student order1 = (Student)listViewCashRegisterStudents.SelectedItems[0].Tag;
+                Drink order2 = (Drink)listViewCashRegisterDrinks.SelectedItems[0].Tag;
+
+                if (listViewCashRegisterStudents.SelectedItems[0].Focused && listViewCashRegisterDrinks.SelectedItems[0].Focused)
+                {
+                    MessageBox.Show("2 items have been selected");
+                    Order order = new Order(order1.StudentId, order2.DrinkId);
+                    OrderService orderService = new OrderService();
+                    orderService.AddOrders(order);
+                    MessageBox.Show($"Succesfully added: {studentItem} and {drinkItem}");
+                    this.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("U need to select two items");
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Something went wrong with the selection: " + error.Message);
+            }
+            
         }
     }
 }
