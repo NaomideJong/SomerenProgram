@@ -12,19 +12,11 @@ namespace SomerenLogic
     {
         OrderDao orderDao = new OrderDao();
 
-        /*public OrderService()
-        {
-            orderdb = new OrderDao();
-        }*/
-
-        /*public List<Order> GetAllOrders()
-        {
-            // return the list of orders
-            return orderDao.GetAllOrders();
-        }*/
-
+        // get the AddOrder from the DAL layer
         public void AddOrders(Order order)
         {
+            // give the AddOrder the current value of the order
+            // e.g. StudentName: Bob, DrinkName: Fanta
             orderDao.AddOrder(order);
         }
     }
