@@ -28,6 +28,8 @@ namespace SomerenDAL
             // check each row of the DataTable
             foreach (DataRow dr in dataTable.Rows)
             {
+                bool stock = true;
+                if ((int)dr["drinkStock"] < 10) stock = false;
                 Drink drink = new Drink()
                 {
                     DrinkId = (int)dr["drinkId"],
@@ -36,7 +38,8 @@ namespace SomerenDAL
                     DrinkStock = (int)dr["drinkStock"],
                     DrinkVAT = (decimal)dr["drinkVAT"],
                     DrinkValue = (decimal)dr["drinkValue"],
-                    DrinksSold = (int)dr["drinksSold"]
+                    DrinksSold = (int)dr["drinksSold"],
+                    StockAmount = stock
                 };
                 // add the drink to the list
                 drinks.Add(drink);
@@ -46,12 +49,14 @@ namespace SomerenDAL
 
         public Drink GetById(int drinkId)
         {
-            string query = $"SELECT drinkId, drinkName, drinkPrice, drinkStock, drinkVAT, drinkValue, drinksSold FROM [Drinks] WHERE drinkId = @drinkId";
+            string query = $"SELECT drinkId, drinkName, drinkPrice, drinkStock, drinkVAT, drinkValue, drinksSold FROM [Drinks] " +
+                $"WHERE drinkId = @drinkId";
             SqlParameter[] sqlParameters = new SqlParameter[1]
             {
                 new SqlParameter("@drinkId", drinkId)
             };
-          
+
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
 
         public void AddDrink(Drink drink)

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace SomerenUI
 {
@@ -187,7 +188,8 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkVAT.ToString());
                     liDrinks.SubItems.Add(d.DrinkValue.ToString());
                     liDrinks.SubItems.Add(d.DrinksSold.ToString());
-
+                    if(d.StockAmount)liDrinks.SubItems.Add("Stock sufficient");
+                    else liDrinks.SubItems.Add("Stock nearly depleted");
                     listViewDrinks.Items.Add(liDrinks);
                 }
 
@@ -197,6 +199,12 @@ namespace SomerenUI
                 // catch a error when something went wrong with the UI
                 MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
             }
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            successLabel.Text = "Update succesfull";
+
         }
 
         private void CashRegisterPanel()
@@ -237,6 +245,8 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkVAT.ToString());
                     liDrinks.SubItems.Add(d.DrinkValue.ToString());
                     liDrinks.SubItems.Add(d.DrinksSold.ToString());
+                    if (d.StockAmount) liDrinks.SubItems.Add("Stock sufficient");
+                    else liDrinks.SubItems.Add("Stock nearly depleted");
                     liDrinks.Tag = d;
 
                     listViewCashRegisterDrinks.Items.Add(liDrinks);
@@ -339,5 +349,7 @@ namespace SomerenUI
             }
             
         }
+
+       
     }
 }

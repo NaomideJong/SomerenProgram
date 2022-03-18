@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SomerenUI));
             this.imgDashboard = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -90,6 +91,16 @@
             this.columnHeaderDrinkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDrinksSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderStockAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.successLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxStock = new System.Windows.Forms.TextBox();
+            this.textBoxId = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.updateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -416,10 +427,20 @@
             // 
             // pnlDrinks
             // 
+            this.pnlDrinks.Controls.Add(this.updateButton);
+            this.pnlDrinks.Controls.Add(this.label4);
+            this.pnlDrinks.Controls.Add(this.label3);
+            this.pnlDrinks.Controls.Add(this.label2);
+            this.pnlDrinks.Controls.Add(this.textBoxId);
+            this.pnlDrinks.Controls.Add(this.textBoxStock);
+            this.pnlDrinks.Controls.Add(this.label1);
+            this.pnlDrinks.Controls.Add(this.pnlCashRegister);
+            this.pnlDrinks.Controls.Add(this.successLabel);
+            this.pnlDrinks.Controls.Add(this.textBoxName);
             this.pnlDrinks.Controls.Add(this.listViewDrinks);
             this.pnlDrinks.Controls.Add(this.pictureBox4);
             this.pnlDrinks.Controls.Add(this.lblDrinks);
-            this.pnlDrinks.Location = new System.Drawing.Point(5, 33);
+            this.pnlDrinks.Location = new System.Drawing.Point(9, 32);
             this.pnlDrinks.Margin = new System.Windows.Forms.Padding(4);
             this.pnlDrinks.Name = "pnlDrinks";
             this.pnlDrinks.Size = new System.Drawing.Size(1251, 574);
@@ -500,7 +521,7 @@
             this.pnlCashRegister.Controls.Add(this.listViewCashRegisterStudents);
             this.pnlCashRegister.Controls.Add(this.pictureBox5);
             this.pnlCashRegister.Controls.Add(this.lblCashRegister);
-            this.pnlCashRegister.Location = new System.Drawing.Point(4, 32);
+            this.pnlCashRegister.Location = new System.Drawing.Point(2, 573);
             this.pnlCashRegister.Margin = new System.Windows.Forms.Padding(4);
             this.pnlCashRegister.Name = "pnlCashRegister";
             this.pnlCashRegister.Size = new System.Drawing.Size(1251, 574);
@@ -625,12 +646,87 @@
             this.columnHeaderStockAmount.Text = "Stock Amount";
             this.columnHeaderStockAmount.Width = 200;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(340, 521);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(213, 22);
+            this.textBoxName.TabIndex = 6;
+            // 
+            // successLabel
+            // 
+            this.successLabel.Location = new System.Drawing.Point(880, 446);
+            this.successLabel.Name = "successLabel";
+            this.successLabel.Size = new System.Drawing.Size(158, 44);
+            this.successLabel.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(51, 521);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 22);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Update drink";
+            // 
+            // textBoxStock
+            // 
+            this.textBoxStock.Location = new System.Drawing.Point(609, 521);
+            this.textBoxStock.Name = "textBoxStock";
+            this.textBoxStock.Size = new System.Drawing.Size(213, 22);
+            this.textBoxStock.TabIndex = 10;
+            // 
+            // textBoxId
+            // 
+            this.textBoxId.Location = new System.Drawing.Point(196, 521);
+            this.textBoxId.Name = "textBoxId";
+            this.textBoxId.Size = new System.Drawing.Size(111, 22);
+            this.textBoxId.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(193, 496);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 22);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "ID";
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(337, 496);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 22);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "New name";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(606, 496);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 22);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "New Stock";
+            // 
+            // updateButton
+            // 
+            this.updateButton.Location = new System.Drawing.Point(883, 505);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(155, 45);
+            this.updateButton.TabIndex = 15;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 622);
-            this.Controls.Add(this.pnlCashRegister);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlRooms);
@@ -732,6 +828,16 @@
         private System.Windows.Forms.ColumnHeader columnHeaderDrinkValue;
         private System.Windows.Forms.ColumnHeader columnHeaderDrinksSold;
         private System.Windows.Forms.ColumnHeader columnHeaderStockAmount;
+        private System.Windows.Forms.Label successLabel;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxId;
+        private System.Windows.Forms.TextBox textBoxStock;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button updateButton;
     }
 }
 
