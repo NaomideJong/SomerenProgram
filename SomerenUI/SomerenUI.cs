@@ -319,7 +319,7 @@ namespace SomerenUI
                 // saving the selected item to a object
                 Student order1 = (Student)listViewCashRegisterStudents.SelectedItems[0].Tag;
 
-                MessageBox.Show("2 or more items have been selected");
+                MessageBox.Show("1 student and 1 drink have succesfully been selected");
                 OrderService orderService = new OrderService();
 
                 // check each checked item in the listview of listViewRegisterDrinks
@@ -348,8 +348,10 @@ namespace SomerenUI
             foreach (ListViewItem lviDrinks in listViewCashRegisterDrinks.CheckedItems)
             {
                 Drink drink = (Drink)lviDrinks.Tag;
+                // count up price foreach drink selected
                 totalPrice += drink.DrinkPrice;
             }
+            // put the text to the label as string
             lblTotalAmount.Text = totalPrice.ToString();
         }
     }
