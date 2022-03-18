@@ -187,7 +187,6 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkVAT.ToString());
                     liDrinks.SubItems.Add(d.DrinkValue.ToString());
                     liDrinks.SubItems.Add(d.DrinksSold.ToString());
-                    liDrinks.SubItems.Add(d.StockAmount.ToString());
 
                     listViewDrinks.Items.Add(liDrinks);
                 }
@@ -238,7 +237,6 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkVAT.ToString());
                     liDrinks.SubItems.Add(d.DrinkValue.ToString());
                     liDrinks.SubItems.Add(d.DrinksSold.ToString());
-                    liDrinks.SubItems.Add(d.StockAmount.ToString());
                     liDrinks.Tag = d;
 
                     listViewCashRegisterDrinks.Items.Add(liDrinks);

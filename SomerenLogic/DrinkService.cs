@@ -23,5 +23,12 @@ namespace SomerenLogic
             List<Drink> drinks = drinkdb.GetAllDrinks();
             return drinks;
         }
+        public bool StockAmountSufficient(Drink drink)
+        {
+            bool stockAmount = true;
+            if (drink.DrinkStock < 10) stockAmount = false;
+            return stockAmount;
+
+        }
     }
 }

@@ -14,11 +14,7 @@ namespace SomerenDAL
         {
             // select the query from the drinks database
             string query = "SELECT drinkId, drinkName, drinkPrice, drinkStock, drinkVAT, drinkValue, drinksSold FROM [Drinks]" +
-                "WHERE drinkName != 'Water' OR" +
-                "drinkName != 'Orangeade' OR" +
-                "drinkName != 'Cherry juice' AND" +
-                "drinkStock > 0 AND" +
-                "drinkPrice > 0" +
+                "WHERE drinkName != 'Water' AND drinkName != 'Orangeade' AND drinkName != 'Cherry juice' AND drinkStock > 0 AND drinkPrice > 0 " +
                 "ORDER BY drinkStock, drinkValue, drinksSold ASC";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));

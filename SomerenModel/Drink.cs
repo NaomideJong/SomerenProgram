@@ -15,6 +15,6 @@ namespace SomerenModel
         public decimal DrinkVAT { get; set; } // DrinkVAT, e.g. 21%
         public decimal DrinkValue { get; set; } //money earned from the drink probably?
         public int DrinksSold { get; set; } //amount of drinks sold
-        public bool StockAmount {get; set;}
+        public string StockAmount {get; set;}
     }
 }
