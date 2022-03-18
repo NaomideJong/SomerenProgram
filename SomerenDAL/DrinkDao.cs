@@ -14,8 +14,8 @@ namespace SomerenDAL
         {
             // select the query from the drinks database
             string query = "SELECT drinkId, drinkName, drinkPrice, drinkStock, drinkVAT, drinkValue, drinksSold FROM [Drinks]" +
-                "WHERE drinkName != 'Water' AND" +
-                "drinkName != 'Orangeade' AND" +
+                "WHERE drinkName != 'Water' OR" +
+                "drinkName != 'Orangeade' OR" +
                 "drinkName != 'Cherry juice' AND" +
                 "drinkStock > 0 AND" +
                 "drinkPrice > 0" +

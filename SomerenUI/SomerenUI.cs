@@ -129,7 +129,7 @@ namespace SomerenUI
             catch (Exception e)
             {
                 // catch a error when something went wrong with the UI
-                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+                MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
             }
         }
 
@@ -187,6 +187,7 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkVAT.ToString());
                     liDrinks.SubItems.Add(d.DrinkValue.ToString());
                     liDrinks.SubItems.Add(d.DrinksSold.ToString());
+                    liDrinks.SubItems.Add(d.StockAmount.ToString());
 
                     listViewDrinks.Items.Add(liDrinks);
                 }
@@ -195,7 +196,7 @@ namespace SomerenUI
             catch (Exception e)
             {
                 // catch a error when something went wrong with the UI
-                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+                MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
             }
         }
 
@@ -237,6 +238,7 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkVAT.ToString());
                     liDrinks.SubItems.Add(d.DrinkValue.ToString());
                     liDrinks.SubItems.Add(d.DrinksSold.ToString());
+                    liDrinks.SubItems.Add(d.StockAmount.ToString());
                     liDrinks.Tag = d;
 
                     listViewCashRegisterDrinks.Items.Add(liDrinks);
@@ -246,7 +248,7 @@ namespace SomerenUI
             catch (Exception e)
             {
                 // catch a error when something went wrong with the UI
-                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+                MessageBox.Show("Something went wrong while loading the cash register: " + e.Message);
             }
         }
 

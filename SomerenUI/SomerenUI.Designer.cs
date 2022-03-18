@@ -89,6 +89,7 @@
             this.lblCashRegister = new System.Windows.Forms.Label();
             this.columnHeaderDrinkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDrinksSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderStockAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -433,7 +434,8 @@
             this.columnHeaderDrinkStock,
             this.columnHeaderDrinkVAT,
             this.columnHeaderDrinkValue,
-            this.columnHeaderDrinksSold});
+            this.columnHeaderDrinksSold,
+            this.columnHeaderStockAmount});
             this.listViewDrinks.GridLines = true;
             this.listViewDrinks.HideSelection = false;
             this.listViewDrinks.Location = new System.Drawing.Point(21, 52);
@@ -618,6 +620,11 @@
             this.columnHeaderDrinksSold.Text = "Drinks Sold";
             this.columnHeaderDrinksSold.Width = 100;
             // 
+            // columnHeaderStockAmount
+            // 
+            this.columnHeaderStockAmount.Text = "Stock Amount";
+            this.columnHeaderStockAmount.Width = 200;
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -724,6 +731,7 @@
         private System.Windows.Forms.ColumnHeader columnHeaderDrinkVAT;
         private System.Windows.Forms.ColumnHeader columnHeaderDrinkValue;
         private System.Windows.Forms.ColumnHeader columnHeaderDrinksSold;
+        private System.Windows.Forms.ColumnHeader columnHeaderStockAmount;
     }
 }
 
