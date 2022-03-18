@@ -76,15 +76,14 @@ namespace SomerenDAL
 
         public void UpdateDrink(Drink drink)
         {
-            string query = "UPDATE Drinks SET(drinkName=@drinkName, drinkPrice=@drinkPrice, drinkVAT=@drinkVAT, drinkValue=@drinkValue" +
+            string query = "UPDATE Drinks SET(drinkName=@drinkName, drinkStock=@drinkStock" +
                 "WHERE drinkId = @drinkId)";
-            SqlParameter[] sqlParameters = new SqlParameter[4]
+            SqlParameter[] sqlParameters = new SqlParameter[2]
            {
                 new SqlParameter("@drinkName", drink.DrinkName),
-                new SqlParameter("@drinkPrice", drink.DrinkPrice),
-                new SqlParameter("@drinkVat", drink.DrinkVAT),
-                new SqlParameter("@drinkValue", drink.DrinkValue)
+                new SqlParameter("@drinkStock", drink.DrinkStock),
            };
+            //change drink name and stock
             ExecuteEditQuery(query, sqlParameters);
         }
 

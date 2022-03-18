@@ -203,8 +203,28 @@ namespace SomerenUI
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            successLabel.Text = "Update succesfull";
-
+            try
+            {
+                Drink drink = new Drink();
+                drink.DrinkName = textBoxName.Text;
+                drink.DrinkStock = int.Parse(textBoxStock.Text);
+                DrinkService drinkService = new DrinkService();
+                drinkService.UpdateDrink(drink);
+                MessageBox.Show($"Succesfully edited: {drink.DrinkName}");
+            }
+            catch (Exception x)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while updating the table: " + x.Message);
+            }
+        }
+        
+        private void LoadDrink(int id)
+        {
+            DrinkService drinkService = new DrinkService();
+            Drink drink = drinkService.GetById(id);
+            textBoxName.Text = drink.DrinkName;
+            textBoxStock.Text = drink.DrinkStock.ToString();
         }
 
         private void CashRegisterPanel()
@@ -349,7 +369,5 @@ namespace SomerenUI
             }
             
         }
-
-       
     }
 }
