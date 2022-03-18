@@ -330,7 +330,7 @@ namespace SomerenUI
                 }
                 else
                 {
-                    MessageBox.Show("U need to select two items");
+                    MessageBox.Show("You need to select two items");
                 }
             }
             catch (Exception error)

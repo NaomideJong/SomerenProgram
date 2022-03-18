@@ -14,7 +14,8 @@ namespace SomerenDAL
         {
             // select the query from the drinks database
             string query = "SELECT drinkId, drinkName, drinkPrice, drinkStock, drinkVAT, drinkValue, drinksSold FROM [Drinks]" +
-                "WHERE drinkName != 'Water' AND drinkName != 'Orangeade' AND drinkName != 'Cherry juice' AND drinkStock > 0 AND drinkPrice > 0 " +
+                "WHERE drinkName != 'Water' AND drinkName != 'Orangeade' AND drinkName != 'Cherry juice' " +
+                "AND drinkStock > 0 AND drinkPrice > 0 " +
                 "ORDER BY drinkStock, drinkValue, drinksSold ASC";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
@@ -42,6 +43,17 @@ namespace SomerenDAL
             }
             return drinks;
         }
+
+        public Drink GetById(int drinkId)
+        {
+            string query = $"SELECT drinkId, drinkName, drinkPrice, drinkStock, drinkVAT, drinkValue, drinksSold FROM [Drinks] WHERE drinkId = @drinkId";
+            SqlParameter[] sqlParameters = new SqlParameter[1]
+            {
+                new SqlParameter("@drinkId", drinkId)
+            };
+          
+        }
+
         public void AddDrink(Drink drink)
         {
             string query = "INSERT INTO Drink (drinkName, drinkPrice, drinkVAT, drinkValue) " +

@@ -449,7 +449,7 @@
             // columnHeaderDrinkId
             // 
             this.columnHeaderDrinkId.Text = "ID";
-            this.columnHeaderDrinkId.Width = 100;
+            this.columnHeaderDrinkId.Width = 50;
             // 
             // columnHeaderDrinkName
             // 
@@ -459,17 +459,17 @@
             // columnHeaderDrinkPrice
             // 
             this.columnHeaderDrinkPrice.Text = "Price";
-            this.columnHeaderDrinkPrice.Width = 100;
+            this.columnHeaderDrinkPrice.Width = 80;
             // 
             // columnHeaderDrinkStock
             // 
             this.columnHeaderDrinkStock.Text = "Stock";
-            this.columnHeaderDrinkStock.Width = 100;
+            this.columnHeaderDrinkStock.Width = 80;
             // 
             // columnHeaderDrinkVAT
             // 
             this.columnHeaderDrinkVAT.Text = "VAT";
-            this.columnHeaderDrinkVAT.Width = 100;
+            this.columnHeaderDrinkVAT.Width = 80;
             // 
             // pictureBox4
             // 
@@ -500,7 +500,7 @@
             this.pnlCashRegister.Controls.Add(this.listViewCashRegisterStudents);
             this.pnlCashRegister.Controls.Add(this.pictureBox5);
             this.pnlCashRegister.Controls.Add(this.lblCashRegister);
-            this.pnlCashRegister.Location = new System.Drawing.Point(5, 33);
+            this.pnlCashRegister.Location = new System.Drawing.Point(4, 32);
             this.pnlCashRegister.Margin = new System.Windows.Forms.Padding(4);
             this.pnlCashRegister.Name = "pnlCashRegister";
             this.pnlCashRegister.Size = new System.Drawing.Size(1251, 574);
