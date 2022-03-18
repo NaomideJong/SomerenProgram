@@ -87,6 +87,12 @@
             this.columnHeaderCashRegisterStudentDateOfBirth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lblCashRegister = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
+            this.columnHeaderCashRegisterDrinkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderCashRegisterDrinksSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDrinkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDrinksSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -429,7 +435,9 @@
             this.columnHeaderDrinkName,
             this.columnHeaderDrinkPrice,
             this.columnHeaderDrinkStock,
-            this.columnHeaderDrinkVAT});
+            this.columnHeaderDrinkVAT,
+            this.columnHeaderDrinkValue,
+            this.columnHeaderDrinksSold});
             this.listViewDrinks.GridLines = true;
             this.listViewDrinks.HideSelection = false;
             this.listViewDrinks.Location = new System.Drawing.Point(21, 52);
@@ -489,6 +497,8 @@
             // 
             // pnlCashRegister
             // 
+            this.pnlCashRegister.Controls.Add(this.lblTotalAmount);
+            this.pnlCashRegister.Controls.Add(this.label1);
             this.pnlCashRegister.Controls.Add(this.buttonCheckout);
             this.pnlCashRegister.Controls.Add(this.listViewCashRegisterDrinks);
             this.pnlCashRegister.Controls.Add(this.listViewCashRegisterStudents);
@@ -518,17 +528,20 @@
             this.columnHeaderCashRegisterDrinkName,
             this.columnHeaderCashRegisterDrinkPrice,
             this.columnHeaderCashRegisterDrinkStock,
-            this.columnHeaderCashRegisterDrinkVAT});
+            this.columnHeaderCashRegisterDrinkVAT,
+            this.columnHeaderCashRegisterDrinkValue,
+            this.columnHeaderCashRegisterDrinksSold});
             this.listViewCashRegisterDrinks.FullRowSelect = true;
             this.listViewCashRegisterDrinks.GridLines = true;
             this.listViewCashRegisterDrinks.HideSelection = false;
             this.listViewCashRegisterDrinks.Location = new System.Drawing.Point(639, 52);
             this.listViewCashRegisterDrinks.Margin = new System.Windows.Forms.Padding(4);
             this.listViewCashRegisterDrinks.Name = "listViewCashRegisterDrinks";
-            this.listViewCashRegisterDrinks.Size = new System.Drawing.Size(431, 377);
+            this.listViewCashRegisterDrinks.Size = new System.Drawing.Size(426, 377);
             this.listViewCashRegisterDrinks.TabIndex = 6;
             this.listViewCashRegisterDrinks.UseCompatibleStateImageBehavior = false;
             this.listViewCashRegisterDrinks.View = System.Windows.Forms.View.Details;
+            this.listViewCashRegisterDrinks.SelectedIndexChanged += new System.EventHandler(this.listViewCashRegisterDrinks_SelectedIndexChanged);
             // 
             // columnHeaderCashRegisterDrinkId
             // 
@@ -559,11 +572,11 @@
             this.listViewCashRegisterStudents.FullRowSelect = true;
             this.listViewCashRegisterStudents.GridLines = true;
             this.listViewCashRegisterStudents.HideSelection = false;
-            this.listViewCashRegisterStudents.Location = new System.Drawing.Point(22, 52);
+            this.listViewCashRegisterStudents.Location = new System.Drawing.Point(32, 52);
             this.listViewCashRegisterStudents.Margin = new System.Windows.Forms.Padding(4);
             this.listViewCashRegisterStudents.MultiSelect = false;
             this.listViewCashRegisterStudents.Name = "listViewCashRegisterStudents";
-            this.listViewCashRegisterStudents.Size = new System.Drawing.Size(439, 377);
+            this.listViewCashRegisterStudents.Size = new System.Drawing.Size(429, 377);
             this.listViewCashRegisterStudents.TabIndex = 5;
             this.listViewCashRegisterStudents.UseCompatibleStateImageBehavior = false;
             this.listViewCashRegisterStudents.View = System.Windows.Forms.View.Details;
@@ -604,6 +617,42 @@
             this.lblCashRegister.Size = new System.Drawing.Size(200, 33);
             this.lblCashRegister.TabIndex = 3;
             this.lblCashRegister.Text = "Cash Register";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(506, 120);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 17);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Total amount:";
+            // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.Location = new System.Drawing.Point(541, 151);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(20, 17);
+            this.lblTotalAmount.TabIndex = 9;
+            this.lblTotalAmount.Text = "...";
+            // 
+            // columnHeaderCashRegisterDrinkValue
+            // 
+            this.columnHeaderCashRegisterDrinkValue.Text = "Value";
+            // 
+            // columnHeaderCashRegisterDrinksSold
+            // 
+            this.columnHeaderCashRegisterDrinksSold.Text = "Drinks sold";
+            // 
+            // columnHeaderDrinkValue
+            // 
+            this.columnHeaderDrinkValue.Text = "Value";
+            this.columnHeaderDrinkValue.Width = 100;
+            // 
+            // columnHeaderDrinksSold
+            // 
+            this.columnHeaderDrinksSold.Text = "Drinks Sold";
+            this.columnHeaderDrinksSold.Width = 100;
             // 
             // SomerenUI
             // 
@@ -709,6 +758,12 @@
         private System.Windows.Forms.ColumnHeader columnHeaderCashRegisterDrinkVAT;
         private System.Windows.Forms.ColumnHeader columnHeaderDrinkStock;
         private System.Windows.Forms.ColumnHeader columnHeaderDrinkVAT;
+        private System.Windows.Forms.Label lblTotalAmount;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ColumnHeader columnHeaderDrinkValue;
+        private System.Windows.Forms.ColumnHeader columnHeaderDrinksSold;
+        private System.Windows.Forms.ColumnHeader columnHeaderCashRegisterDrinkValue;
+        private System.Windows.Forms.ColumnHeader columnHeaderCashRegisterDrinksSold;
     }
 }
 
