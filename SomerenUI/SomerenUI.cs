@@ -215,6 +215,9 @@ namespace SomerenUI
                 listViewCashRegisterStudents.Items.Clear();
                 listViewCashRegisterDrinks.Items.Clear();
 
+                listViewCashRegisterDrinks.View = View.Details;
+                listViewCashRegisterDrinks.CheckBoxes = true;
+
                 // check each drink in the drinklist and show the contents of the database in the UI
                 foreach (Student s in studentList)
                 {
@@ -310,12 +313,12 @@ namespace SomerenUI
             try
             {
                 Student order1 = (Student)listViewCashRegisterStudents.SelectedItems[0].Tag;
-                Drink order2 = (Drink)listViewCashRegisterDrinks.SelectedItems[0].Tag;
+                Drink order2 = (Drink)listViewCashRegisterDrinks.CheckedItems[0].Tag;
 
                 MessageBox.Show("2 or more items have been selected");
                 OrderService orderService = new OrderService();
 
-                foreach(ListViewItem lviDrinks in listViewCashRegisterDrinks.SelectedItems)
+                foreach(ListViewItem lviDrinks in listViewCashRegisterDrinks.CheckedItems)
                 {
                     Drink drink = (Drink)lviDrinks.Tag;
                     Order order = new Order(order1.StudentId, drink.DrinkId, DateTime.Now);
