@@ -522,10 +522,10 @@
             this.listViewCashRegisterDrinks.FullRowSelect = true;
             this.listViewCashRegisterDrinks.GridLines = true;
             this.listViewCashRegisterDrinks.HideSelection = false;
-            this.listViewCashRegisterDrinks.Location = new System.Drawing.Point(657, 52);
+            this.listViewCashRegisterDrinks.Location = new System.Drawing.Point(639, 52);
             this.listViewCashRegisterDrinks.Margin = new System.Windows.Forms.Padding(4);
             this.listViewCashRegisterDrinks.Name = "listViewCashRegisterDrinks";
-            this.listViewCashRegisterDrinks.Size = new System.Drawing.Size(393, 377);
+            this.listViewCashRegisterDrinks.Size = new System.Drawing.Size(431, 377);
             this.listViewCashRegisterDrinks.TabIndex = 6;
             this.listViewCashRegisterDrinks.UseCompatibleStateImageBehavior = false;
             this.listViewCashRegisterDrinks.View = System.Windows.Forms.View.Details;
@@ -559,11 +559,11 @@
             this.listViewCashRegisterStudents.FullRowSelect = true;
             this.listViewCashRegisterStudents.GridLines = true;
             this.listViewCashRegisterStudents.HideSelection = false;
-            this.listViewCashRegisterStudents.Location = new System.Drawing.Point(68, 52);
+            this.listViewCashRegisterStudents.Location = new System.Drawing.Point(22, 52);
             this.listViewCashRegisterStudents.Margin = new System.Windows.Forms.Padding(4);
             this.listViewCashRegisterStudents.MultiSelect = false;
             this.listViewCashRegisterStudents.Name = "listViewCashRegisterStudents";
-            this.listViewCashRegisterStudents.Size = new System.Drawing.Size(393, 377);
+            this.listViewCashRegisterStudents.Size = new System.Drawing.Size(439, 377);
             this.listViewCashRegisterStudents.TabIndex = 5;
             this.listViewCashRegisterStudents.UseCompatibleStateImageBehavior = false;
             this.listViewCashRegisterStudents.View = System.Windows.Forms.View.Details;
@@ -598,7 +598,7 @@
             // 
             this.lblCashRegister.AutoSize = true;
             this.lblCashRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCashRegister.Location = new System.Drawing.Point(461, 14);
+            this.lblCashRegister.Location = new System.Drawing.Point(450, 12);
             this.lblCashRegister.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCashRegister.Name = "lblCashRegister";
             this.lblCashRegister.Size = new System.Drawing.Size(200, 33);
