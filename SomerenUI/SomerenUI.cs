@@ -309,29 +309,24 @@ namespace SomerenUI
         {
             try
             {
-                string studentItem = listViewCashRegisterStudents.SelectedItems[0].SubItems[1].Text;
-                string drinkItem = listViewCashRegisterDrinks.SelectedItems[0].SubItems[1].Text;
-
                 Student order1 = (Student)listViewCashRegisterStudents.SelectedItems[0].Tag;
                 Drink order2 = (Drink)listViewCashRegisterDrinks.SelectedItems[0].Tag;
 
-                if (listViewCashRegisterStudents.SelectedItems[0].Focused && listViewCashRegisterDrinks.SelectedItems[0].Focused)
+                MessageBox.Show("2 or more items have been selected");
+                OrderService orderService = new OrderService();
+
+                foreach(ListViewItem lviDrinks in listViewCashRegisterDrinks.SelectedItems)
                 {
-                    MessageBox.Show("2 items have been selected");
-                    Order order = new Order(order1.StudentId, order2.DrinkId, DateTime.Now);
-                    OrderService orderService = new OrderService();
+                    Drink drink = (Drink)lviDrinks.Tag;
+                    Order order = new Order(order1.StudentId, drink.DrinkId, DateTime.Now);
                     orderService.AddOrders(order);
-                    MessageBox.Show($"Succesfully added: {studentItem} and {drinkItem}");
-                    this.Refresh();
+                    MessageBox.Show($"Succesfully added: {order.StudentOrderId} and {order.DrinkOrderId}");
                 }
-                else
-                {
-                    MessageBox.Show("U need to select two items");
-                }
+                this.Refresh();
             }
             catch (Exception error)
             {
-                MessageBox.Show("Something went wrong with the selection: " + error.Message);
+                MessageBox.Show("You need to select atleast 1 student and 1 drink.");
             }
             
         }
