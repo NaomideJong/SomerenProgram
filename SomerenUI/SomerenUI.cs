@@ -185,6 +185,8 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkPrice.ToString());
                     liDrinks.SubItems.Add(d.DrinkStock.ToString());
                     liDrinks.SubItems.Add(d.DrinkVAT.ToString());
+                    liDrinks.SubItems.Add(d.DrinkValue.ToString());
+                    liDrinks.SubItems.Add(d.DrinksSold.ToString());
 
                     listViewDrinks.Items.Add(liDrinks);
                 }
@@ -225,7 +227,6 @@ namespace SomerenUI
                     liStudents.SubItems.Add(s.StudentName);
                     liStudents.SubItems.Add(s.StudentDateOfBirth.ToString("dd/MM/yyyy"));
                     liStudents.Tag = s;
-
                     listViewCashRegisterStudents.Items.Add(liStudents);
                 }
 
@@ -236,11 +237,14 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkPrice.ToString());
                     liDrinks.SubItems.Add(d.DrinkStock.ToString());
                     liDrinks.SubItems.Add(d.DrinkVAT.ToString());
+                    liDrinks.SubItems.Add(d.DrinkValue.ToString());
+                    liDrinks.SubItems.Add(d.DrinksSold.ToString());
                     liDrinks.Tag = d;
-
                     listViewCashRegisterDrinks.Items.Add(liDrinks);
                 }
 
+                // put label back to empty
+                lblTotalAmount.Text = "";
             }
             catch (Exception e)
             {
@@ -312,26 +316,41 @@ namespace SomerenUI
         {
             try
             {
+                // saving the selected item to a object
                 Student order1 = (Student)listViewCashRegisterStudents.SelectedItems[0].Tag;
-                Drink order2 = (Drink)listViewCashRegisterDrinks.CheckedItems[0].Tag;
 
                 MessageBox.Show("2 or more items have been selected");
                 OrderService orderService = new OrderService();
 
+                // check each checked item in the listview of listViewRegisterDrinks
                 foreach(ListViewItem lviDrinks in listViewCashRegisterDrinks.CheckedItems)
                 {
                     Drink drink = (Drink)lviDrinks.Tag;
+                    // take in the studentId of student listview, drinkId of drink listview
+                    // and current time and move them in the parameters
                     Order order = new Order(order1.StudentId, drink.DrinkId, DateTime.Now);
+                    // place the order end send it to the logic layer
                     orderService.AddOrders(order);
                     MessageBox.Show($"Succesfully added: {order.StudentOrderId} and {order.DrinkOrderId}");
                 }
-                this.Refresh();
+                CashRegisterPanel();
             }
             catch (Exception error)
             {
                 MessageBox.Show("You need to select atleast 1 student and 1 drink.");
             }
+        }
+
+        private void listViewCashRegisterDrinks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            decimal totalPrice = 0m;
             
+            foreach (ListViewItem lviDrinks in listViewCashRegisterDrinks.CheckedItems)
+            {
+                Drink drink = (Drink)lviDrinks.Tag;
+                totalPrice += drink.DrinkPrice;
+            }
+            lblTotalAmount.Text = totalPrice.ToString();
         }
     }
 }
