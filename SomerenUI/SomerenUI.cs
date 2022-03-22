@@ -205,11 +205,28 @@ namespace SomerenUI
         {
             try
             {
+                //change name and stock of drink
                 DrinkService drinkService = new DrinkService();
                 Drink drink = drinkService.GetById(int.Parse(textBoxId.Text));
                 drink.DrinkName = textBoxName.Text;
                 drink.DrinkStock = int.Parse(textBoxStock.Text);
                 drinkService.UpdateDrink(drink);
+                List<Drink> drinkList = drinkService.GetDrinks(); ;
+                //update tabel
+                listViewDrinks.Items.Clear();
+                foreach (Drink d in drinkList)
+                {
+                    ListViewItem liDrinks = new ListViewItem(d.DrinkId.ToString());
+                    liDrinks.SubItems.Add(d.DrinkName);
+                    liDrinks.SubItems.Add(d.DrinkPrice.ToString());
+                    liDrinks.SubItems.Add(d.DrinkStock.ToString());
+                    liDrinks.SubItems.Add(d.DrinkVAT.ToString());
+                    liDrinks.SubItems.Add(d.DrinkValue.ToString());
+                    liDrinks.SubItems.Add(d.DrinksSold.ToString());
+                    if (d.StockAmount) liDrinks.SubItems.Add("Stock sufficient");
+                    else liDrinks.SubItems.Add("Stock nearly depleted");
+                    listViewDrinks.Items.Add(liDrinks);
+                }
                 successLabel.Text = $"Succesfully edited: {drink.DrinkName}";
             }
             catch (Exception x)
