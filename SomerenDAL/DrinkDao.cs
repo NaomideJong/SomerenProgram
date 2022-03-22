@@ -76,12 +76,13 @@ namespace SomerenDAL
 
         public void UpdateDrink(Drink drink)
         {
-            string query = "UPDATE Drinks SET(drinkName=@drinkName, drinkStock=@drinkStock" +
-                "WHERE drinkId = @drinkId)";
-            SqlParameter[] sqlParameters = new SqlParameter[2]
+            string query = "UPDATE Drinks SET drinkName=@drinkName, drinkStock=@drinkStock " +
+                "WHERE drinkId = @drinkId";
+            SqlParameter[] sqlParameters = new SqlParameter[3]
            {
                 new SqlParameter("@drinkName", drink.DrinkName),
                 new SqlParameter("@drinkStock", drink.DrinkStock),
+                new SqlParameter("@drinkId", drink.DrinkId)
            };
             //change drink name and stock
             ExecuteEditQuery(query, sqlParameters);
@@ -92,7 +93,7 @@ namespace SomerenDAL
             string query = "DELETE FROM Drink WHERE drinkId = @drinkId)";
             SqlParameter[] sqlParameters = new SqlParameter[1]
            {
-                new SqlParameter("@drinkId", drink.DrinkId),
+                new SqlParameter("@drinkId", drink.DrinkId)
            };
             ExecuteEditQuery(query, sqlParameters);
         }

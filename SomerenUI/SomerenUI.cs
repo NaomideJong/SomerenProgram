@@ -205,12 +205,12 @@ namespace SomerenUI
         {
             try
             {
-                Drink drink = new Drink();
+                DrinkService drinkService = new DrinkService();
+                Drink drink = drinkService.GetById(int.Parse(textBoxId.Text));
                 drink.DrinkName = textBoxName.Text;
                 drink.DrinkStock = int.Parse(textBoxStock.Text);
-                DrinkService drinkService = new DrinkService();
                 drinkService.UpdateDrink(drink);
-                MessageBox.Show($"Succesfully edited: {drink.DrinkName}");
+                successLabel.Text = $"Succesfully edited: {drink.DrinkName}";
             }
             catch (Exception x)
             {
