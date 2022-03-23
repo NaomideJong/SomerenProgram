@@ -252,12 +252,28 @@ namespace SomerenUI
 
         private void addDrinkButton_Click(object sender, EventArgs e)
         {
-            //MessageBoxOptions.GetValues
-           // MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
-            //string title = "Delete Drink";
-            //string message = $"Are you sure you want to delete {drink.DrinkName}?";
-           // DialogResult answer = MessageBox.Show(message, title, buttons);
-        }
+            try
+            {
+                DrinkService drinkService = new DrinkService();
+                Drink drink = new Drink();
+                drink.DrinkName = Interaction.InputBox("Enter Drink Name", "Add drink", "", 500, 300);
+                drink.DrinkPrice = decimal.Parse(Interaction.InputBox("Enter drink price", "Add Drink", "", 500, 300));
+                drink.DrinkStock = int.Parse(Interaction.InputBox("Enter Drinks amount in stock", "Add Drink", "", 500, 300));
+                drink.DrinkVAT = int.Parse(Interaction.InputBox("Enter drink VAT", "Add Drink", "", 500, 300));
+                drink.DrinkValue = int.Parse(Interaction.InputBox("Enter drink value in Tokens", "Add Drink", "", 500, 300));
+                drink.DrinksSold = int.Parse(Interaction.InputBox("Enter amount of drinks sold", "Add Drink", "", 500, 300));
+                drinkService.AddDrink(drink);
+                List<Drink> drinkList = drinkService.GetDrinks();
+                UpdateDrinks(drinkList);
+                MessageBox.Show($"Succesfully added {drink.DrinkName} to the list");
+            }
+            
+            catch (Exception x)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while adding the drink: " + x.Message);
+            }
+}
 
         private void UpdateDrinks(List<Drink> drinkList)
         {
