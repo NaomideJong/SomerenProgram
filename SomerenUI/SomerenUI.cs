@@ -50,6 +50,10 @@ namespace SomerenUI
                     HideAll();
                     DrinksPanel();
                     break;
+                case "Activities":
+                    HideAll();
+                    ActivitiesPanel();
+                    break;
                 case "Cash Register":
                     HideAll();
                     CashRegisterPanel();
@@ -66,6 +70,7 @@ namespace SomerenUI
             pnlRooms.Hide();
             pnlTeachers.Hide();
             pnlDrinks.Hide();
+            pnlActivities.Hide();
             pnlCashRegister.Hide();
         }
 
@@ -129,7 +134,7 @@ namespace SomerenUI
             catch (Exception e)
             {
                 // catch a error when something went wrong with the UI
-                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+                MessageBox.Show("Something went wrong while loading the teachers: " + e.Message);
             }
         }
 
@@ -187,6 +192,8 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkVAT.ToString());
                     liDrinks.SubItems.Add(d.DrinkValue.ToString());
                     liDrinks.SubItems.Add(d.DrinksSold.ToString());
+                    if (d.StockAmount) liDrinks.SubItems.Add("Stock sufficient");
+                    else liDrinks.SubItems.Add("Stock nearly depleted");
 
                     listViewDrinks.Items.Add(liDrinks);
                 }
@@ -195,7 +202,7 @@ namespace SomerenUI
             catch (Exception e)
             {
                 // catch a error when something went wrong with the UI
-                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+                MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
             }
         }
 
@@ -240,6 +247,8 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkValue.ToString());
                     liDrinks.SubItems.Add(d.DrinksSold.ToString());
                     liDrinks.Tag = d;
+                    if (d.StockAmount) liDrinks.SubItems.Add("Stock sufficient");
+                    else liDrinks.SubItems.Add("Stock nearly depleted");
                     listViewCashRegisterDrinks.Items.Add(liDrinks);
                 }
 
@@ -249,8 +258,46 @@ namespace SomerenUI
             catch (Exception e)
             {
                 // catch a error when something went wrong with the UI
-                MessageBox.Show("Something went wrong while loading the students: " + e.Message);
+                MessageBox.Show("Something went wrong while loading the cash register: " + e.Message);
             }
+        }
+
+        private void ActivitiesPanel()
+        {
+            pnlActivities.Show();
+            SetDateTimeFormat();
+
+            try
+            {
+                // fill the students listview within the students panel with a list of students
+                ActivityService activityService = new ActivityService();
+                List<Activity> activityList = activityService.GetActivities();
+
+                // clear the listview before filling it again
+                listViewActivities.Items.Clear();
+
+                // check each student in the student list and show the contents of the database in the UI
+                foreach (Activity a in activityList)
+                {
+                    ListViewItem liActivities = new ListViewItem(a.ActivityId.ToString());
+                    liActivities.SubItems.Add(a.ActivityDescription);
+                    liActivities.SubItems.Add(a.ActivityStartTime.ToString("dd/MM/yyyy  HH:mm:ss"));
+                    liActivities.SubItems.Add(a.ActivityEndTime.ToString("dd/MM/yyyy HH:mm:ss"));
+                    liActivities.Tag = a;
+                    listViewActivities.Items.Add(liActivities);
+                }
+            }
+            catch (Exception e)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while loading the activities: " + e.Message);
+            }
+        }
+
+        private void SetDateTimeFormat()
+        {
+            dateTimePickerStartTime.CustomFormat = "dd-MM-yyyy HH:mm:ss";
+            dateTimePickerEndTime.CustomFormat = "dd-MM-yyyy HH:mm:ss";
         }
 
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -307,6 +354,11 @@ namespace SomerenUI
             showPanel("Drinks");
         }
 
+        private void activitiesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Activities");
+        }
+
         private void cashRegisterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             showPanel("Cash Register");
@@ -319,7 +371,6 @@ namespace SomerenUI
                 // saving the selected item to a object
                 Student order1 = (Student)listViewCashRegisterStudents.SelectedItems[0].Tag;
 
-                MessageBox.Show("1 student and 1 drink have succesfully been selected");
                 OrderService orderService = new OrderService();
 
                 // check each checked item in the listview of listViewRegisterDrinks
@@ -353,6 +404,76 @@ namespace SomerenUI
             }
             // put the text to the label as string
             lblTotalAmount.Text = totalPrice.ToString();
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Drink drink = new Drink();
+                drink.DrinkName = textBoxDrinkName.Text;
+                drink.DrinkStock = int.Parse(textBoxDrinkStock.Text);
+                DrinkService drinkService = new DrinkService();
+                drinkService.UpdateDrink(drink);
+                MessageBox.Show($"Succesfully edited: {drink.DrinkName}");
+            }
+            catch (Exception x)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while updating the table: " + x.Message);
+            }
+        }
+        private void LoadDrink(int id)
+        {
+            DrinkService drinkService = new DrinkService();
+            Drink drink = drinkService.GetById(id);
+            textBoxDrinkName.Text = drink.DrinkName;
+            textBoxDrinkStock.Text = drink.DrinkStock.ToString();
+        }
+
+        private void buttonUpdateActivities_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //change decription, start time and end time
+                Activity activityClick = (Activity)listViewActivities.SelectedItems[0].Tag;
+                ActivityService activityService = new ActivityService();
+                Activity activity = activityService.GetById(activityClick.ActivityId);
+                activity.ActivityDescription = textBoxNewDescription.Text;
+                activity.ActivityStartTime = dateTimePickerStartTime.Value;
+                activity.ActivityEndTime = dateTimePickerEndTime.Value;
+                activityService.UpdateActivity(activity);
+
+                List<Activity> activityList = activityService.GetActivities();
+                //update tabel
+                listViewActivities.Items.Clear();
+                foreach (Activity a in activityList)
+                {
+                    ListViewItem liActivities = new ListViewItem(a.ActivityId.ToString());
+                    liActivities.SubItems.Add(a.ActivityDescription);
+                    liActivities.SubItems.Add(a.ActivityStartTime.ToString("dd/MM/yyyy  HH:mm:ss"));
+                    liActivities.SubItems.Add(a.ActivityEndTime.ToString("dd/MM/yyyy HH:mm:ss"));
+                    liActivities.Tag = a;
+                    listViewActivities.Items.Add(liActivities);
+                }
+                //ActivitiesPanel();
+                //successLabel.Text = $"Succesfully edited: {drink.DrinkName}";
+            }
+            catch (Exception x)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while updating the table: " + x.Message);
+            }
+        }
+
+        private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewActivities.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            Activity activityClick = (Activity)listViewActivities.SelectedItems[0].Tag;
+            MessageBox.Show($"{activityClick.ActivityId}, {activityClick.ActivityDescription}");
         }
     }
 }

@@ -65,15 +65,28 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblRooms = new System.Windows.Forms.Label();
             this.pnlDrinks = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxDrinkId = new System.Windows.Forms.TextBox();
+            this.textBoxDrinkName = new System.Windows.Forms.TextBox();
+            this.textBoxDrinkStock = new System.Windows.Forms.TextBox();
             this.listViewDrinks = new System.Windows.Forms.ListView();
             this.columnHeaderDrinkId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDrinkName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDrinkPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDrinkStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDrinkVAT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDrinkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDrinksSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderStockAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lblDrinks = new System.Windows.Forms.Label();
             this.pnlCashRegister = new System.Windows.Forms.Panel();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonCheckout = new System.Windows.Forms.Button();
             this.listViewCashRegisterDrinks = new System.Windows.Forms.ListView();
             this.columnHeaderCashRegisterDrinkId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -81,18 +94,31 @@
             this.columnHeaderCashRegisterDrinkPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCashRegisterDrinkStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCashRegisterDrinkVAT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderCashRegisterDrinkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderCashRegisterDrinksSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderCashRegisterStockAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewCashRegisterStudents = new System.Windows.Forms.ListView();
             this.columnHeaderCashRegisterStudentId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCashRegisterStudentName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCashRegisterStudentDateOfBirth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lblCashRegister = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblTotalAmount = new System.Windows.Forms.Label();
-            this.columnHeaderCashRegisterDrinkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderCashRegisterDrinksSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderDrinkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderDrinksSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pnlActivities = new System.Windows.Forms.Panel();
+            this.lblEndTime = new System.Windows.Forms.Label();
+            this.lblUpdateActivities = new System.Windows.Forms.Label();
+            this.buttonUpdateActivities = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblNewDescription = new System.Windows.Forms.Label();
+            this.textBoxNewDescription = new System.Windows.Forms.TextBox();
+            this.listViewActivities = new System.Windows.Forms.ListView();
+            this.columnHeaderActivityId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderActivityDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderActivityStartTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderActivityEndTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.lblActivities = new System.Windows.Forms.Label();
+            this.dateTimePickerStartTime = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerEndTime = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -106,6 +132,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.pnlCashRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.pnlActivities.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // imgDashboard
@@ -184,6 +212,7 @@
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
             this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.activitiesToolStripMenuItem.Text = "Activities";
+            this.activitiesToolStripMenuItem.Click += new System.EventHandler(this.activitiesToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
@@ -419,6 +448,14 @@
             // 
             // pnlDrinks
             // 
+            this.pnlDrinks.Controls.Add(this.label5);
+            this.pnlDrinks.Controls.Add(this.buttonUpdate);
+            this.pnlDrinks.Controls.Add(this.label4);
+            this.pnlDrinks.Controls.Add(this.label3);
+            this.pnlDrinks.Controls.Add(this.label2);
+            this.pnlDrinks.Controls.Add(this.textBoxDrinkId);
+            this.pnlDrinks.Controls.Add(this.textBoxDrinkName);
+            this.pnlDrinks.Controls.Add(this.textBoxDrinkStock);
             this.pnlDrinks.Controls.Add(this.listViewDrinks);
             this.pnlDrinks.Controls.Add(this.pictureBox4);
             this.pnlDrinks.Controls.Add(this.lblDrinks);
@@ -427,6 +464,73 @@
             this.pnlDrinks.Name = "pnlDrinks";
             this.pnlDrinks.Size = new System.Drawing.Size(1251, 574);
             this.pnlDrinks.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(28, 482);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 17);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Update Drink";
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Location = new System.Drawing.Point(938, 459);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(107, 42);
+            this.buttonUpdate.TabIndex = 16;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(676, 459);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 17);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "New Stock";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(404, 459);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 17);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "New Name";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(157, 459);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(21, 17);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "ID";
+            // 
+            // textBoxDrinkId
+            // 
+            this.textBoxDrinkId.Location = new System.Drawing.Point(160, 479);
+            this.textBoxDrinkId.Name = "textBoxDrinkId";
+            this.textBoxDrinkId.Size = new System.Drawing.Size(100, 22);
+            this.textBoxDrinkId.TabIndex = 10;
+            // 
+            // textBoxDrinkName
+            // 
+            this.textBoxDrinkName.Location = new System.Drawing.Point(407, 479);
+            this.textBoxDrinkName.Name = "textBoxDrinkName";
+            this.textBoxDrinkName.Size = new System.Drawing.Size(100, 22);
+            this.textBoxDrinkName.TabIndex = 11;
+            // 
+            // textBoxDrinkStock
+            // 
+            this.textBoxDrinkStock.Location = new System.Drawing.Point(679, 479);
+            this.textBoxDrinkStock.Name = "textBoxDrinkStock";
+            this.textBoxDrinkStock.Size = new System.Drawing.Size(100, 22);
+            this.textBoxDrinkStock.TabIndex = 12;
             // 
             // listViewDrinks
             // 
@@ -437,7 +541,8 @@
             this.columnHeaderDrinkStock,
             this.columnHeaderDrinkVAT,
             this.columnHeaderDrinkValue,
-            this.columnHeaderDrinksSold});
+            this.columnHeaderDrinksSold,
+            this.columnHeaderStockAmount});
             this.listViewDrinks.GridLines = true;
             this.listViewDrinks.HideSelection = false;
             this.listViewDrinks.Location = new System.Drawing.Point(21, 52);
@@ -473,6 +578,21 @@
             this.columnHeaderDrinkVAT.Text = "VAT";
             this.columnHeaderDrinkVAT.Width = 100;
             // 
+            // columnHeaderDrinkValue
+            // 
+            this.columnHeaderDrinkValue.Text = "Value";
+            this.columnHeaderDrinkValue.Width = 100;
+            // 
+            // columnHeaderDrinksSold
+            // 
+            this.columnHeaderDrinksSold.Text = "Drinks Sold";
+            this.columnHeaderDrinksSold.Width = 100;
+            // 
+            // columnHeaderStockAmount
+            // 
+            this.columnHeaderStockAmount.Text = "Stock Amount";
+            this.columnHeaderStockAmount.Width = 100;
+            // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::SomerenUI.Properties.Resources.someren;
@@ -504,11 +624,29 @@
             this.pnlCashRegister.Controls.Add(this.listViewCashRegisterStudents);
             this.pnlCashRegister.Controls.Add(this.pictureBox5);
             this.pnlCashRegister.Controls.Add(this.lblCashRegister);
-            this.pnlCashRegister.Location = new System.Drawing.Point(4, 33);
+            this.pnlCashRegister.Location = new System.Drawing.Point(4, 34);
             this.pnlCashRegister.Margin = new System.Windows.Forms.Padding(4);
             this.pnlCashRegister.Name = "pnlCashRegister";
             this.pnlCashRegister.Size = new System.Drawing.Size(1251, 574);
             this.pnlCashRegister.TabIndex = 7;
+            // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.Location = new System.Drawing.Point(541, 151);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(20, 17);
+            this.lblTotalAmount.TabIndex = 9;
+            this.lblTotalAmount.Text = "...";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(506, 120);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 17);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Total amount:";
             // 
             // buttonCheckout
             // 
@@ -530,7 +668,8 @@
             this.columnHeaderCashRegisterDrinkStock,
             this.columnHeaderCashRegisterDrinkVAT,
             this.columnHeaderCashRegisterDrinkValue,
-            this.columnHeaderCashRegisterDrinksSold});
+            this.columnHeaderCashRegisterDrinksSold,
+            this.columnHeaderCashRegisterStockAmount});
             this.listViewCashRegisterDrinks.FullRowSelect = true;
             this.listViewCashRegisterDrinks.GridLines = true;
             this.listViewCashRegisterDrinks.HideSelection = false;
@@ -562,6 +701,14 @@
             // columnHeaderCashRegisterDrinkVAT
             // 
             this.columnHeaderCashRegisterDrinkVAT.Text = "VAT";
+            // 
+            // columnHeaderCashRegisterDrinkValue
+            // 
+            this.columnHeaderCashRegisterDrinkValue.Text = "Value";
+            // 
+            // columnHeaderCashRegisterDrinksSold
+            // 
+            this.columnHeaderCashRegisterDrinksSold.Text = "Drinks sold";
             // 
             // listViewCashRegisterStudents
             // 
@@ -618,47 +765,161 @@
             this.lblCashRegister.TabIndex = 3;
             this.lblCashRegister.Text = "Cash Register";
             // 
-            // label1
+            // pnlActivities
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(506, 120);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 17);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Total amount:";
+            this.pnlActivities.Controls.Add(this.dateTimePickerEndTime);
+            this.pnlActivities.Controls.Add(this.dateTimePickerStartTime);
+            this.pnlActivities.Controls.Add(this.lblEndTime);
+            this.pnlActivities.Controls.Add(this.lblUpdateActivities);
+            this.pnlActivities.Controls.Add(this.buttonUpdateActivities);
+            this.pnlActivities.Controls.Add(this.label7);
+            this.pnlActivities.Controls.Add(this.lblNewDescription);
+            this.pnlActivities.Controls.Add(this.textBoxNewDescription);
+            this.pnlActivities.Controls.Add(this.listViewActivities);
+            this.pnlActivities.Controls.Add(this.pictureBox6);
+            this.pnlActivities.Controls.Add(this.lblActivities);
+            this.pnlActivities.Location = new System.Drawing.Point(2, 33);
+            this.pnlActivities.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlActivities.Name = "pnlActivities";
+            this.pnlActivities.Size = new System.Drawing.Size(1251, 574);
+            this.pnlActivities.TabIndex = 10;
             // 
-            // lblTotalAmount
+            // lblEndTime
             // 
-            this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(541, 151);
-            this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(20, 17);
-            this.lblTotalAmount.TabIndex = 9;
-            this.lblTotalAmount.Text = "...";
+            this.lblEndTime.AutoSize = true;
+            this.lblEndTime.Location = new System.Drawing.Point(690, 459);
+            this.lblEndTime.Name = "lblEndTime";
+            this.lblEndTime.Size = new System.Drawing.Size(99, 17);
+            this.lblEndTime.TabIndex = 18;
+            this.lblEndTime.Text = "New End Time";
             // 
-            // columnHeaderCashRegisterDrinkValue
+            // lblUpdateActivities
             // 
-            this.columnHeaderCashRegisterDrinkValue.Text = "Value";
+            this.lblUpdateActivities.AutoSize = true;
+            this.lblUpdateActivities.Location = new System.Drawing.Point(28, 482);
+            this.lblUpdateActivities.Name = "lblUpdateActivities";
+            this.lblUpdateActivities.Size = new System.Drawing.Size(113, 17);
+            this.lblUpdateActivities.TabIndex = 10;
+            this.lblUpdateActivities.Text = "Update Activities";
             // 
-            // columnHeaderCashRegisterDrinksSold
+            // buttonUpdateActivities
             // 
-            this.columnHeaderCashRegisterDrinksSold.Text = "Drinks sold";
+            this.buttonUpdateActivities.Location = new System.Drawing.Point(1031, 469);
+            this.buttonUpdateActivities.Name = "buttonUpdateActivities";
+            this.buttonUpdateActivities.Size = new System.Drawing.Size(107, 42);
+            this.buttonUpdateActivities.TabIndex = 16;
+            this.buttonUpdateActivities.Text = "Update";
+            this.buttonUpdateActivities.UseVisualStyleBackColor = true;
+            this.buttonUpdateActivities.Click += new System.EventHandler(this.buttonUpdateActivities_Click);
             // 
-            // columnHeaderDrinkValue
+            // label7
             // 
-            this.columnHeaderDrinkValue.Text = "Value";
-            this.columnHeaderDrinkValue.Width = 100;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(416, 459);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(99, 17);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "New Start time";
             // 
-            // columnHeaderDrinksSold
+            // lblNewDescription
             // 
-            this.columnHeaderDrinksSold.Text = "Drinks Sold";
-            this.columnHeaderDrinksSold.Width = 100;
+            this.lblNewDescription.AutoSize = true;
+            this.lblNewDescription.Location = new System.Drawing.Point(221, 459);
+            this.lblNewDescription.Name = "lblNewDescription";
+            this.lblNewDescription.Size = new System.Drawing.Size(110, 17);
+            this.lblNewDescription.TabIndex = 14;
+            this.lblNewDescription.Text = "New Description";
+            // 
+            // textBoxNewDescription
+            // 
+            this.textBoxNewDescription.Location = new System.Drawing.Point(224, 479);
+            this.textBoxNewDescription.Name = "textBoxNewDescription";
+            this.textBoxNewDescription.Size = new System.Drawing.Size(100, 22);
+            this.textBoxNewDescription.TabIndex = 11;
+            // 
+            // listViewActivities
+            // 
+            this.listViewActivities.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderActivityId,
+            this.columnHeaderActivityDescription,
+            this.columnHeaderActivityStartTime,
+            this.columnHeaderActivityEndTime});
+            this.listViewActivities.FullRowSelect = true;
+            this.listViewActivities.GridLines = true;
+            this.listViewActivities.HideSelection = false;
+            this.listViewActivities.Location = new System.Drawing.Point(21, 52);
+            this.listViewActivities.Margin = new System.Windows.Forms.Padding(4);
+            this.listViewActivities.Name = "listViewActivities";
+            this.listViewActivities.Size = new System.Drawing.Size(1020, 377);
+            this.listViewActivities.TabIndex = 5;
+            this.listViewActivities.UseCompatibleStateImageBehavior = false;
+            this.listViewActivities.View = System.Windows.Forms.View.Details;
+            this.listViewActivities.SelectedIndexChanged += new System.EventHandler(this.listViewActivities_SelectedIndexChanged);
+            // 
+            // columnHeaderActivityId
+            // 
+            this.columnHeaderActivityId.Text = "ID";
+            this.columnHeaderActivityId.Width = 200;
+            // 
+            // columnHeaderActivityDescription
+            // 
+            this.columnHeaderActivityDescription.Text = "Description";
+            this.columnHeaderActivityDescription.Width = 200;
+            // 
+            // columnHeaderActivityStartTime
+            // 
+            this.columnHeaderActivityStartTime.Text = "StartTime";
+            this.columnHeaderActivityStartTime.Width = 200;
+            // 
+            // columnHeaderActivityEndTime
+            // 
+            this.columnHeaderActivityEndTime.Text = "EndTime";
+            this.columnHeaderActivityEndTime.Width = 200;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBox6.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.InitialImage")));
+            this.pictureBox6.Location = new System.Drawing.Point(1073, 0);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(173, 151);
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            // 
+            // lblActivities
+            // 
+            this.lblActivities.AutoSize = true;
+            this.lblActivities.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActivities.Location = new System.Drawing.Point(13, 12);
+            this.lblActivities.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblActivities.Name = "lblActivities";
+            this.lblActivities.Size = new System.Drawing.Size(132, 33);
+            this.lblActivities.TabIndex = 3;
+            this.lblActivities.Text = "Activities";
+            // 
+            // dateTimePickerStartTime
+            // 
+            this.dateTimePickerStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerStartTime.Location = new System.Drawing.Point(419, 477);
+            this.dateTimePickerStartTime.Name = "dateTimePickerStartTime";
+            this.dateTimePickerStartTime.Size = new System.Drawing.Size(208, 22);
+            this.dateTimePickerStartTime.TabIndex = 19;
+            // 
+            // dateTimePickerEndTime
+            // 
+            this.dateTimePickerEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerEndTime.Location = new System.Drawing.Point(693, 477);
+            this.dateTimePickerEndTime.Name = "dateTimePickerEndTime";
+            this.dateTimePickerEndTime.Size = new System.Drawing.Size(208, 22);
+            this.dateTimePickerEndTime.TabIndex = 20;
             // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 622);
+            this.Controls.Add(this.pnlActivities);
             this.Controls.Add(this.pnlCashRegister);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlStudents);
@@ -693,6 +954,9 @@
             this.pnlCashRegister.ResumeLayout(false);
             this.pnlCashRegister.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.pnlActivities.ResumeLayout(false);
+            this.pnlActivities.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -764,6 +1028,32 @@
         private System.Windows.Forms.ColumnHeader columnHeaderDrinksSold;
         private System.Windows.Forms.ColumnHeader columnHeaderCashRegisterDrinkValue;
         private System.Windows.Forms.ColumnHeader columnHeaderCashRegisterDrinksSold;
+        private System.Windows.Forms.ColumnHeader columnHeaderStockAmount;
+        private System.Windows.Forms.ColumnHeader columnHeaderCashRegisterStockAmount;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxDrinkId;
+        private System.Windows.Forms.TextBox textBoxDrinkName;
+        private System.Windows.Forms.TextBox textBoxDrinkStock;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel pnlActivities;
+        private System.Windows.Forms.Label lblUpdateActivities;
+        private System.Windows.Forms.Button buttonUpdateActivities;
+        private System.Windows.Forms.ListView listViewActivities;
+        private System.Windows.Forms.ColumnHeader columnHeaderActivityId;
+        private System.Windows.Forms.ColumnHeader columnHeaderActivityDescription;
+        private System.Windows.Forms.ColumnHeader columnHeaderActivityStartTime;
+        private System.Windows.Forms.ColumnHeader columnHeaderActivityEndTime;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label lblActivities;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblNewDescription;
+        private System.Windows.Forms.TextBox textBoxNewDescription;
+        private System.Windows.Forms.Label lblEndTime;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEndTime;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStartTime;
     }
 }
 
