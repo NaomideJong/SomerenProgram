@@ -90,7 +90,7 @@ namespace SomerenDAL
 
         public void DeleteDrink(Drink drink)
         {
-            string query = "DELETE FROM Drink WHERE drinkId = @drinkId)";
+            string query = "DELETE FROM Drinks WHERE drinkId = @drinkId";
             SqlParameter[] sqlParameters = new SqlParameter[1]
            {
                 new SqlParameter("@drinkId", drink.DrinkId)
