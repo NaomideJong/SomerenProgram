@@ -23,5 +23,23 @@ namespace SomerenLogic
             List<Drink> drinks = drinkdb.GetAllDrinks();
             return drinks;
         }
+
+        public Drink GetById(int drinkId)
+        {
+            // get one drink by id number
+            return drinkdb.GetById(drinkId);
+        }
+        public void AddDrink(Drink drink)
+        {
+            drinkdb.AddDrink(drink);
+        }
+        public void UpdateDrink(Drink drink)
+        {
+            drinkdb.UpdateDrink(drink);
+        }
+        public void DeleteDrink(Drink drink)
+        {
+            drinkdb.DeleteDrink(drink);
+        }
     }
 }
