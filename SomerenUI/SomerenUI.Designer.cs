@@ -104,6 +104,9 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lblCashRegister = new System.Windows.Forms.Label();
             this.pnlActivities = new System.Windows.Forms.Panel();
+            this.buttonDeleteActivity = new System.Windows.Forms.Button();
+            this.dateTimePickerEndTime = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerStartTime = new System.Windows.Forms.DateTimePicker();
             this.lblEndTime = new System.Windows.Forms.Label();
             this.lblUpdateActivities = new System.Windows.Forms.Label();
             this.buttonUpdateActivities = new System.Windows.Forms.Button();
@@ -117,8 +120,9 @@
             this.columnHeaderActivityEndTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.lblActivities = new System.Windows.Forms.Label();
-            this.dateTimePickerStartTime = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerEndTime = new System.Windows.Forms.DateTimePicker();
+            this.buttonAddActivity = new System.Windows.Forms.Button();
+            this.lblActivityId = new System.Windows.Forms.Label();
+            this.textBoxActivityId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -767,6 +771,10 @@
             // 
             // pnlActivities
             // 
+            this.pnlActivities.Controls.Add(this.lblActivityId);
+            this.pnlActivities.Controls.Add(this.textBoxActivityId);
+            this.pnlActivities.Controls.Add(this.buttonAddActivity);
+            this.pnlActivities.Controls.Add(this.buttonDeleteActivity);
             this.pnlActivities.Controls.Add(this.dateTimePickerEndTime);
             this.pnlActivities.Controls.Add(this.dateTimePickerStartTime);
             this.pnlActivities.Controls.Add(this.lblEndTime);
@@ -783,6 +791,32 @@
             this.pnlActivities.Name = "pnlActivities";
             this.pnlActivities.Size = new System.Drawing.Size(1251, 574);
             this.pnlActivities.TabIndex = 10;
+            // 
+            // buttonDeleteActivity
+            // 
+            this.buttonDeleteActivity.Location = new System.Drawing.Point(1073, 280);
+            this.buttonDeleteActivity.Name = "buttonDeleteActivity";
+            this.buttonDeleteActivity.Size = new System.Drawing.Size(107, 42);
+            this.buttonDeleteActivity.TabIndex = 21;
+            this.buttonDeleteActivity.Text = "Delete";
+            this.buttonDeleteActivity.UseVisualStyleBackColor = true;
+            this.buttonDeleteActivity.Click += new System.EventHandler(this.buttonDeleteActivity_Click);
+            // 
+            // dateTimePickerEndTime
+            // 
+            this.dateTimePickerEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerEndTime.Location = new System.Drawing.Point(693, 477);
+            this.dateTimePickerEndTime.Name = "dateTimePickerEndTime";
+            this.dateTimePickerEndTime.Size = new System.Drawing.Size(208, 22);
+            this.dateTimePickerEndTime.TabIndex = 20;
+            // 
+            // dateTimePickerStartTime
+            // 
+            this.dateTimePickerStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerStartTime.Location = new System.Drawing.Point(419, 477);
+            this.dateTimePickerStartTime.Name = "dateTimePickerStartTime";
+            this.dateTimePickerStartTime.Size = new System.Drawing.Size(208, 22);
+            this.dateTimePickerStartTime.TabIndex = 19;
             // 
             // lblEndTime
             // 
@@ -804,7 +838,7 @@
             // 
             // buttonUpdateActivities
             // 
-            this.buttonUpdateActivities.Location = new System.Drawing.Point(1031, 469);
+            this.buttonUpdateActivities.Location = new System.Drawing.Point(1073, 192);
             this.buttonUpdateActivities.Name = "buttonUpdateActivities";
             this.buttonUpdateActivities.Size = new System.Drawing.Size(107, 42);
             this.buttonUpdateActivities.TabIndex = 16;
@@ -898,21 +932,31 @@
             this.lblActivities.TabIndex = 3;
             this.lblActivities.Text = "Activities";
             // 
-            // dateTimePickerStartTime
+            // buttonAddActivity
             // 
-            this.dateTimePickerStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerStartTime.Location = new System.Drawing.Point(419, 477);
-            this.dateTimePickerStartTime.Name = "dateTimePickerStartTime";
-            this.dateTimePickerStartTime.Size = new System.Drawing.Size(208, 22);
-            this.dateTimePickerStartTime.TabIndex = 19;
+            this.buttonAddActivity.Location = new System.Drawing.Point(1073, 365);
+            this.buttonAddActivity.Name = "buttonAddActivity";
+            this.buttonAddActivity.Size = new System.Drawing.Size(107, 42);
+            this.buttonAddActivity.TabIndex = 22;
+            this.buttonAddActivity.Text = "Add";
+            this.buttonAddActivity.UseVisualStyleBackColor = true;
+            this.buttonAddActivity.Click += new System.EventHandler(this.buttonAddActivity_Click);
             // 
-            // dateTimePickerEndTime
+            // lblActivityId
             // 
-            this.dateTimePickerEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerEndTime.Location = new System.Drawing.Point(693, 477);
-            this.dateTimePickerEndTime.Name = "dateTimePickerEndTime";
-            this.dateTimePickerEndTime.Size = new System.Drawing.Size(208, 22);
-            this.dateTimePickerEndTime.TabIndex = 20;
+            this.lblActivityId.AutoSize = true;
+            this.lblActivityId.Location = new System.Drawing.Point(1073, 434);
+            this.lblActivityId.Name = "lblActivityId";
+            this.lblActivityId.Size = new System.Drawing.Size(21, 17);
+            this.lblActivityId.TabIndex = 24;
+            this.lblActivityId.Text = "ID";
+            // 
+            // textBoxActivityId
+            // 
+            this.textBoxActivityId.Location = new System.Drawing.Point(1075, 454);
+            this.textBoxActivityId.Name = "textBoxActivityId";
+            this.textBoxActivityId.Size = new System.Drawing.Size(100, 22);
+            this.textBoxActivityId.TabIndex = 23;
             // 
             // SomerenUI
             // 
@@ -1054,6 +1098,10 @@
         private System.Windows.Forms.Label lblEndTime;
         private System.Windows.Forms.DateTimePicker dateTimePickerEndTime;
         private System.Windows.Forms.DateTimePicker dateTimePickerStartTime;
+        private System.Windows.Forms.Button buttonDeleteActivity;
+        private System.Windows.Forms.Button buttonAddActivity;
+        private System.Windows.Forms.Label lblActivityId;
+        private System.Windows.Forms.TextBox textBoxActivityId;
     }
 }
 
