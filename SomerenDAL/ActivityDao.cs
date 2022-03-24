@@ -59,12 +59,12 @@ namespace SomerenDAL
 
         public void AddActivity(Activity activity)
         {
-            string query = "SET IDENTITY_INSERT Activity ON " +
-                "INSERT INTO Activity (activityId, activityDescription, activityStartTime, activityEndTime) " +
-                "VALUES (@activityId, @activityDescription, @activityStartTime, @activityEndTime)";
-            SqlParameter[] sqlParameters = new SqlParameter[4]
+            string query =  "INSERT INTO Activity (activityDescription, activityStartTime, activityEndTime)" +
+                "VALUES (@activityDescription, @activityStartTime, @activityEndTime); " +
+                "SELECT SCOPE_IDENTITY();"; 
+            SqlParameter[] sqlParameters = new SqlParameter[3]
            {
-                new SqlParameter("@activityId", activity.ActivityId),
+                //new SqlParameter("@activityId", activity.ActivityId)
                 new SqlParameter("@activityDescription", activity.ActivityDescription),
                 new SqlParameter("@activityStartTime", activity.ActivityStartTime),
                 new SqlParameter("@activityEndTime", activity.ActivityEndTime)
