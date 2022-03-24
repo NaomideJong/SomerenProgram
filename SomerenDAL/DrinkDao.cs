@@ -36,7 +36,7 @@ namespace SomerenDAL
                     DrinkName = (string)dr["drinkName"],
                     DrinkPrice = (decimal)dr["drinkPrice"],
                     DrinkStock = (int)dr["drinkStock"],
-                    DrinkVAT = (decimal)dr["drinkVAT"],
+                    DrinkVAT = (int)dr["drinkVAT"],
                     DrinkValue = (decimal)dr["drinkValue"],
                     DrinksSold = (int)dr["drinksSold"],
                     StockAmount = stock
@@ -61,8 +61,8 @@ namespace SomerenDAL
 
         public void AddDrink(Drink drink)
         {
-            string query = "INSERT INTO Drink (drinkName, drinkPrice, drinkVAT, drinkValue, drinksSold) " +
-                "VALUES (@drinkName, @drinkPrince, @drinkValue)";
+            string query = "INSERT INTO Drinks (drinkName, drinkPrice, drinkVAT, drinkValue, drinksSold) " +
+                "VALUES (@drinkName, @drinkPrice, @drinkVat, @drinkValue, @drinksSold)";
             SqlParameter[] sqlParameters = new SqlParameter[5]
            {
                 new SqlParameter("@drinkName", drink.DrinkName),
