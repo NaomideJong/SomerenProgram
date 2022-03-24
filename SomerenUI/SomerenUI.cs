@@ -503,7 +503,7 @@ namespace SomerenUI
                 //change decription, start time and end time
                 ActivityService activityService = new ActivityService();
                 Activity activity = new Activity();
-                activity.ActivityId = int.Parse(textBoxActivityId.Text);
+                //activity.ActivityId = int.Parse(textBoxActivityId.Text);
                 activity.ActivityDescription = textBoxNewDescription.Text;
                 activity.ActivityStartTime = dateTimePickerStartTime.Value;
                 activity.ActivityEndTime = dateTimePickerEndTime.Value;
@@ -514,7 +514,7 @@ namespace SomerenUI
 
                 foreach (Activity a in activityList)
                 {
-                    ListViewItem liActivities = new ListViewItem(a.ActivityId.ToString());
+                    ListViewItem liActivities = new ListViewItem();
                     liActivities.SubItems.Add(a.ActivityDescription);
                     liActivities.SubItems.Add(a.ActivityStartTime.ToString("dd/MM/yyyy  HH:mm:ss"));
                     liActivities.SubItems.Add(a.ActivityEndTime.ToString("dd/MM/yyyy HH:mm:ss"));
