@@ -14,11 +14,8 @@ namespace SomerenDAL
         {
             // select the query from the drinks database
             string query = "SELECT drinkId, drinkName, drinkPrice, drinkStock, drinkVAT, drinkValue, drinksSold FROM [Drinks]" +
-                "WHERE drinkName != 'Water' OR" +
-                "drinkName != 'Orangeade' OR" +
-                "drinkName != 'Cherry juice' AND" +
-                "drinkStock > 0 AND" +
-                "drinkPrice > 0" +
+                "WHERE drinkName != 'Water' AND drinkName != 'Orangeade' AND drinkName != 'Cherry juice' " +
+                "AND drinkStock > 0 AND drinkPrice > 0 " +
                 "ORDER BY drinkStock, drinkValue, drinksSold ASC";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
@@ -37,50 +34,66 @@ namespace SomerenDAL
                     DrinkName = (string)dr["drinkName"],
                     DrinkPrice = (decimal)dr["drinkPrice"],
                     DrinkStock = (int)dr["drinkStock"],
-                    DrinkVAT = (decimal)dr["drinkVAT"],
+                    DrinkVAT = (int)dr["drinkVAT"],
                     DrinkValue = (decimal)dr["drinkValue"],
-                    DrinksSold = (int)dr["drinksSold"]
+                    DrinksSold = (int)dr["drinksSold"],
                 };
                 // add the drink to the list
                 drinks.Add(drink);
             }
             return drinks;
         }
+
+        public Drink GetById(int drinkId)
+        {
+            string query = $"SELECT drinkId, drinkName, drinkPrice, drinkStock, drinkVAT, drinkValue, drinksSold FROM [Drinks] " +
+                $"WHERE drinkId = @drinkId";
+            SqlParameter[] sqlParameters = new SqlParameter[1]
+            {
+                new SqlParameter("@drinkId", drinkId)
+            };
+
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+        }
+
         public void AddDrink(Drink drink)
         {
-            string query = "INSERT INTO Drink (drinkName, drinkPrice, drinkVAT, drinkValue) " +
-                "VALUES (@drinkName, @drinkPrince, @drinkValue)";
-            SqlParameter[] sqlParameters = new SqlParameter[4]
+            string query = "INSERT INTO Drinks (drinkName, drinkPrice, drinkStock, drinkVAT, drinkValue, drinksSold) " +
+                "VALUES (@drinkName, @drinkPrice, @drinkVat, @drinkStock, @drinkValue, @drinksSold);" +
+                "SELECT SCOPE_IDENTITY();";
+            SqlParameter[] sqlParameters = new SqlParameter[6]
            {
                 new SqlParameter("@drinkName", drink.DrinkName),
                 new SqlParameter("@drinkPrice", drink.DrinkPrice),
+                new SqlParameter("@drinkStock", drink.DrinkStock),
                 new SqlParameter("@drinkVat", drink.DrinkVAT),
-                new SqlParameter("@drinkValue", drink.DrinkValue)
+                new SqlParameter("@drinkValue", drink.DrinkValue),
+                new SqlParameter("@drinksSold", drink.DrinksSold)
            };
             //add drink to the table
-            ExecuteEditQuery(query, sqlParameters);
+            ExecuteSelectQuery(query, sqlParameters);
         }
 
         public void UpdateDrink(Drink drink)
         {
-            string query = "UPDATE Drinks SET(drinkName=@drinkName, drinkPrice=@drinkPrice, drinkVAT=@drinkVAT, drinkValue=@drinkValue" +
-                "WHERE drinkId = @drinkId)";
-            SqlParameter[] sqlParameters = new SqlParameter[4]
+            string query = "UPDATE Drinks SET drinkName=@drinkName, drinkStock=@drinkStock " +
+                "WHERE drinkId = @drinkId";
+            SqlParameter[] sqlParameters = new SqlParameter[3]
            {
                 new SqlParameter("@drinkName", drink.DrinkName),
-                new SqlParameter("@drinkPrice", drink.DrinkPrice),
-                new SqlParameter("@drinkVat", drink.DrinkVAT),
-                new SqlParameter("@drinkValue", drink.DrinkValue)
+                new SqlParameter("@drinkStock", drink.DrinkStock),
+                new SqlParameter("@drinkId", drink.DrinkId)
            };
+            //change drink name and stock
             ExecuteEditQuery(query, sqlParameters);
         }
 
         public void DeleteDrink(Drink drink)
         {
-            string query = "DELETE FROM Drink WHERE drinkId = @drinkId)";
+            string query = "DELETE FROM Drinks WHERE drinkId = @drinkId";
             SqlParameter[] sqlParameters = new SqlParameter[1]
            {
-                new SqlParameter("@drinkId", drink.DrinkId),
+                new SqlParameter("@drinkId", drink.DrinkId)
            };
             ExecuteEditQuery(query, sqlParameters);
         }

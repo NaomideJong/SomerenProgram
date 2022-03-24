@@ -1,4 +1,5 @@
-﻿using SomerenLogic;
+﻿using Microsoft.VisualBasic;
+using SomerenLogic;
 using SomerenModel;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace SomerenUI
 {
@@ -187,8 +189,8 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkVAT.ToString());
                     liDrinks.SubItems.Add(d.DrinkValue.ToString());
                     liDrinks.SubItems.Add(d.DrinksSold.ToString());
-                    liDrinks.SubItems.Add(d.StockAmount.ToString());
-
+                    if(d.StockAmount)liDrinks.SubItems.Add("Stock sufficient");
+                    else liDrinks.SubItems.Add("Stock nearly depleted");
                     listViewDrinks.Items.Add(liDrinks);
                 }
 
@@ -199,6 +201,99 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while loading the drinks: " + e.Message);
             }
         }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //change name and stock of drink
+                DrinkService drinkService = new DrinkService();
+                Drink drink = drinkService.GetById(int.Parse(textBoxId.Text));
+                drink.DrinkName = textBoxName.Text;
+                drink.DrinkStock = int.Parse(textBoxStock.Text);
+                drinkService.UpdateDrink(drink);
+                List<Drink> drinkList = drinkService.GetDrinks(); ;
+                
+                UpdateDrinks(drinkList);
+                successLabel.Text = $"Succesfully edited: {drink.DrinkName}";
+            }
+            catch (Exception x)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while updating the table: " + x.Message);
+            }
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //delete drink
+                DrinkService drinkService = new DrinkService();
+                Drink drink = drinkService.GetById(int.Parse(textBoxId.Text));
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                string title = "Delete Drink";
+                string message = $"Are you sure you want to delete {drink.DrinkName}?";
+                DialogResult answer = MessageBox.Show(message, title, buttons);
+                if (answer == DialogResult.OK)
+                {
+                    drinkService.DeleteDrink(drink);
+                    List<Drink> drinkList = drinkService.GetDrinks();
+                    UpdateDrinks(drinkList);
+                    deleteLabel.Text = $"Succesfully Deleted: {drink.DrinkName}";
+                }
+            }
+            catch (Exception x)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while deleting the drink: " + x.Message);
+            }
+        }
+
+        private void addDrinkButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DrinkService drinkService = new DrinkService();
+                Drink drink = new Drink();
+                drink.DrinkName = Interaction.InputBox("Enter Drink Name", "Add drink", "", 500, 300);
+                drink.DrinkPrice = decimal.Parse(Interaction.InputBox("Enter drink price", "Add Drink", "", 500, 300));
+                drink.DrinkStock = int.Parse(Interaction.InputBox("Enter Drinks amount in stock", "Add Drink", "", 500, 300));
+                drink.DrinkVAT = int.Parse(Interaction.InputBox("Enter drink VAT", "Add Drink", "", 500, 300));
+                drink.DrinkValue = int.Parse(Interaction.InputBox("Enter drink value in Tokens", "Add Drink", "", 500, 300));
+                drink.DrinksSold = int.Parse(Interaction.InputBox("Enter amount of drinks sold", "Add Drink", "", 500, 300));
+                drinkService.AddDrink(drink);
+                List<Drink> drinkList = drinkService.GetDrinks();
+                UpdateDrinks(drinkList);
+                MessageBox.Show($"Succesfully added {drink.DrinkName} to the list");
+            }
+            
+            catch (Exception x)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while adding the drink: " + x.Message);
+            }
+}
+
+        private void UpdateDrinks(List<Drink> drinkList)
+        {
+            //update tabel
+            listViewDrinks.Items.Clear();
+            foreach (Drink d in drinkList)
+            {
+                ListViewItem liDrinks = new ListViewItem(d.DrinkId.ToString());
+                liDrinks.SubItems.Add(d.DrinkName);
+                liDrinks.SubItems.Add(d.DrinkPrice.ToString());
+                liDrinks.SubItems.Add(d.DrinkStock.ToString());
+                liDrinks.SubItems.Add(d.DrinkVAT.ToString());
+                liDrinks.SubItems.Add(d.DrinkValue.ToString());
+                liDrinks.SubItems.Add(d.DrinksSold.ToString());
+                if (d.StockAmount) liDrinks.SubItems.Add("Stock sufficient");
+                else liDrinks.SubItems.Add("Stock nearly depleted");
+                listViewDrinks.Items.Add(liDrinks);
+            }
+        }
+        
 
         private void CashRegisterPanel()
         {
@@ -238,7 +333,8 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinkVAT.ToString());
                     liDrinks.SubItems.Add(d.DrinkValue.ToString());
                     liDrinks.SubItems.Add(d.DrinksSold.ToString());
-                    liDrinks.SubItems.Add(d.StockAmount.ToString());
+                    if (d.StockAmount) liDrinks.SubItems.Add("Stock sufficient");
+                    else liDrinks.SubItems.Add("Stock nearly depleted");
                     liDrinks.Tag = d;
 
                     listViewCashRegisterDrinks.Items.Add(liDrinks);
@@ -332,7 +428,7 @@ namespace SomerenUI
                 }
                 else
                 {
-                    MessageBox.Show("U need to select two items");
+                    MessageBox.Show("You need to select two items");
                 }
             }
             catch (Exception error)
@@ -341,5 +437,6 @@ namespace SomerenUI
             }
             
         }
+
     }
 }

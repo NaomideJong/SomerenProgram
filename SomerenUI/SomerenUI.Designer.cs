@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SomerenUI));
             this.imgDashboard = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -65,12 +66,27 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblRooms = new System.Windows.Forms.Label();
             this.pnlDrinks = new System.Windows.Forms.Panel();
+            this.addDrinkButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.deleteLabel = new System.Windows.Forms.Label();
+            this.updateButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxId = new System.Windows.Forms.TextBox();
+            this.textBoxStock = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.successLabel = new System.Windows.Forms.Label();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.listViewDrinks = new System.Windows.Forms.ListView();
             this.columnHeaderDrinkId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDrinkName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDrinkPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDrinkStock = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDrinkVAT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDrinkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDrinksSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderStockAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lblDrinks = new System.Windows.Forms.Label();
             this.pnlCashRegister = new System.Windows.Forms.Panel();
@@ -87,9 +103,7 @@
             this.columnHeaderCashRegisterStudentDateOfBirth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lblCashRegister = new System.Windows.Forms.Label();
-            this.columnHeaderDrinkValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderDrinksSold = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderStockAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -416,14 +430,123 @@
             // 
             // pnlDrinks
             // 
+            this.pnlDrinks.Controls.Add(this.addDrinkButton);
+            this.pnlDrinks.Controls.Add(this.deleteButton);
+            this.pnlDrinks.Controls.Add(this.deleteLabel);
+            this.pnlDrinks.Controls.Add(this.updateButton);
+            this.pnlDrinks.Controls.Add(this.label4);
+            this.pnlDrinks.Controls.Add(this.label3);
+            this.pnlDrinks.Controls.Add(this.label2);
+            this.pnlDrinks.Controls.Add(this.textBoxId);
+            this.pnlDrinks.Controls.Add(this.textBoxStock);
+            this.pnlDrinks.Controls.Add(this.label1);
+            this.pnlDrinks.Controls.Add(this.successLabel);
+            this.pnlDrinks.Controls.Add(this.textBoxName);
             this.pnlDrinks.Controls.Add(this.listViewDrinks);
             this.pnlDrinks.Controls.Add(this.pictureBox4);
             this.pnlDrinks.Controls.Add(this.lblDrinks);
-            this.pnlDrinks.Location = new System.Drawing.Point(5, 33);
+            this.pnlDrinks.Location = new System.Drawing.Point(0, 0);
             this.pnlDrinks.Margin = new System.Windows.Forms.Padding(4);
             this.pnlDrinks.Name = "pnlDrinks";
             this.pnlDrinks.Size = new System.Drawing.Size(1251, 574);
             this.pnlDrinks.TabIndex = 6;
+            // 
+            // addDrinkButton
+            // 
+            this.addDrinkButton.Location = new System.Drawing.Point(1070, 385);
+            this.addDrinkButton.Name = "addDrinkButton";
+            this.addDrinkButton.Size = new System.Drawing.Size(154, 44);
+            this.addDrinkButton.TabIndex = 18;
+            this.addDrinkButton.Text = "Add Drink";
+            this.addDrinkButton.UseVisualStyleBackColor = true;
+            this.addDrinkButton.Click += new System.EventHandler(this.addDrinkButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(1070, 505);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(155, 45);
+            this.deleteButton.TabIndex = 17;
+            this.deleteButton.Text = "Delete Drink";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // deleteLabel
+            // 
+            this.deleteLabel.Location = new System.Drawing.Point(1071, 446);
+            this.deleteLabel.Name = "deleteLabel";
+            this.deleteLabel.Size = new System.Drawing.Size(153, 44);
+            this.deleteLabel.TabIndex = 16;
+            // 
+            // updateButton
+            // 
+            this.updateButton.Location = new System.Drawing.Point(883, 505);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(155, 45);
+            this.updateButton.TabIndex = 15;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(606, 496);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 22);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "New Stock";
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(337, 496);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 22);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "New name";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(193, 496);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 22);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "ID";
+            // 
+            // textBoxId
+            // 
+            this.textBoxId.Location = new System.Drawing.Point(196, 521);
+            this.textBoxId.Name = "textBoxId";
+            this.textBoxId.Size = new System.Drawing.Size(111, 22);
+            this.textBoxId.TabIndex = 11;
+            // 
+            // textBoxStock
+            // 
+            this.textBoxStock.Location = new System.Drawing.Point(609, 521);
+            this.textBoxStock.Name = "textBoxStock";
+            this.textBoxStock.Size = new System.Drawing.Size(213, 22);
+            this.textBoxStock.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(51, 521);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 22);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Update drink";
+            // 
+            // successLabel
+            // 
+            this.successLabel.Location = new System.Drawing.Point(880, 446);
+            this.successLabel.Name = "successLabel";
+            this.successLabel.Size = new System.Drawing.Size(158, 44);
+            this.successLabel.TabIndex = 8;
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(340, 521);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(213, 22);
+            this.textBoxName.TabIndex = 6;
             // 
             // listViewDrinks
             // 
@@ -449,7 +572,7 @@
             // columnHeaderDrinkId
             // 
             this.columnHeaderDrinkId.Text = "ID";
-            this.columnHeaderDrinkId.Width = 100;
+            this.columnHeaderDrinkId.Width = 50;
             // 
             // columnHeaderDrinkName
             // 
@@ -459,17 +582,32 @@
             // columnHeaderDrinkPrice
             // 
             this.columnHeaderDrinkPrice.Text = "Price";
-            this.columnHeaderDrinkPrice.Width = 100;
+            this.columnHeaderDrinkPrice.Width = 80;
             // 
             // columnHeaderDrinkStock
             // 
             this.columnHeaderDrinkStock.Text = "Stock";
-            this.columnHeaderDrinkStock.Width = 100;
+            this.columnHeaderDrinkStock.Width = 80;
             // 
             // columnHeaderDrinkVAT
             // 
             this.columnHeaderDrinkVAT.Text = "VAT";
-            this.columnHeaderDrinkVAT.Width = 100;
+            this.columnHeaderDrinkVAT.Width = 80;
+            // 
+            // columnHeaderDrinkValue
+            // 
+            this.columnHeaderDrinkValue.Text = "Drink Value";
+            this.columnHeaderDrinkValue.Width = 100;
+            // 
+            // columnHeaderDrinksSold
+            // 
+            this.columnHeaderDrinksSold.Text = "Drinks Sold";
+            this.columnHeaderDrinksSold.Width = 100;
+            // 
+            // columnHeaderStockAmount
+            // 
+            this.columnHeaderStockAmount.Text = "Stock Amount";
+            this.columnHeaderStockAmount.Width = 200;
             // 
             // pictureBox4
             // 
@@ -500,7 +638,7 @@
             this.pnlCashRegister.Controls.Add(this.listViewCashRegisterStudents);
             this.pnlCashRegister.Controls.Add(this.pictureBox5);
             this.pnlCashRegister.Controls.Add(this.lblCashRegister);
-            this.pnlCashRegister.Location = new System.Drawing.Point(5, 33);
+            this.pnlCashRegister.Location = new System.Drawing.Point(0, 0);
             this.pnlCashRegister.Margin = new System.Windows.Forms.Padding(4);
             this.pnlCashRegister.Name = "pnlCashRegister";
             this.pnlCashRegister.Size = new System.Drawing.Size(1251, 574);
@@ -610,28 +748,19 @@
             this.lblCashRegister.TabIndex = 3;
             this.lblCashRegister.Text = "Cash Register";
             // 
-            // columnHeaderDrinkValue
+            // contextMenuStrip1
             // 
-            this.columnHeaderDrinkValue.Text = "Drink Value";
-            this.columnHeaderDrinkValue.Width = 100;
-            // 
-            // columnHeaderDrinksSold
-            // 
-            this.columnHeaderDrinksSold.Text = "Drinks Sold";
-            this.columnHeaderDrinksSold.Width = 100;
-            // 
-            // columnHeaderStockAmount
-            // 
-            this.columnHeaderStockAmount.Text = "Stock Amount";
-            this.columnHeaderStockAmount.Width = 200;
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 622);
-            this.Controls.Add(this.pnlCashRegister);
             this.Controls.Add(this.pnlDrinks);
+            this.Controls.Add(this.pnlCashRegister);
             this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlRooms);
             this.Controls.Add(this.pnlTeachers);
@@ -732,6 +861,19 @@
         private System.Windows.Forms.ColumnHeader columnHeaderDrinkValue;
         private System.Windows.Forms.ColumnHeader columnHeaderDrinksSold;
         private System.Windows.Forms.ColumnHeader columnHeaderStockAmount;
+        private System.Windows.Forms.Label successLabel;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxId;
+        private System.Windows.Forms.TextBox textBoxStock;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Label deleteLabel;
+        private System.Windows.Forms.Button addDrinkButton;
     }
 }
 
