@@ -1,4 +1,5 @@
-﻿using SomerenLogic;
+﻿using Microsoft.VisualBasic;
+using SomerenLogic;
 using SomerenModel;
 using System;
 using System.Collections.Generic;
@@ -436,27 +437,16 @@ namespace SomerenUI
             try
             {
                 //change decription, start time and end time
-                Activity activityClick = (Activity)listViewActivities.SelectedItems[0].Tag;
+                Activity selectedActivity = (Activity)listViewActivities.SelectedItems[0].Tag;
                 ActivityService activityService = new ActivityService();
-                Activity activity = activityService.GetById(activityClick.ActivityId);
+                Activity activity = activityService.GetById(selectedActivity.ActivityId);
                 activity.ActivityDescription = textBoxNewDescription.Text;
                 activity.ActivityStartTime = dateTimePickerStartTime.Value;
                 activity.ActivityEndTime = dateTimePickerEndTime.Value;
                 activityService.UpdateActivity(activity);
 
                 List<Activity> activityList = activityService.GetActivities();
-                //update tabel
-                listViewActivities.Items.Clear();
-                foreach (Activity a in activityList)
-                {
-                    ListViewItem liActivities = new ListViewItem(a.ActivityId.ToString());
-                    liActivities.SubItems.Add(a.ActivityDescription);
-                    liActivities.SubItems.Add(a.ActivityStartTime.ToString("dd/MM/yyyy  HH:mm:ss"));
-                    liActivities.SubItems.Add(a.ActivityEndTime.ToString("dd/MM/yyyy HH:mm:ss"));
-                    liActivities.Tag = a;
-                    listViewActivities.Items.Add(liActivities);
-                }
-                //ActivitiesPanel();
+                UpdateActivities(activityList);
                 //successLabel.Text = $"Succesfully edited: {drink.DrinkName}";
             }
             catch (Exception x)
@@ -474,6 +464,85 @@ namespace SomerenUI
             }
             Activity activityClick = (Activity)listViewActivities.SelectedItems[0].Tag;
             MessageBox.Show($"{activityClick.ActivityId}, {activityClick.ActivityDescription}");
+        }
+
+        private void buttonDeleteActivity_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //delete activity
+                Activity selectedActivity = (Activity)listViewActivities.SelectedItems[0].Tag;
+                ActivityService activityService = new ActivityService();
+
+                Activity activity = activityService.GetById(selectedActivity.ActivityId);
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+
+                string title = "Delete Activity";
+                string message = $"Are you sure you want to delete {activity.ActivityDescription}?";
+
+                DialogResult answer = MessageBox.Show(message, title, buttons);
+                if (answer == DialogResult.OK)
+                {
+                    activityService.DeleteActivity(activity);
+                    List<Activity> activityList = activityService.GetActivities();
+                    UpdateActivities(activityList);
+                    //deleteLabel.Text = $"Succesfully Deleted: {drink.DrinkName}";
+                }
+            }
+            catch (Exception x)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while deleting the drink: " + x.Message);
+            }
+        }
+
+        private void buttonAddActivity_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //change decription, start time and end time
+                ActivityService activityService = new ActivityService();
+                Activity activity = new Activity();
+                activity.ActivityId = int.Parse(textBoxActivityId.Text);
+                activity.ActivityDescription = textBoxNewDescription.Text;
+                activity.ActivityStartTime = dateTimePickerStartTime.Value;
+                activity.ActivityEndTime = dateTimePickerEndTime.Value;
+                activityService.AddActivity(activity);
+
+                List<Activity> activityList = activityService.GetActivities();
+                listViewActivities.Items.Clear();
+
+                foreach (Activity a in activityList)
+                {
+                    ListViewItem liActivities = new ListViewItem(a.ActivityId.ToString());
+                    liActivities.SubItems.Add(a.ActivityDescription);
+                    liActivities.SubItems.Add(a.ActivityStartTime.ToString("dd/MM/yyyy  HH:mm:ss"));
+                    liActivities.SubItems.Add(a.ActivityEndTime.ToString("dd/MM/yyyy HH:mm:ss"));
+                    listViewActivities.Items.Add(liActivities);
+                }
+                ActivitiesPanel();
+                //successLabel.Text = $"Succesfully edited: {drink.DrinkName}";
+            }
+            catch (Exception x)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while updating the table: " + x.Message);
+            }
+        }
+
+        private void UpdateActivities(List<Activity> activitiesList)
+        {
+            listViewActivities.Items.Clear();
+
+            foreach (Activity a in activitiesList)
+            {
+                ListViewItem liActivities = new ListViewItem(a.ActivityId.ToString());
+                liActivities.SubItems.Add(a.ActivityDescription);
+                liActivities.SubItems.Add(a.ActivityStartTime.ToString("dd/MM/yyyy  HH:mm:ss"));
+                liActivities.SubItems.Add(a.ActivityEndTime.ToString("dd/MM/yyyy HH:mm:ss"));
+                liActivities.Tag = a;
+                listViewActivities.Items.Add(liActivities);
+            }
         }
     }
 }
