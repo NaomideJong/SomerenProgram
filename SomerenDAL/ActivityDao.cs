@@ -47,6 +47,32 @@ namespace SomerenDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
+        public void DeleteActivity(Activity activity)
+        {
+            string query = "DELETE FROM Activity WHERE activityId = @activityId";
+            SqlParameter[] sqlParameters = new SqlParameter[1]
+           {
+                new SqlParameter("@activityId", activity.ActivityId)
+           };
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void AddActivity(Activity activity)
+        {
+            string query = "SET IDENTITY_INSERT Activity ON " +
+                "INSERT INTO Activity (activityId, activityDescription, activityStartTime, activityEndTime) " +
+                "VALUES (@activityId, @activityDescription, @activityStartTime, @activityEndTime)";
+            SqlParameter[] sqlParameters = new SqlParameter[4]
+           {
+                new SqlParameter("@activityId", activity.ActivityId),
+                new SqlParameter("@activityDescription", activity.ActivityDescription),
+                new SqlParameter("@activityStartTime", activity.ActivityStartTime),
+                new SqlParameter("@activityEndTime", activity.ActivityEndTime)
+           };
+            //add drink to the table
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         private List<Activity> ReadTables(DataTable dataTable)
         {
             List<Activity> activities = new List<Activity>();
