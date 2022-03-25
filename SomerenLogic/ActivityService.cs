@@ -38,7 +38,7 @@ namespace SomerenLogic
         public void UpdateActivity(Activity activity)
         {
             activitydb.UpdateActivity(activity);
-        }
+        } 
 
         public void DeleteActivity(Activity activity)
         {
