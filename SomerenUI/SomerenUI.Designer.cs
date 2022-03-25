@@ -120,6 +120,11 @@
             this.columnHeaderActivityEndTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.lblActivities = new System.Windows.Forms.Label();
+            this.succesLabel = new System.Windows.Forms.Label();
+            this.buttonDrinkDelete = new System.Windows.Forms.Button();
+            this.deleteLabel = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.buttonDrinkAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -160,7 +165,7 @@
             this.cashRegisterToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1283, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1283, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -171,7 +176,7 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(100, 26);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(100, 24);
             this.dashboardToolStripMenuItem.Text = "Application";
             this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
@@ -197,42 +202,42 @@
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(80, 26);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
             this.studentsToolStripMenuItem.Text = "Students";
             this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
             // 
             // lecturersToolStripMenuItem
             // 
             this.lecturersToolStripMenuItem.Name = "lecturersToolStripMenuItem";
-            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(82, 26);
+            this.lecturersToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.lecturersToolStripMenuItem.Text = "Lecturers";
             this.lecturersToolStripMenuItem.Click += new System.EventHandler(this.lecturersToolStripMenuItem_Click);
             // 
             // activitiesToolStripMenuItem
             // 
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
-            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(83, 26);
+            this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.activitiesToolStripMenuItem.Text = "Activities";
             this.activitiesToolStripMenuItem.Click += new System.EventHandler(this.activitiesToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(69, 26);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
             // drinksToolStripMenuItem
             // 
             this.drinksToolStripMenuItem.Name = "drinksToolStripMenuItem";
-            this.drinksToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
+            this.drinksToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.drinksToolStripMenuItem.Text = "Drinks";
             this.drinksToolStripMenuItem.Click += new System.EventHandler(this.drinksToolStripMenuItem_Click);
             // 
             // cashRegisterToolStripMenuItem
             // 
             this.cashRegisterToolStripMenuItem.Name = "cashRegisterToolStripMenuItem";
-            this.cashRegisterToolStripMenuItem.Size = new System.Drawing.Size(112, 26);
+            this.cashRegisterToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
             this.cashRegisterToolStripMenuItem.Text = "Cash Register";
             this.cashRegisterToolStripMenuItem.Click += new System.EventHandler(this.cashRegisterToolStripMenuItem_Click);
             // 
@@ -449,6 +454,11 @@
             // 
             // pnlDrinks
             // 
+            this.pnlDrinks.Controls.Add(this.buttonDrinkAdd);
+            this.pnlDrinks.Controls.Add(this.label6);
+            this.pnlDrinks.Controls.Add(this.deleteLabel);
+            this.pnlDrinks.Controls.Add(this.buttonDrinkDelete);
+            this.pnlDrinks.Controls.Add(this.succesLabel);
             this.pnlDrinks.Controls.Add(this.label5);
             this.pnlDrinks.Controls.Add(this.buttonUpdate);
             this.pnlDrinks.Controls.Add(this.label4);
@@ -460,7 +470,7 @@
             this.pnlDrinks.Controls.Add(this.listViewDrinks);
             this.pnlDrinks.Controls.Add(this.pictureBox4);
             this.pnlDrinks.Controls.Add(this.lblDrinks);
-            this.pnlDrinks.Location = new System.Drawing.Point(5, 33);
+            this.pnlDrinks.Location = new System.Drawing.Point(2, 33);
             this.pnlDrinks.Margin = new System.Windows.Forms.Padding(4);
             this.pnlDrinks.Name = "pnlDrinks";
             this.pnlDrinks.Size = new System.Drawing.Size(1251, 574);
@@ -477,7 +487,7 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(938, 459);
+            this.buttonUpdate.Location = new System.Drawing.Point(850, 457);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(107, 42);
             this.buttonUpdate.TabIndex = 16;
@@ -625,7 +635,7 @@
             this.pnlCashRegister.Controls.Add(this.listViewCashRegisterStudents);
             this.pnlCashRegister.Controls.Add(this.pictureBox5);
             this.pnlCashRegister.Controls.Add(this.lblCashRegister);
-            this.pnlCashRegister.Location = new System.Drawing.Point(4, 34);
+            this.pnlCashRegister.Location = new System.Drawing.Point(5, 33);
             this.pnlCashRegister.Margin = new System.Windows.Forms.Padding(4);
             this.pnlCashRegister.Name = "pnlCashRegister";
             this.pnlCashRegister.Size = new System.Drawing.Size(1251, 574);
@@ -780,7 +790,7 @@
             this.pnlActivities.Controls.Add(this.listViewActivities);
             this.pnlActivities.Controls.Add(this.pictureBox6);
             this.pnlActivities.Controls.Add(this.lblActivities);
-            this.pnlActivities.Location = new System.Drawing.Point(2, 33);
+            this.pnlActivities.Location = new System.Drawing.Point(4, 33);
             this.pnlActivities.Margin = new System.Windows.Forms.Padding(4);
             this.pnlActivities.Name = "pnlActivities";
             this.pnlActivities.Size = new System.Drawing.Size(1251, 574);
@@ -929,14 +939,61 @@
             this.lblActivities.TabIndex = 3;
             this.lblActivities.Text = "Activities";
             // 
+            // succesLabel
+            // 
+            this.succesLabel.AutoSize = true;
+            this.succesLabel.Location = new System.Drawing.Point(1070, 327);
+            this.succesLabel.Name = "succesLabel";
+            this.succesLabel.Size = new System.Drawing.Size(54, 17);
+            this.succesLabel.TabIndex = 17;
+            this.succesLabel.Text = "Update";
+            // 
+            // buttonDrinkDelete
+            // 
+            this.buttonDrinkDelete.Location = new System.Drawing.Point(986, 457);
+            this.buttonDrinkDelete.Name = "buttonDrinkDelete";
+            this.buttonDrinkDelete.Size = new System.Drawing.Size(107, 42);
+            this.buttonDrinkDelete.TabIndex = 18;
+            this.buttonDrinkDelete.Text = "Delete";
+            this.buttonDrinkDelete.UseVisualStyleBackColor = true;
+            this.buttonDrinkDelete.Click += new System.EventHandler(this.buttonDrinkDelete_Click);
+            // 
+            // deleteLabel
+            // 
+            this.deleteLabel.AutoSize = true;
+            this.deleteLabel.Location = new System.Drawing.Point(1070, 369);
+            this.deleteLabel.Name = "deleteLabel";
+            this.deleteLabel.Size = new System.Drawing.Size(49, 17);
+            this.deleteLabel.TabIndex = 19;
+            this.deleteLabel.Text = "Delete";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1070, 412);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 17);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Add";
+            // 
+            // buttonDrinkAdd
+            // 
+            this.buttonDrinkAdd.Location = new System.Drawing.Point(1120, 457);
+            this.buttonDrinkAdd.Name = "buttonDrinkAdd";
+            this.buttonDrinkAdd.Size = new System.Drawing.Size(107, 42);
+            this.buttonDrinkAdd.TabIndex = 21;
+            this.buttonDrinkAdd.Text = "Add";
+            this.buttonDrinkAdd.UseVisualStyleBackColor = true;
+            this.buttonDrinkAdd.Click += new System.EventHandler(this.buttonDrinkAdd_Click);
+            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 622);
+            this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlActivities);
             this.Controls.Add(this.pnlCashRegister);
-            this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlStudents);
             this.Controls.Add(this.pnlRooms);
             this.Controls.Add(this.pnlTeachers);
@@ -1070,6 +1127,11 @@
         private System.Windows.Forms.Button buttonDeleteActivity;
         private System.Windows.Forms.Button buttonAddActivity;
         private System.Windows.Forms.ColumnHeader columnHeaderActivityId;
+        private System.Windows.Forms.Label succesLabel;
+        private System.Windows.Forms.Button buttonDrinkDelete;
+        private System.Windows.Forms.Label deleteLabel;
+        private System.Windows.Forms.Button buttonDrinkAdd;
+        private System.Windows.Forms.Label label6;
     }
 }
 

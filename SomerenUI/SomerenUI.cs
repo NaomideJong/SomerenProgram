@@ -171,7 +171,6 @@ namespace SomerenUI
 
         private void DrinksPanel()
         {
-            // show drinks
             pnlDrinks.Show();
 
             try
@@ -195,7 +194,6 @@ namespace SomerenUI
                     liDrinks.SubItems.Add(d.DrinksSold.ToString());
                     if (d.StockAmount) liDrinks.SubItems.Add("Stock sufficient");
                     else liDrinks.SubItems.Add("Stock nearly depleted");
-
                     listViewDrinks.Items.Add(liDrinks);
                 }
 
@@ -411,17 +409,72 @@ namespace SomerenUI
         {
             try
             {
-                Drink drink = new Drink();
+                //change name and stock of drink
+                DrinkService drinkService = new DrinkService();
+                Drink drink = drinkService.GetById(int.Parse(textBoxDrinkId.Text));
                 drink.DrinkName = textBoxDrinkName.Text;
                 drink.DrinkStock = int.Parse(textBoxDrinkStock.Text);
-                DrinkService drinkService = new DrinkService();
                 drinkService.UpdateDrink(drink);
-                MessageBox.Show($"Succesfully edited: {drink.DrinkName}");
+                List<Drink> drinkList = drinkService.GetDrinks(); ;
+
+                UpdateDrinks(drinkList);
+                succesLabel.Text = $"Succesfully edited: {drink.DrinkName}";
             }
             catch (Exception x)
             {
                 // catch a error when something went wrong with the UI
                 MessageBox.Show("Something went wrong while updating the table: " + x.Message);
+            }
+        }
+
+        private void buttonDrinkDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //delete drink
+                DrinkService drinkService = new DrinkService();
+                Drink drink = drinkService.GetById(int.Parse(textBoxDrinkId.Text));
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                string title = "Delete Drink";
+                string message = $"Are you sure you want to delete {drink.DrinkName}?";
+                DialogResult answer = MessageBox.Show(message, title, buttons);
+                if (answer == DialogResult.OK)
+                {
+                    drinkService.DeleteDrink(drink);
+                    List<Drink> drinkList = drinkService.GetDrinks();
+                    UpdateDrinks(drinkList);
+                    deleteLabel.Text = $"Succesfully Deleted: {drink.DrinkName}";
+                }
+            }
+            catch (Exception x)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while deleting the drink: " + x.Message);
+            }
+        }
+
+        private void buttonDrinkAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DrinkService drinkService = new DrinkService();
+                Drink drink = new Drink();
+                drink.DrinkName = Interaction.InputBox("Enter Drink Name", "Add drink", "", 500, 300);
+                drink.DrinkPrice = decimal.Parse(Interaction.InputBox("Enter drink price", "Add Drink", "", 500, 300));
+                drink.DrinkStock = int.Parse(Interaction.InputBox("Enter Drinks amount in stock", "Add Drink", "", 500, 300));
+                drink.DrinkVAT = int.Parse(Interaction.InputBox("Enter drink VAT", "Add Drink", "", 500, 300));
+                drink.DrinkValue = int.Parse(Interaction.InputBox("Enter drink value in Tokens", "Add Drink", "", 500, 300));
+                drink.DrinksSold = int.Parse(Interaction.InputBox("Enter amount of drinks sold", "Add Drink", "", 500, 300));
+                drinkService.AddDrink(drink);
+                List<Drink> drinkList = drinkService.GetDrinks();
+                UpdateDrinks(drinkList);
+                MessageBox.Show($"Succesfully added {drink.DrinkName} to the list");
+            }
+
+            catch (Exception x)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while adding the drink: " + x.Message);
             }
         }
 
@@ -543,6 +596,25 @@ namespace SomerenUI
             {
                 // catch a error when something went wrong with the UI
                 MessageBox.Show("Please select something in the listview: " + x.Message);
+            }
+        }
+
+        private void UpdateDrinks(List<Drink> drinkList)
+        {
+            //update tabel
+            listViewDrinks.Items.Clear();
+            foreach (Drink d in drinkList)
+            {
+                ListViewItem liDrinks = new ListViewItem(d.DrinkId.ToString());
+                liDrinks.SubItems.Add(d.DrinkName);
+                liDrinks.SubItems.Add(d.DrinkPrice.ToString());
+                liDrinks.SubItems.Add(d.DrinkStock.ToString());
+                liDrinks.SubItems.Add(d.DrinkVAT.ToString());
+                liDrinks.SubItems.Add(d.DrinkValue.ToString());
+                liDrinks.SubItems.Add(d.DrinksSold.ToString());
+                if (d.StockAmount) liDrinks.SubItems.Add("Stock sufficient");
+                else liDrinks.SubItems.Add("Stock nearly depleted");
+                listViewDrinks.Items.Add(liDrinks);
             }
         }
 
