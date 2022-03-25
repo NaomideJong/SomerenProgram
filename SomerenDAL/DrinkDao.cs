@@ -37,7 +37,7 @@ namespace SomerenDAL
                     DrinkName = (string)dr["drinkName"],
                     DrinkPrice = (decimal)dr["drinkPrice"],
                     DrinkStock = (int)dr["drinkStock"],
-                    DrinkVAT = (decimal)dr["drinkVAT"],
+                    DrinkVAT = (int)dr["drinkVAT"],
                     DrinkValue = (decimal)dr["drinkValue"],
                     DrinksSold = (int)dr["drinksSold"],
                     StockAmount = stock
@@ -77,12 +77,13 @@ namespace SomerenDAL
 
         public void UpdateDrink(Drink drink)
         {
-            string query = "UPDATE Drinks SET(drinkName=@drinkName, drinkStock=@drinkStock" +
-                "WHERE drinkId = @drinkId)";
-            SqlParameter[] sqlParameters = new SqlParameter[2]
+            string query = "UPDATE Drinks SET drinkName=@drinkName, drinkStock=@drinkStock " +
+                "WHERE drinkId = @drinkId";
+            SqlParameter[] sqlParameters = new SqlParameter[3]
            {
                 new SqlParameter("@drinkName", drink.DrinkName),
                 new SqlParameter("@drinkStock", drink.DrinkStock),
+                new SqlParameter("@drinkId", drink.DrinkId)
            };
             //change drink name and stock
             ExecuteEditQuery(query, sqlParameters);
