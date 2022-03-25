@@ -13,7 +13,6 @@ namespace SomerenDAL
         public List<Drink> GetAllDrinks()
         {
             // select the query from the drinks database
-            // select the query from the drinks database
             string query = "SELECT drinkId, drinkName, drinkPrice, drinkStock, drinkVAT, drinkValue, drinksSold FROM [Drinks]" +
                 "WHERE drinkName != 'Water' AND drinkName != 'Orangeade' AND drinkName != 'Cherry juice' " +
                 "AND drinkStock > 0 AND drinkPrice > 0 " +
@@ -29,8 +28,6 @@ namespace SomerenDAL
             // check each row of the DataTable
             foreach (DataRow dr in dataTable.Rows)
             {
-                bool stock = true;
-                if ((int)dr["drinkStock"] < 10) stock = false;
                 Drink drink = new Drink()
                 {
                     DrinkId = (int)dr["drinkId"],
@@ -40,7 +37,6 @@ namespace SomerenDAL
                     DrinkVAT = (int)dr["drinkVAT"],
                     DrinkValue = (decimal)dr["drinkValue"],
                     DrinksSold = (int)dr["drinksSold"],
-                    StockAmount = stock
                 };
                 // add the drink to the list
                 drinks.Add(drink);
@@ -62,17 +58,20 @@ namespace SomerenDAL
 
         public void AddDrink(Drink drink)
         {
-            string query = "INSERT INTO Drink (drinkName, drinkPrice, drinkVAT, drinkValue) " +
-                "VALUES (@drinkName, @drinkPrince, @drinkValue)";
-            SqlParameter[] sqlParameters = new SqlParameter[4]
+            string query = "INSERT INTO Drinks (drinkName, drinkPrice, drinkStock, drinkVAT, drinkValue, drinksSold) " +
+                "VALUES (@drinkName, @drinkPrice, @drinkVat, @drinkStock, @drinkValue, @drinksSold);" +
+                "SELECT SCOPE_IDENTITY();";
+            SqlParameter[] sqlParameters = new SqlParameter[6]
            {
                 new SqlParameter("@drinkName", drink.DrinkName),
                 new SqlParameter("@drinkPrice", drink.DrinkPrice),
+                new SqlParameter("@drinkStock", drink.DrinkStock),
                 new SqlParameter("@drinkVat", drink.DrinkVAT),
-                new SqlParameter("@drinkValue", drink.DrinkValue)
+                new SqlParameter("@drinkValue", drink.DrinkValue),
+                new SqlParameter("@drinksSold", drink.DrinksSold)
            };
             //add drink to the table
-            ExecuteEditQuery(query, sqlParameters);
+            ExecuteSelectQuery(query, sqlParameters);
         }
 
         public void UpdateDrink(Drink drink)
@@ -91,10 +90,10 @@ namespace SomerenDAL
 
         public void DeleteDrink(Drink drink)
         {
-            string query = "DELETE FROM Drink WHERE drinkId = @drinkId)";
+            string query = "DELETE FROM Drinks WHERE drinkId = @drinkId";
             SqlParameter[] sqlParameters = new SqlParameter[1]
            {
-                new SqlParameter("@drinkId", drink.DrinkId),
+                new SqlParameter("@drinkId", drink.DrinkId)
            };
             ExecuteEditQuery(query, sqlParameters);
         }
