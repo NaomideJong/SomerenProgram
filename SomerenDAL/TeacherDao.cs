@@ -37,9 +37,16 @@ namespace SomerenDAL
             }
             return teachers;
         }
-        private Teacher NameToTeacher(string Name)
+        public Teacher NameToTeacherId(string Name)
         {
+            string query = $"SELECT teacherId FROM [Teachers] " +
+                $"WHERE teacherName = @teacherName";
+            SqlParameter[] sqlParameters = new SqlParameter[1]
+            {
+                new SqlParameter("@teacherName", Name)
+            };
 
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
     }
 }

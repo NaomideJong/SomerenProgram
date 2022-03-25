@@ -731,8 +731,9 @@ namespace SomerenUI
                                 return;
                             }
                         }
-
-                        supervisorService.AddSupervisor(selectedActivity, selectedSupervisor);
+                        TeacherService teacherService = new TeacherService();
+                        Teacher teacher = teacherService.NameToTeacherId(selectedSupervisor.TeacherName);
+                        supervisorService.AddSupervisor(selectedActivity, teacher);
                         MessageBox.Show($"{selectedSupervisor.TeacherName} succesfully addes as supervisor for {selectedActivity.ActivityDescription}.");
                     }
                 }
@@ -766,7 +767,9 @@ namespace SomerenUI
                 if (answer == DialogResult.OK)
                 {
                     //put the deletion the user made through the logic layer
-                    supervisorService.DeleteSupervisor(selectedActivity, selectedSupervisor);
+                    TeacherService teacherService = new TeacherService();
+                    Teacher teacher = teacherService.NameToTeacherId(selectedSupervisor.TeacherName);
+                    supervisorService.DeleteSupervisor(selectedActivity, teacher);
                     //show the changes made in the listview
                     List<Supervisor> supervisors = supervisorService.JoinTable(selectedActivity.ActivityId);
                     liSupervisors.Items.Clear();
