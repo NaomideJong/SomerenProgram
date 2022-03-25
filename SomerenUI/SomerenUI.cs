@@ -424,13 +424,6 @@ namespace SomerenUI
                 MessageBox.Show("Something went wrong while updating the table: " + x.Message);
             }
         }
-        private void LoadDrink(int id)
-        {
-            DrinkService drinkService = new DrinkService();
-            Drink drink = drinkService.GetById(id);
-            textBoxDrinkName.Text = drink.DrinkName;
-            textBoxDrinkStock.Text = drink.DrinkStock.ToString();
-        }
 
         private void buttonUpdateActivities_Click(object sender, EventArgs e)
         {
@@ -439,15 +432,21 @@ namespace SomerenUI
                 //change decription, start time and end time
                 Activity selectedActivity = (Activity)listViewActivities.SelectedItems[0].Tag;
                 ActivityService activityService = new ActivityService();
+                //get the id you wish to have changed
                 Activity activity = activityService.GetById(selectedActivity.ActivityId);
+                //get values from textboxes below
                 activity.ActivityDescription = textBoxNewDescription.Text;
                 activity.ActivityStartTime = dateTimePickerStartTime.Value;
                 activity.ActivityEndTime = dateTimePickerEndTime.Value;
+                //put the changes the user made through the logic layer
                 activityService.UpdateActivity(activity);
 
                 List<Activity> activityList = activityService.GetActivities();
+                //show the changes made in the listview
                 UpdateActivities(activityList);
                 MessageBox.Show("A change has succesfully been made");
+
+                ActivitiesPanel();
             }
             catch (Exception x)
             {
@@ -474,7 +473,7 @@ namespace SomerenUI
                 //delete activity
                 Activity selectedActivity = (Activity)listViewActivities.SelectedItems[0].Tag;
                 ActivityService activityService = new ActivityService();
-
+                //get the id you wish to have deleted
                 Activity activity = activityService.GetById(selectedActivity.ActivityId);
                 MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
 
@@ -484,11 +483,15 @@ namespace SomerenUI
                 DialogResult answer = MessageBox.Show(message, title, buttons);
                 if (answer == DialogResult.OK)
                 {
+                    //put the deletion the user made through the logic layer
                     activityService.DeleteActivity(activity);
                     List<Activity> activityList = activityService.GetActivities();
+                    //show the changes made in the listview
                     UpdateActivities(activityList);
                     MessageBox.Show($"{activity.ActivityDescription} has succesfully been deleted");
                 }
+
+                ActivitiesPanel();
             }
             catch (Exception x)
             {
@@ -504,23 +507,28 @@ namespace SomerenUI
                 //change decription, start time and end time
                 ActivityService activityService = new ActivityService();
                 Activity activity = new Activity();
-                //activity.ActivityId = int.Parse(textBoxActivityId.Text);
+
+                //get values from textboxes below
                 activity.ActivityDescription = textBoxNewDescription.Text;
                 activity.ActivityStartTime = dateTimePickerStartTime.Value;
                 activity.ActivityEndTime = dateTimePickerEndTime.Value;
                 List<Activity> activityList = activityService.GetActivities();
+                //check if the description already exists in the list
                 bool containsItem = activityList.Any(item => item.ActivityDescription == activity.ActivityDescription);
                 if (containsItem)
                 {
+                    //the add won't go through 
                     MessageBox.Show($"{activity.ActivityDescription} already exists please write another activity.");
                 } else
                 {
+                    //the add has gone through the logic layer
                     activityService.AddActivity(activity);
                     MessageBox.Show($"{activity.ActivityDescription} has succesfully been added");
                 }
 
                 listViewActivities.Items.Clear();
 
+                //show the changes made in the listview
                 foreach (Activity a in activityList)
                 {
                     ListViewItem liActivities = new ListViewItem();
