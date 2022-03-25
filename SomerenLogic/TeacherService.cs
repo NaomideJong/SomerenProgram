@@ -24,9 +24,9 @@ namespace SomerenLogic
             List<Teacher> teachers = teacherdb.GetAllTeachers();
             return teachers;
         }
-        public Teacher NameToTeacherId(string Name)
+        public Teacher NameToTeacherId(string name)
         {
-            teacherdb.NameToTeacherId(Name);
+            return teacherdb.NameToTeacherId(name);
         }
     }
 }
