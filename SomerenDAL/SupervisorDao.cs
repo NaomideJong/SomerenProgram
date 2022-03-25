@@ -11,15 +11,60 @@ namespace SomerenDAL
 {
     public class SupervisorDao : BaseDao
     {
-        public void JoinTable()
+        public List<Supervisor> JoinTable(int activityId)
         {
-            string query = "SELECT Activity.*, Teacher.*" +
-                    "FROM Supervisors as ACS " +
-                    "JOIN Activities as Activity on ACS.activityId = Activity.activityId " +
-                    "JOIN Teachers as Teacher on ACS.teacherId = Teacher.teacherId " +
-                    "WHERE Activity.activityId = @activityId";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+            string query = "SELECT Teac.teacherName" +
+                " FROM Supervisors as ACS" +
+                " JOIN Activity as Act on ACS.activityId = Act.activityId" +
+                " JOIN Teachers as Teac on ACS.teacherId = Teac.teacherId" +
+                " WHERE Act.activityId = @activityId";
+            SqlParameter[] sqlParameters = new SqlParameter[1]
+            {
+                new SqlParameter("@activityId", activityId)
+            };
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private List<Supervisor> ReadTables(DataTable dataTable)
+        {
+            List<Supervisor> supervisors = new List<Supervisor>();
+
+            // check each row of the DataTable
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Supervisor supervisor = new Supervisor()
+                {
+                    TeacherName = (string)dr["teacherName"]
+                };
+                // add the supervisor to the list
+                supervisors.Add(supervisor);
+            }
+            return supervisors;
+        }
+
+        public void AddSupervisor(Activity a, Teacher t)
+        {
+            string query = "INSERT INTO Supervisor (activityId, teacherId) " +
+                "VALUES (@activityId, @teacherId);" +
+                "SELECT SCOPE_IDENTITY();";
+            SqlParameter[] sqlParameters = new SqlParameter[2]
+           {
+                new SqlParameter("@activityId", a.ActivityId),
+                new SqlParameter("@teacherId", t.TeacherName)
+           };
+            //add teacher as a supervisor
             ExecuteSelectQuery(query, sqlParameters);
         }
+        public void DeleteSupervisor(Activity a, Teacher t)
+        {
+            string query = "DELETE FROM Supervisors WHERE teacherId = @teacherId AND activityId = @activityId";
+            SqlParameter[] sqlParameters = new SqlParameter[2]
+           {
+                new SqlParameter("@teacherId", t.TeacherId),
+                new SqlParameter("@activityId", a.ActivityId)
+           };
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
     }
 }

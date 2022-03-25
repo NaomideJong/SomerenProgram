@@ -38,6 +38,7 @@
             this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lecturersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.activitiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.supervisorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.drinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cashRegisterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +66,11 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblRooms = new System.Windows.Forms.Label();
             this.pnlDrinks = new System.Windows.Forms.Panel();
+            this.buttonDrinkAdd = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.deleteLabel = new System.Windows.Forms.Label();
+            this.buttonDrinkDelete = new System.Windows.Forms.Button();
+            this.succesLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -120,11 +126,18 @@
             this.columnHeaderActivityEndTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.lblActivities = new System.Windows.Forms.Label();
-            this.succesLabel = new System.Windows.Forms.Label();
-            this.buttonDrinkDelete = new System.Windows.Forms.Button();
-            this.deleteLabel = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.buttonDrinkAdd = new System.Windows.Forms.Button();
+            this.pnlSupervisors = new System.Windows.Forms.Panel();
+            this.addSelectedSupervisor = new System.Windows.Forms.Button();
+            this.deleteSupervisorButton = new System.Windows.Forms.Button();
+            this.showAllTeachers = new System.Windows.Forms.Button();
+            this.showSupervisorsButton = new System.Windows.Forms.Button();
+            this.liSupervisors = new System.Windows.Forms.ListView();
+            this.teacherNames = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.liActivitySupervisors = new System.Windows.Forms.ListView();
+            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -140,6 +153,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.pnlActivities.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.pnlSupervisors.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // imgDashboard
@@ -215,10 +230,19 @@
             // 
             // activitiesToolStripMenuItem
             // 
+            this.activitiesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.supervisorsToolStripMenuItem});
             this.activitiesToolStripMenuItem.Name = "activitiesToolStripMenuItem";
             this.activitiesToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.activitiesToolStripMenuItem.Text = "Activities";
             this.activitiesToolStripMenuItem.Click += new System.EventHandler(this.activitiesToolStripMenuItem_Click);
+            // 
+            // supervisorsToolStripMenuItem
+            // 
+            this.supervisorsToolStripMenuItem.Name = "supervisorsToolStripMenuItem";
+            this.supervisorsToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.supervisorsToolStripMenuItem.Text = "Supervisors";
+            this.supervisorsToolStripMenuItem.Click += new System.EventHandler(this.supervisorsToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
@@ -475,6 +499,53 @@
             this.pnlDrinks.Name = "pnlDrinks";
             this.pnlDrinks.Size = new System.Drawing.Size(1251, 574);
             this.pnlDrinks.TabIndex = 6;
+            // 
+            // buttonDrinkAdd
+            // 
+            this.buttonDrinkAdd.Location = new System.Drawing.Point(1120, 457);
+            this.buttonDrinkAdd.Name = "buttonDrinkAdd";
+            this.buttonDrinkAdd.Size = new System.Drawing.Size(107, 42);
+            this.buttonDrinkAdd.TabIndex = 21;
+            this.buttonDrinkAdd.Text = "Add";
+            this.buttonDrinkAdd.UseVisualStyleBackColor = true;
+            this.buttonDrinkAdd.Click += new System.EventHandler(this.buttonDrinkAdd_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1070, 412);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 17);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Add";
+            // 
+            // deleteLabel
+            // 
+            this.deleteLabel.AutoSize = true;
+            this.deleteLabel.Location = new System.Drawing.Point(1070, 369);
+            this.deleteLabel.Name = "deleteLabel";
+            this.deleteLabel.Size = new System.Drawing.Size(49, 17);
+            this.deleteLabel.TabIndex = 19;
+            this.deleteLabel.Text = "Delete";
+            // 
+            // buttonDrinkDelete
+            // 
+            this.buttonDrinkDelete.Location = new System.Drawing.Point(986, 457);
+            this.buttonDrinkDelete.Name = "buttonDrinkDelete";
+            this.buttonDrinkDelete.Size = new System.Drawing.Size(107, 42);
+            this.buttonDrinkDelete.TabIndex = 18;
+            this.buttonDrinkDelete.Text = "Delete";
+            this.buttonDrinkDelete.UseVisualStyleBackColor = true;
+            this.buttonDrinkDelete.Click += new System.EventHandler(this.buttonDrinkDelete_Click);
+            // 
+            // succesLabel
+            // 
+            this.succesLabel.AutoSize = true;
+            this.succesLabel.Location = new System.Drawing.Point(1070, 327);
+            this.succesLabel.Name = "succesLabel";
+            this.succesLabel.Size = new System.Drawing.Size(54, 17);
+            this.succesLabel.TabIndex = 17;
+            this.succesLabel.Text = "Update";
             // 
             // label5
             // 
@@ -939,58 +1010,140 @@
             this.lblActivities.TabIndex = 3;
             this.lblActivities.Text = "Activities";
             // 
-            // succesLabel
+            // pnlSupervisors
             // 
-            this.succesLabel.AutoSize = true;
-            this.succesLabel.Location = new System.Drawing.Point(1070, 327);
-            this.succesLabel.Name = "succesLabel";
-            this.succesLabel.Size = new System.Drawing.Size(54, 17);
-            this.succesLabel.TabIndex = 17;
-            this.succesLabel.Text = "Update";
+            this.pnlSupervisors.Controls.Add(this.addSelectedSupervisor);
+            this.pnlSupervisors.Controls.Add(this.deleteSupervisorButton);
+            this.pnlSupervisors.Controls.Add(this.showAllTeachers);
+            this.pnlSupervisors.Controls.Add(this.showSupervisorsButton);
+            this.pnlSupervisors.Controls.Add(this.liSupervisors);
+            this.pnlSupervisors.Controls.Add(this.liActivitySupervisors);
+            this.pnlSupervisors.Controls.Add(this.pictureBox7);
+            this.pnlSupervisors.Controls.Add(this.label15);
+            this.pnlSupervisors.Location = new System.Drawing.Point(0, 0);
+            this.pnlSupervisors.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlSupervisors.Name = "pnlSupervisors";
+            this.pnlSupervisors.Size = new System.Drawing.Size(1251, 574);
+            this.pnlSupervisors.TabIndex = 22;
             // 
-            // buttonDrinkDelete
+            // addSelectedSupervisor
             // 
-            this.buttonDrinkDelete.Location = new System.Drawing.Point(986, 457);
-            this.buttonDrinkDelete.Name = "buttonDrinkDelete";
-            this.buttonDrinkDelete.Size = new System.Drawing.Size(107, 42);
-            this.buttonDrinkDelete.TabIndex = 18;
-            this.buttonDrinkDelete.Text = "Delete";
-            this.buttonDrinkDelete.UseVisualStyleBackColor = true;
-            this.buttonDrinkDelete.Click += new System.EventHandler(this.buttonDrinkDelete_Click);
+            this.addSelectedSupervisor.Location = new System.Drawing.Point(746, 339);
+            this.addSelectedSupervisor.Name = "addSelectedSupervisor";
+            this.addSelectedSupervisor.Size = new System.Drawing.Size(122, 58);
+            this.addSelectedSupervisor.TabIndex = 10;
+            this.addSelectedSupervisor.Text = "Add selected supervisor";
+            this.addSelectedSupervisor.UseVisualStyleBackColor = true;
+            this.addSelectedSupervisor.Click += new System.EventHandler(this.addSelectedSupervisor_Click);
             // 
-            // deleteLabel
+            // deleteSupervisorButton
             // 
-            this.deleteLabel.AutoSize = true;
-            this.deleteLabel.Location = new System.Drawing.Point(1070, 369);
-            this.deleteLabel.Name = "deleteLabel";
-            this.deleteLabel.Size = new System.Drawing.Size(49, 17);
-            this.deleteLabel.TabIndex = 19;
-            this.deleteLabel.Text = "Delete";
+            this.deleteSupervisorButton.Location = new System.Drawing.Point(746, 442);
+            this.deleteSupervisorButton.Name = "deleteSupervisorButton";
+            this.deleteSupervisorButton.Size = new System.Drawing.Size(122, 58);
+            this.deleteSupervisorButton.TabIndex = 9;
+            this.deleteSupervisorButton.Text = "Delete Supervisor";
+            this.deleteSupervisorButton.UseVisualStyleBackColor = true;
+            this.deleteSupervisorButton.Click += new System.EventHandler(this.deleteSupervisorButton_Click);
             // 
-            // label6
+            // showAllTeachers
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1070, 412);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 17);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Add";
+            this.showAllTeachers.Location = new System.Drawing.Point(746, 236);
+            this.showAllTeachers.Name = "showAllTeachers";
+            this.showAllTeachers.Size = new System.Drawing.Size(122, 58);
+            this.showAllTeachers.TabIndex = 8;
+            this.showAllTeachers.Text = "Show all teachers";
+            this.showAllTeachers.UseVisualStyleBackColor = true;
+            this.showAllTeachers.Click += new System.EventHandler(this.showAllTeachers_Click);
             // 
-            // buttonDrinkAdd
+            // showSupervisorsButton
             // 
-            this.buttonDrinkAdd.Location = new System.Drawing.Point(1120, 457);
-            this.buttonDrinkAdd.Name = "buttonDrinkAdd";
-            this.buttonDrinkAdd.Size = new System.Drawing.Size(107, 42);
-            this.buttonDrinkAdd.TabIndex = 21;
-            this.buttonDrinkAdd.Text = "Add";
-            this.buttonDrinkAdd.UseVisualStyleBackColor = true;
-            this.buttonDrinkAdd.Click += new System.EventHandler(this.buttonDrinkAdd_Click);
+            this.showSupervisorsButton.Location = new System.Drawing.Point(746, 143);
+            this.showSupervisorsButton.Name = "showSupervisorsButton";
+            this.showSupervisorsButton.Size = new System.Drawing.Size(122, 58);
+            this.showSupervisorsButton.TabIndex = 7;
+            this.showSupervisorsButton.Text = "Show Supervisors";
+            this.showSupervisorsButton.UseVisualStyleBackColor = true;
+            this.showSupervisorsButton.Click += new System.EventHandler(this.showSupervisorsButton_Click);
+            // 
+            // liSupervisors
+            // 
+            this.liSupervisors.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.liSupervisors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.teacherNames});
+            this.liSupervisors.FullRowSelect = true;
+            this.liSupervisors.GridLines = true;
+            this.liSupervisors.HideSelection = false;
+            this.liSupervisors.HoverSelection = true;
+            this.liSupervisors.Location = new System.Drawing.Point(399, 102);
+            this.liSupervisors.Margin = new System.Windows.Forms.Padding(4);
+            this.liSupervisors.MultiSelect = false;
+            this.liSupervisors.Name = "liSupervisors";
+            this.liSupervisors.Size = new System.Drawing.Size(318, 449);
+            this.liSupervisors.TabIndex = 6;
+            this.liSupervisors.UseCompatibleStateImageBehavior = false;
+            this.liSupervisors.View = System.Windows.Forms.View.Details;
+            // 
+            // teacherNames
+            // 
+            this.teacherNames.Text = "Supervisor Name";
+            this.teacherNames.Width = 313;
+            // 
+            // liActivitySupervisors
+            // 
+            this.liActivitySupervisors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.id,
+            this.name});
+            this.liActivitySupervisors.FullRowSelect = true;
+            this.liActivitySupervisors.GridLines = true;
+            this.liActivitySupervisors.HideSelection = false;
+            this.liActivitySupervisors.Location = new System.Drawing.Point(30, 103);
+            this.liActivitySupervisors.Margin = new System.Windows.Forms.Padding(4);
+            this.liActivitySupervisors.MultiSelect = false;
+            this.liActivitySupervisors.Name = "liActivitySupervisors";
+            this.liActivitySupervisors.Size = new System.Drawing.Size(318, 448);
+            this.liActivitySupervisors.TabIndex = 5;
+            this.liActivitySupervisors.UseCompatibleStateImageBehavior = false;
+            this.liActivitySupervisors.View = System.Windows.Forms.View.Details;
+            // 
+            // id
+            // 
+            this.id.Text = "ID";
+            this.id.Width = 77;
+            // 
+            // name
+            // 
+            this.name.Text = "Activity Description";
+            this.name.Width = 237;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = global::SomerenUI.Properties.Resources.someren;
+            this.pictureBox7.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.InitialImage")));
+            this.pictureBox7.Location = new System.Drawing.Point(1073, 0);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(173, 151);
+            this.pictureBox7.TabIndex = 0;
+            this.pictureBox7.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(13, 12);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(170, 33);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Supervisors";
             // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 622);
+            this.Controls.Add(this.pnlSupervisors);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlActivities);
             this.Controls.Add(this.pnlCashRegister);
@@ -1029,6 +1182,9 @@
             this.pnlActivities.ResumeLayout(false);
             this.pnlActivities.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.pnlSupervisors.ResumeLayout(false);
+            this.pnlSupervisors.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1132,6 +1288,19 @@
         private System.Windows.Forms.Label deleteLabel;
         private System.Windows.Forms.Button buttonDrinkAdd;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripMenuItem supervisorsToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlSupervisors;
+        private System.Windows.Forms.ListView liActivitySupervisors;
+        private System.Windows.Forms.ColumnHeader id;
+        private System.Windows.Forms.ColumnHeader name;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ListView liSupervisors;
+        private System.Windows.Forms.ColumnHeader teacherNames;
+        private System.Windows.Forms.Button showSupervisorsButton;
+        private System.Windows.Forms.Button deleteSupervisorButton;
+        private System.Windows.Forms.Button showAllTeachers;
+        private System.Windows.Forms.Button addSelectedSupervisor;
     }
 }
 

@@ -37,5 +37,9 @@ namespace SomerenDAL
             }
             return teachers;
         }
+        private Teacher NameToTeacher(string Name)
+        {
+
+        }
     }
 }

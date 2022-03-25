@@ -3,12 +3,7 @@ using SomerenLogic;
 using SomerenModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SomerenUI
@@ -59,6 +54,10 @@ namespace SomerenUI
                     HideAll();
                     CashRegisterPanel();
                     break;
+                case "Supervisors":
+                    HideAll();
+                    SupervisorPanel();
+                    break;
             }
         }
 
@@ -73,6 +72,7 @@ namespace SomerenUI
             pnlDrinks.Hide();
             pnlActivities.Hide();
             pnlCashRegister.Hide();
+            pnlSupervisors.Hide();
         }
 
         private void StudentsPanel()
@@ -92,7 +92,7 @@ namespace SomerenUI
                 // check each student in the student list and show the contents of the database in the UI
                 foreach (Student s in studentList)
                 {
-                    ListViewItem liStudents = new ListViewItem(s.StudentId.ToString()); 
+                    ListViewItem liStudents = new ListViewItem(s.StudentId.ToString());
                     liStudents.SubItems.Add(s.StudentName);
                     liStudents.SubItems.Add(s.StudentLanguage);
                     liStudents.SubItems.Add(s.StudentDateOfBirth.ToString("dd/MM/yyyy"));
@@ -373,7 +373,7 @@ namespace SomerenUI
                 OrderService orderService = new OrderService();
 
                 // check each checked item in the listview of listViewRegisterDrinks
-                foreach(ListViewItem lviDrinks in listViewCashRegisterDrinks.CheckedItems)
+                foreach (ListViewItem lviDrinks in listViewCashRegisterDrinks.CheckedItems)
                 {
                     Drink drink = (Drink)lviDrinks.Tag;
                     // take in the studentId of student listview, drinkId of drink listview
@@ -394,7 +394,7 @@ namespace SomerenUI
         private void listViewCashRegisterDrinks_SelectedIndexChanged(object sender, EventArgs e)
         {
             decimal totalPrice = 0m;
-            
+
             foreach (ListViewItem lviDrinks in listViewCashRegisterDrinks.CheckedItems)
             {
                 Drink drink = (Drink)lviDrinks.Tag;
@@ -510,13 +510,13 @@ namespace SomerenUI
 
         private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
         {
-           /*if (listViewActivities.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Please select something");
-                return;
-            }
-            Activity activityClick = (Activity)listViewActivities.SelectedItems[0].Tag;
-            MessageBox.Show($"{activityClick.ActivityId}, {activityClick.ActivityDescription}");*/
+            /*if (listViewActivities.SelectedItems.Count == 0)
+             {
+                 MessageBox.Show("Please select something");
+                 return;
+             }
+             Activity activityClick = (Activity)listViewActivities.SelectedItems[0].Tag;
+             MessageBox.Show($"{activityClick.ActivityId}, {activityClick.ActivityDescription}");*/
         }
 
         private void buttonDeleteActivity_Click(object sender, EventArgs e)
@@ -572,7 +572,8 @@ namespace SomerenUI
                 {
                     //the add won't go through 
                     MessageBox.Show($"{activity.ActivityDescription} already exists please write another activity.");
-                } else
+                }
+                else
                 {
                     //the add has gone through the logic layer
                     activityService.AddActivity(activity);
@@ -631,6 +632,162 @@ namespace SomerenUI
                 liActivities.Tag = a;
                 listViewActivities.Items.Add(liActivities);
             }
+        }
+
+        private void supervisorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showPanel("Supervisors");
+        }
+
+        private void SupervisorPanel()
+        {
+            pnlSupervisors.Show();
+
+            try
+            {
+                // fill the students listview within the students panel with a list of students
+                ActivityService activityService = new ActivityService();
+                List<Activity> activityList = activityService.GetActivities();
+
+                // clear the listview before filling it again
+                liActivitySupervisors.Items.Clear();
+
+                // check each student in the student list and show the contents of the database in the UI
+                foreach (Activity a in activityList)
+                {
+                    ListViewItem liActivity = new ListViewItem(a.ActivityId.ToString());
+
+                    liActivity.SubItems.Add(a.ActivityDescription);
+                    liActivity.Tag = a;
+                    liActivitySupervisors.Items.Add(liActivity);
+                }
+
+            }
+            catch (Exception e)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Something went wrong while loading the activities: " + e.Message);
+            }
+
+
+        }
+
+        private void showSupervisorsButton_Click(object sender, EventArgs e)
+        {
+            Activity selectedActivity = (Activity)liActivitySupervisors.SelectedItems[0].Tag;
+            SupervisorService supervisorService = new SupervisorService();
+            List<Supervisor> supervisors = supervisorService.JoinTable(selectedActivity.ActivityId);
+            liSupervisors.Items.Clear();
+
+            foreach (Supervisor s in supervisors)
+            {
+                ListViewItem liSupervisor = new ListViewItem(s.TeacherName.ToString());
+                liSupervisor.Tag = s;
+                liSupervisors.Items.Add(liSupervisor);
+            }
+        }
+
+        private void showAllTeachers_Click(object sender, EventArgs e)
+        {
+            TeacherService lecService = new TeacherService(); ;
+            List<Teacher> teacherList = lecService.GetTeachers(); ;
+
+            // clear the listview before filling it again
+            liSupervisors.Items.Clear();
+
+            // check each teacher in the teacherlist and show the contents of the database in the UI
+            foreach (Teacher t in teacherList)
+            {
+                liSupervisors.Tag = t;
+                liSupervisors.Items.Add(t.TeacherName.ToString());
+            }
+
+        }
+
+
+        private void addSelectedSupervisor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Supervisor selectedSupervisor = (Supervisor)liSupervisors.SelectedItems[0].Tag;
+                Activity selectedActivity = (Activity)liActivitySupervisors.SelectedItems[0].Tag;
+                if (selectedSupervisor != null)
+                {
+                    MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+                    string title = "Add Supervisor";
+                    string message = $"Do you want to add as supervisor?";
+                    DialogResult answer = MessageBox.Show(message, title, buttons);
+                    if (answer == DialogResult.OK)
+                    {
+
+                        SupervisorService supervisorService = new SupervisorService();
+                        List<Supervisor> supervisors = supervisorService.JoinTable(selectedActivity.ActivityId);
+
+                        foreach (Supervisor s in supervisors)
+                        {
+                            if (selectedSupervisor.TeacherName == s.TeacherName)
+                            {
+                                MessageBox.Show("Supervisor already added");
+                                return;
+                            }
+                        }
+
+                        supervisorService.AddSupervisor(selectedActivity, selectedSupervisor);
+                        MessageBox.Show($"{selectedSupervisor.TeacherName} succesfully addes as supervisor for {selectedActivity.ActivityDescription}.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No teacher selected");
+                }
+
+            }
+            catch (Exception b)
+            {
+                MessageBox.Show("Something went wrong while adding a supervisor: " + b.Message);
+            }
+        }
+
+        private void deleteSupervisorButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //delete supervisor
+                Supervisor selectedSupervisor = (Supervisor)liSupervisors.SelectedItems[0].Tag;
+                Activity selectedActivity = (Activity)liActivitySupervisors.SelectedItems[0].Tag;
+                SupervisorService supervisorService = new SupervisorService();
+
+                MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
+
+                string title = "Delete Supervisor";
+                string message = $"Are you sure that you wish to remove {selectedSupervisor.TeacherName} from {selectedActivity.ActivityDescription}?";
+
+                DialogResult answer = MessageBox.Show(message, title, buttons);
+                if (answer == DialogResult.OK)
+                {
+                    //put the deletion the user made through the logic layer
+                    supervisorService.DeleteSupervisor(selectedActivity, selectedSupervisor);
+                    //show the changes made in the listview
+                    List<Supervisor> supervisors = supervisorService.JoinTable(selectedActivity.ActivityId);
+                    liSupervisors.Items.Clear();
+
+                    foreach (Supervisor s in supervisors)
+                    {
+                        ListViewItem liSupervisor = new ListViewItem(s.TeacherName.ToString());
+                        liSupervisor.Tag = s;
+                        liSupervisors.Items.Add(liSupervisor);
+                    }
+                    MessageBox.Show($"{selectedSupervisor.TeacherName} has succesfully been deleted from {selectedActivity.ActivityDescription}.");
+                }
+
+                SupervisorPanel();
+            }
+            catch (Exception x)
+            {
+                // catch a error when something went wrong with the UI
+                MessageBox.Show("Please select something in the listview: " + x.Message);
+            }
+
         }
     }
 }
