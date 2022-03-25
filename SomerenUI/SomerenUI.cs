@@ -447,23 +447,24 @@ namespace SomerenUI
 
                 List<Activity> activityList = activityService.GetActivities();
                 UpdateActivities(activityList);
-                //successLabel.Text = $"Succesfully edited: {drink.DrinkName}";
+                MessageBox.Show("A change has succesfully been made");
             }
             catch (Exception x)
             {
                 // catch a error when something went wrong with the UI
-                MessageBox.Show("Something went wrong while updating the table: " + x.Message);
+                MessageBox.Show("Please select something in the listview: " + x.Message);
             }
         }
 
         private void listViewActivities_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listViewActivities.SelectedItems.Count == 0)
+           /*if (listViewActivities.SelectedItems.Count == 0)
             {
+                MessageBox.Show("Please select something");
                 return;
             }
             Activity activityClick = (Activity)listViewActivities.SelectedItems[0].Tag;
-            MessageBox.Show($"{activityClick.ActivityId}, {activityClick.ActivityDescription}");
+            MessageBox.Show($"{activityClick.ActivityId}, {activityClick.ActivityDescription}");*/
         }
 
         private void buttonDeleteActivity_Click(object sender, EventArgs e)
@@ -478,7 +479,7 @@ namespace SomerenUI
                 MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
 
                 string title = "Delete Activity";
-                string message = $"Are you sure you want to delete {activity.ActivityDescription}?";
+                string message = $"Are you sure that you wish to remove this activity: {activity.ActivityDescription}?";
 
                 DialogResult answer = MessageBox.Show(message, title, buttons);
                 if (answer == DialogResult.OK)
@@ -486,13 +487,13 @@ namespace SomerenUI
                     activityService.DeleteActivity(activity);
                     List<Activity> activityList = activityService.GetActivities();
                     UpdateActivities(activityList);
-                    //deleteLabel.Text = $"Succesfully Deleted: {drink.DrinkName}";
+                    MessageBox.Show($"{activity.ActivityDescription} has succesfully been deleted");
                 }
             }
             catch (Exception x)
             {
                 // catch a error when something went wrong with the UI
-                MessageBox.Show("Something went wrong while deleting the drink: " + x.Message);
+                MessageBox.Show("Please select something in the listview: " + x.Message);
             }
         }
 
@@ -507,9 +508,17 @@ namespace SomerenUI
                 activity.ActivityDescription = textBoxNewDescription.Text;
                 activity.ActivityStartTime = dateTimePickerStartTime.Value;
                 activity.ActivityEndTime = dateTimePickerEndTime.Value;
-                activityService.AddActivity(activity);
-
                 List<Activity> activityList = activityService.GetActivities();
+                bool containsItem = activityList.Any(item => item.ActivityDescription == activity.ActivityDescription);
+                if (containsItem)
+                {
+                    MessageBox.Show($"{activity.ActivityDescription} already exists please write another activity.");
+                } else
+                {
+                    activityService.AddActivity(activity);
+                    MessageBox.Show($"{activity.ActivityDescription} has succesfully been added");
+                }
+
                 listViewActivities.Items.Clear();
 
                 foreach (Activity a in activityList)
@@ -521,12 +530,11 @@ namespace SomerenUI
                     listViewActivities.Items.Add(liActivities);
                 }
                 ActivitiesPanel();
-                //successLabel.Text = $"Succesfully edited: {drink.DrinkName}";
             }
             catch (Exception x)
             {
                 // catch a error when something went wrong with the UI
-                MessageBox.Show("Something went wrong while updating the table: " + x.Message);
+                MessageBox.Show("Please select something in the listview: " + x.Message);
             }
         }
 

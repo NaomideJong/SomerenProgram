@@ -104,25 +104,22 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.lblCashRegister = new System.Windows.Forms.Label();
             this.pnlActivities = new System.Windows.Forms.Panel();
+            this.buttonAddActivity = new System.Windows.Forms.Button();
             this.buttonDeleteActivity = new System.Windows.Forms.Button();
             this.dateTimePickerEndTime = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerStartTime = new System.Windows.Forms.DateTimePicker();
             this.lblEndTime = new System.Windows.Forms.Label();
-            this.lblUpdateActivities = new System.Windows.Forms.Label();
             this.buttonUpdateActivities = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.lblNewDescription = new System.Windows.Forms.Label();
             this.textBoxNewDescription = new System.Windows.Forms.TextBox();
             this.listViewActivities = new System.Windows.Forms.ListView();
+            this.columnHeaderActivityId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderActivityDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderActivityStartTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderActivityEndTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.lblActivities = new System.Windows.Forms.Label();
-            this.buttonAddActivity = new System.Windows.Forms.Button();
-            this.lblActivityId = new System.Windows.Forms.Label();
-            this.textBoxActivityId = new System.Windows.Forms.TextBox();
-            this.columnHeaderActivityId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -771,14 +768,11 @@
             // 
             // pnlActivities
             // 
-            this.pnlActivities.Controls.Add(this.lblActivityId);
-            this.pnlActivities.Controls.Add(this.textBoxActivityId);
             this.pnlActivities.Controls.Add(this.buttonAddActivity);
             this.pnlActivities.Controls.Add(this.buttonDeleteActivity);
             this.pnlActivities.Controls.Add(this.dateTimePickerEndTime);
             this.pnlActivities.Controls.Add(this.dateTimePickerStartTime);
             this.pnlActivities.Controls.Add(this.lblEndTime);
-            this.pnlActivities.Controls.Add(this.lblUpdateActivities);
             this.pnlActivities.Controls.Add(this.buttonUpdateActivities);
             this.pnlActivities.Controls.Add(this.label7);
             this.pnlActivities.Controls.Add(this.lblNewDescription);
@@ -792,64 +786,68 @@
             this.pnlActivities.Size = new System.Drawing.Size(1251, 574);
             this.pnlActivities.TabIndex = 10;
             // 
+            // buttonAddActivity
+            // 
+            this.buttonAddActivity.BackColor = System.Drawing.Color.Lime;
+            this.buttonAddActivity.Location = new System.Drawing.Point(811, 457);
+            this.buttonAddActivity.Name = "buttonAddActivity";
+            this.buttonAddActivity.Size = new System.Drawing.Size(107, 42);
+            this.buttonAddActivity.TabIndex = 22;
+            this.buttonAddActivity.Text = "Add";
+            this.buttonAddActivity.UseVisualStyleBackColor = false;
+            this.buttonAddActivity.Click += new System.EventHandler(this.buttonAddActivity_Click);
+            // 
             // buttonDeleteActivity
             // 
-            this.buttonDeleteActivity.Location = new System.Drawing.Point(1073, 280);
+            this.buttonDeleteActivity.BackColor = System.Drawing.Color.Red;
+            this.buttonDeleteActivity.Location = new System.Drawing.Point(682, 457);
             this.buttonDeleteActivity.Name = "buttonDeleteActivity";
             this.buttonDeleteActivity.Size = new System.Drawing.Size(107, 42);
             this.buttonDeleteActivity.TabIndex = 21;
             this.buttonDeleteActivity.Text = "Delete";
-            this.buttonDeleteActivity.UseVisualStyleBackColor = true;
+            this.buttonDeleteActivity.UseVisualStyleBackColor = false;
             this.buttonDeleteActivity.Click += new System.EventHandler(this.buttonDeleteActivity_Click);
             // 
             // dateTimePickerEndTime
             // 
             this.dateTimePickerEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerEndTime.Location = new System.Drawing.Point(693, 477);
+            this.dateTimePickerEndTime.Location = new System.Drawing.Point(439, 470);
             this.dateTimePickerEndTime.Name = "dateTimePickerEndTime";
-            this.dateTimePickerEndTime.Size = new System.Drawing.Size(208, 22);
+            this.dateTimePickerEndTime.Size = new System.Drawing.Size(213, 22);
             this.dateTimePickerEndTime.TabIndex = 20;
             // 
             // dateTimePickerStartTime
             // 
             this.dateTimePickerStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerStartTime.Location = new System.Drawing.Point(419, 477);
+            this.dateTimePickerStartTime.Location = new System.Drawing.Point(187, 470);
             this.dateTimePickerStartTime.Name = "dateTimePickerStartTime";
-            this.dateTimePickerStartTime.Size = new System.Drawing.Size(208, 22);
+            this.dateTimePickerStartTime.Size = new System.Drawing.Size(201, 22);
             this.dateTimePickerStartTime.TabIndex = 19;
             // 
             // lblEndTime
             // 
             this.lblEndTime.AutoSize = true;
-            this.lblEndTime.Location = new System.Drawing.Point(690, 459);
+            this.lblEndTime.Location = new System.Drawing.Point(436, 450);
             this.lblEndTime.Name = "lblEndTime";
             this.lblEndTime.Size = new System.Drawing.Size(99, 17);
             this.lblEndTime.TabIndex = 18;
             this.lblEndTime.Text = "New End Time";
             // 
-            // lblUpdateActivities
-            // 
-            this.lblUpdateActivities.AutoSize = true;
-            this.lblUpdateActivities.Location = new System.Drawing.Point(28, 482);
-            this.lblUpdateActivities.Name = "lblUpdateActivities";
-            this.lblUpdateActivities.Size = new System.Drawing.Size(113, 17);
-            this.lblUpdateActivities.TabIndex = 10;
-            this.lblUpdateActivities.Text = "Update Activities";
-            // 
             // buttonUpdateActivities
             // 
-            this.buttonUpdateActivities.Location = new System.Drawing.Point(1073, 192);
+            this.buttonUpdateActivities.BackColor = System.Drawing.Color.White;
+            this.buttonUpdateActivities.Location = new System.Drawing.Point(941, 457);
             this.buttonUpdateActivities.Name = "buttonUpdateActivities";
             this.buttonUpdateActivities.Size = new System.Drawing.Size(107, 42);
             this.buttonUpdateActivities.TabIndex = 16;
             this.buttonUpdateActivities.Text = "Update";
-            this.buttonUpdateActivities.UseVisualStyleBackColor = true;
+            this.buttonUpdateActivities.UseVisualStyleBackColor = false;
             this.buttonUpdateActivities.Click += new System.EventHandler(this.buttonUpdateActivities_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(416, 459);
+            this.label7.Location = new System.Drawing.Point(184, 450);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(99, 17);
             this.label7.TabIndex = 15;
@@ -858,7 +856,7 @@
             // lblNewDescription
             // 
             this.lblNewDescription.AutoSize = true;
-            this.lblNewDescription.Location = new System.Drawing.Point(221, 459);
+            this.lblNewDescription.Location = new System.Drawing.Point(19, 450);
             this.lblNewDescription.Name = "lblNewDescription";
             this.lblNewDescription.Size = new System.Drawing.Size(110, 17);
             this.lblNewDescription.TabIndex = 14;
@@ -866,7 +864,7 @@
             // 
             // textBoxNewDescription
             // 
-            this.textBoxNewDescription.Location = new System.Drawing.Point(224, 479);
+            this.textBoxNewDescription.Location = new System.Drawing.Point(22, 472);
             this.textBoxNewDescription.Name = "textBoxNewDescription";
             this.textBoxNewDescription.Size = new System.Drawing.Size(100, 22);
             this.textBoxNewDescription.TabIndex = 11;
@@ -890,21 +888,22 @@
             this.listViewActivities.View = System.Windows.Forms.View.Details;
             this.listViewActivities.SelectedIndexChanged += new System.EventHandler(this.listViewActivities_SelectedIndexChanged);
             // 
+            // columnHeaderActivityId
+            // 
+            this.columnHeaderActivityId.Text = "ID";
+            // 
             // columnHeaderActivityDescription
             // 
-            this.columnHeaderActivityDescription.DisplayIndex = 1;
             this.columnHeaderActivityDescription.Text = "Description";
             this.columnHeaderActivityDescription.Width = 200;
             // 
             // columnHeaderActivityStartTime
             // 
-            this.columnHeaderActivityStartTime.DisplayIndex = 2;
             this.columnHeaderActivityStartTime.Text = "StartTime";
             this.columnHeaderActivityStartTime.Width = 200;
             // 
             // columnHeaderActivityEndTime
             // 
-            this.columnHeaderActivityEndTime.DisplayIndex = 3;
             this.columnHeaderActivityEndTime.Text = "EndTime";
             this.columnHeaderActivityEndTime.Width = 200;
             // 
@@ -929,37 +928,6 @@
             this.lblActivities.Size = new System.Drawing.Size(132, 33);
             this.lblActivities.TabIndex = 3;
             this.lblActivities.Text = "Activities";
-            // 
-            // buttonAddActivity
-            // 
-            this.buttonAddActivity.Location = new System.Drawing.Point(1073, 365);
-            this.buttonAddActivity.Name = "buttonAddActivity";
-            this.buttonAddActivity.Size = new System.Drawing.Size(107, 42);
-            this.buttonAddActivity.TabIndex = 22;
-            this.buttonAddActivity.Text = "Add";
-            this.buttonAddActivity.UseVisualStyleBackColor = true;
-            this.buttonAddActivity.Click += new System.EventHandler(this.buttonAddActivity_Click);
-            // 
-            // lblActivityId
-            // 
-            this.lblActivityId.AutoSize = true;
-            this.lblActivityId.Location = new System.Drawing.Point(1073, 434);
-            this.lblActivityId.Name = "lblActivityId";
-            this.lblActivityId.Size = new System.Drawing.Size(21, 17);
-            this.lblActivityId.TabIndex = 24;
-            this.lblActivityId.Text = "ID";
-            // 
-            // textBoxActivityId
-            // 
-            this.textBoxActivityId.Location = new System.Drawing.Point(1075, 454);
-            this.textBoxActivityId.Name = "textBoxActivityId";
-            this.textBoxActivityId.Size = new System.Drawing.Size(100, 22);
-            this.textBoxActivityId.TabIndex = 23;
-            // 
-            // columnHeaderActivityId
-            // 
-            this.columnHeaderActivityId.DisplayIndex = 0;
-            this.columnHeaderActivityId.Text = "ID";
             // 
             // SomerenUI
             // 
@@ -1086,7 +1054,6 @@
         private System.Windows.Forms.TextBox textBoxDrinkStock;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel pnlActivities;
-        private System.Windows.Forms.Label lblUpdateActivities;
         private System.Windows.Forms.Button buttonUpdateActivities;
         private System.Windows.Forms.ListView listViewActivities;
         private System.Windows.Forms.ColumnHeader columnHeaderActivityDescription;
@@ -1102,8 +1069,6 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerStartTime;
         private System.Windows.Forms.Button buttonDeleteActivity;
         private System.Windows.Forms.Button buttonAddActivity;
-        private System.Windows.Forms.Label lblActivityId;
-        private System.Windows.Forms.TextBox textBoxActivityId;
         private System.Windows.Forms.ColumnHeader columnHeaderActivityId;
     }
 }
