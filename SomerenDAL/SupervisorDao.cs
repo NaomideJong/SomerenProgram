@@ -50,7 +50,7 @@ namespace SomerenDAL
             SqlParameter[] sqlParameters = new SqlParameter[2]
            {
                 new SqlParameter("@activityId", a.ActivityId),
-                new SqlParameter("@teacherId", t.TeacherName)
+                new SqlParameter("@teacherId", t.TeacherId)
            };
             //add teacher as a supervisor
             ExecuteSelectQuery(query, sqlParameters);
