@@ -17,24 +17,15 @@ namespace SomerenDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-        private List<Supervisor> ReadTables(DataTable dataTable)
+        
+
+        public void JoinTable()
         {
-            List<Supervisor> supervisors = new List<Supervisor>();
-
-            // check each row of the DataTable
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                //Supervisor sv = new Supervisor()
-               // {
-                //    SupervisorId = (int)sv["supervisorId"],
-               //    TeacherSupervisingId = (int)sv["teacherId"],
-
-
-                //};
-                // add the order to the list
-               // supervisors.Add(sv);
-            }
-            return supervisors;
+            string query = "SELECT A.*, T.*" +
+                    "FROM Supervisors as ACS " +
+                    "JOIN Activities as A on ACS.activityId = A.activityId " +
+                    "JOIN Teachers as T on ACS.teacherId = T.teacherId " +
+                    "WHERE A.activityId = @activityId";
         }
     }
 }
