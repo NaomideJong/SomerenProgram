@@ -39,7 +39,7 @@ namespace SomerenDAL
         }
         public Teacher NameToTeacherId(string name)
         {
-            string query = $"SELECT teacherId FROM [Teachers] " +
+            string query = $"SELECT teacherId, teacherName, teacherCourse FROM [Teachers] " +
                 $"WHERE teacherName = @teacherName";
             SqlParameter[] sqlParameters = new SqlParameter[1]
             {

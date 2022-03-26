@@ -1074,7 +1074,6 @@
             this.liSupervisors.FullRowSelect = true;
             this.liSupervisors.GridLines = true;
             this.liSupervisors.HideSelection = false;
-            this.liSupervisors.HoverSelection = true;
             this.liSupervisors.Location = new System.Drawing.Point(399, 102);
             this.liSupervisors.Margin = new System.Windows.Forms.Padding(4);
             this.liSupervisors.MultiSelect = false;

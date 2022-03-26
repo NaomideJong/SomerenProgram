@@ -689,7 +689,7 @@ namespace SomerenUI
 
         private void showAllTeachers_Click(object sender, EventArgs e)
         {
-            TeacherService lecService = new TeacherService(); ;
+            TeacherService lecService = new TeacherService(); 
             List<Teacher> teacherList = lecService.GetTeachers(); ;
 
             // clear the listview before filling it again
@@ -709,13 +709,13 @@ namespace SomerenUI
         {
             try
             {
-                Supervisor selectedSupervisor = (Supervisor)liSupervisors.SelectedItems[0].Tag;
                 Activity selectedActivity = (Activity)liActivitySupervisors.SelectedItems[0].Tag;
+                string selectedSupervisor = liSupervisors.SelectedItems[0].Text;
                 if (selectedSupervisor != null)
                 {
                     MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
                     string title = "Add Supervisor";
-                    string message = $"Do you want to add as supervisor?";
+                    string message = $"Do you want to add {selectedSupervisor} as supervisor for {selectedActivity.ActivityDescription}?";
                     DialogResult answer = MessageBox.Show(message, title, buttons);
                     if (answer == DialogResult.OK)
                     {
@@ -725,16 +725,16 @@ namespace SomerenUI
 
                         foreach (Supervisor s in supervisors)
                         {
-                            if (selectedSupervisor.TeacherName == s.TeacherName)
+                            if (selectedSupervisor == s.TeacherName)
                             {
                                 MessageBox.Show("Supervisor already added");
                                 return;
                             }
                         }
                         TeacherService teacherService = new TeacherService();
-                        Teacher teacher = teacherService.NameToTeacherId(selectedSupervisor.TeacherName);
+                        Teacher teacher = teacherService.NameToTeacherId(selectedSupervisor);
                         supervisorService.AddSupervisor(selectedActivity, teacher);
-                        MessageBox.Show($"{selectedSupervisor.TeacherName} succesfully addes as supervisor for {selectedActivity.ActivityDescription}.");
+                        MessageBox.Show($"{selectedSupervisor} succesfully addes as supervisor for {selectedActivity.ActivityDescription}.");
                     }
                 }
                 else
