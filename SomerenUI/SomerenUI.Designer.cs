@@ -138,15 +138,6 @@
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.pnlLogIn = new System.Windows.Forms.Panel();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.userIdBox = new System.Windows.Forms.TextBox();
-            this.passwordBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.logInButton = new System.Windows.Forms.Button();
-            this.registerButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgDashboard)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.pnlDashboard.SuspendLayout();
@@ -164,8 +155,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnlSupervisors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            this.pnlLogIn.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // imgDashboard
@@ -1148,109 +1137,11 @@
             this.label15.TabIndex = 3;
             this.label15.Text = "Supervisors";
             // 
-            // pnlLogIn
-            // 
-            this.pnlLogIn.Controls.Add(this.registerButton);
-            this.pnlLogIn.Controls.Add(this.logInButton);
-            this.pnlLogIn.Controls.Add(this.label10);
-            this.pnlLogIn.Controls.Add(this.label9);
-            this.pnlLogIn.Controls.Add(this.passwordBox);
-            this.pnlLogIn.Controls.Add(this.userIdBox);
-            this.pnlLogIn.Controls.Add(this.pictureBox8);
-            this.pnlLogIn.Controls.Add(this.label8);
-            this.pnlLogIn.Location = new System.Drawing.Point(0, 0);
-            this.pnlLogIn.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlLogIn.Name = "pnlLogIn";
-            this.pnlLogIn.Size = new System.Drawing.Size(1251, 574);
-            this.pnlLogIn.TabIndex = 23;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::SomerenUI.Properties.Resources.someren;
-            this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
-            this.pictureBox8.Location = new System.Drawing.Point(13, 13);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(224, 201);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 0;
-            this.pictureBox8.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(541, 65);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(95, 33);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Log In";
-            // 
-            // userIdBox
-            // 
-            this.userIdBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userIdBox.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.userIdBox.Location = new System.Drawing.Point(445, 185);
-            this.userIdBox.Name = "userIdBox";
-            this.userIdBox.Size = new System.Drawing.Size(299, 28);
-            this.userIdBox.TabIndex = 4;
-            this.userIdBox.Text = "example@email.com";
-            // 
-            // passwordBox
-            // 
-            this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordBox.Location = new System.Drawing.Point(445, 273);
-            this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(299, 28);
-            this.passwordBox.TabIndex = 5;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(442, 162);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(96, 20);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "User name:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(443, 246);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(88, 20);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "Password:";
-            // 
-            // logInButton
-            // 
-            this.logInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logInButton.Location = new System.Drawing.Point(465, 363);
-            this.logInButton.Name = "logInButton";
-            this.logInButton.Size = new System.Drawing.Size(254, 48);
-            this.logInButton.TabIndex = 8;
-            this.logInButton.Text = "Log In";
-            this.logInButton.UseVisualStyleBackColor = true;
-            // 
-            // registerButton
-            // 
-            this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.Location = new System.Drawing.Point(465, 438);
-            this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(254, 48);
-            this.registerButton.TabIndex = 9;
-            this.registerButton.Text = "Register";
-            this.registerButton.UseVisualStyleBackColor = true;
-            // 
             // SomerenUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 622);
-            this.Controls.Add(this.pnlLogIn);
             this.Controls.Add(this.pnlSupervisors);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlActivities);
@@ -1293,9 +1184,6 @@
             this.pnlSupervisors.ResumeLayout(false);
             this.pnlSupervisors.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            this.pnlLogIn.ResumeLayout(false);
-            this.pnlLogIn.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1412,15 +1300,6 @@
         private System.Windows.Forms.Button deleteSupervisorButton;
         private System.Windows.Forms.Button showAllTeachers;
         private System.Windows.Forms.Button addSelectedSupervisor;
-        private System.Windows.Forms.Panel pnlLogIn;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button registerButton;
-        private System.Windows.Forms.Button logInButton;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox passwordBox;
-        private System.Windows.Forms.TextBox userIdBox;
     }
 }
 

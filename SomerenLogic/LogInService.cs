@@ -17,9 +17,9 @@ namespace SomerenLogic
             logIndb = new LogInDao();
         }
 
-        public LogIn GetById()
-        {
+       // public LogIn GetById()
+        //{
 
-        }
+       // }
     }
 }
