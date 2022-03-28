@@ -73,8 +73,14 @@ namespace SomerenUI
             pnlActivities.Hide();
             pnlCashRegister.Hide();
             pnlSupervisors.Hide();
+            pnlLogIn.Hide();
         }
 
+        private void pnlLogIn()
+        {
+            //show login
+            pnlLogIn.Show();
+        }
         private void StudentsPanel()
         {
             // show students

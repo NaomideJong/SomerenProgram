@@ -138,7 +138,7 @@
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlLogIn = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.userIdBox = new System.Windows.Forms.TextBox();
@@ -164,7 +164,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnlSupervisors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnlLogIn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1023,7 +1023,6 @@
             // 
             // pnlSupervisors
             // 
-            this.pnlSupervisors.Controls.Add(this.panel1);
             this.pnlSupervisors.Controls.Add(this.addSelectedSupervisor);
             this.pnlSupervisors.Controls.Add(this.deleteSupervisorButton);
             this.pnlSupervisors.Controls.Add(this.showAllTeachers);
@@ -1149,30 +1148,31 @@
             this.label15.TabIndex = 3;
             this.label15.Text = "Supervisors";
             // 
-            // panel1
+            // pnlLogIn
             // 
-            this.panel1.Controls.Add(this.registerButton);
-            this.panel1.Controls.Add(this.logInButton);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.passwordBox);
-            this.panel1.Controls.Add(this.userIdBox);
-            this.panel1.Controls.Add(this.pictureBox8);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Location = new System.Drawing.Point(8, 8);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1251, 574);
-            this.panel1.TabIndex = 23;
+            this.pnlLogIn.Controls.Add(this.registerButton);
+            this.pnlLogIn.Controls.Add(this.logInButton);
+            this.pnlLogIn.Controls.Add(this.label10);
+            this.pnlLogIn.Controls.Add(this.label9);
+            this.pnlLogIn.Controls.Add(this.passwordBox);
+            this.pnlLogIn.Controls.Add(this.userIdBox);
+            this.pnlLogIn.Controls.Add(this.pictureBox8);
+            this.pnlLogIn.Controls.Add(this.label8);
+            this.pnlLogIn.Location = new System.Drawing.Point(0, 0);
+            this.pnlLogIn.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlLogIn.Name = "pnlLogIn";
+            this.pnlLogIn.Size = new System.Drawing.Size(1251, 574);
+            this.pnlLogIn.TabIndex = 23;
             // 
             // pictureBox8
             // 
             this.pictureBox8.Image = global::SomerenUI.Properties.Resources.someren;
             this.pictureBox8.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.InitialImage")));
-            this.pictureBox8.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox8.Location = new System.Drawing.Point(13, 13);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(140, 122);
+            this.pictureBox8.Size = new System.Drawing.Size(224, 201);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox8.TabIndex = 0;
             this.pictureBox8.TabStop = false;
             // 
@@ -1180,7 +1180,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(535, 37);
+            this.label8.Location = new System.Drawing.Point(541, 65);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 33);
@@ -1190,15 +1190,17 @@
             // userIdBox
             // 
             this.userIdBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userIdBox.Location = new System.Drawing.Point(445, 194);
+            this.userIdBox.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.userIdBox.Location = new System.Drawing.Point(445, 185);
             this.userIdBox.Name = "userIdBox";
             this.userIdBox.Size = new System.Drawing.Size(299, 28);
             this.userIdBox.TabIndex = 4;
+            this.userIdBox.Text = "example@email.com";
             // 
             // passwordBox
             // 
             this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordBox.Location = new System.Drawing.Point(445, 292);
+            this.passwordBox.Location = new System.Drawing.Point(445, 273);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.Size = new System.Drawing.Size(299, 28);
             this.passwordBox.TabIndex = 5;
@@ -1217,7 +1219,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(442, 250);
+            this.label10.Location = new System.Drawing.Point(443, 246);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(88, 20);
             this.label10.TabIndex = 7;
@@ -1248,6 +1250,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1283, 622);
+            this.Controls.Add(this.pnlLogIn);
             this.Controls.Add(this.pnlSupervisors);
             this.Controls.Add(this.pnlDrinks);
             this.Controls.Add(this.pnlActivities);
@@ -1290,8 +1293,8 @@
             this.pnlSupervisors.ResumeLayout(false);
             this.pnlSupervisors.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlLogIn.ResumeLayout(false);
+            this.pnlLogIn.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1409,7 +1412,7 @@
         private System.Windows.Forms.Button deleteSupervisorButton;
         private System.Windows.Forms.Button showAllTeachers;
         private System.Windows.Forms.Button addSelectedSupervisor;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlLogIn;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button registerButton;
