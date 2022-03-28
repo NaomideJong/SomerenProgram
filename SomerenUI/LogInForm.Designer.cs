@@ -56,7 +56,7 @@ namespace SomerenUI
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(192, 77);
+            this.label9.Location = new System.Drawing.Point(192, 75);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(273, 20);
             this.label9.TabIndex = 7;
@@ -107,6 +107,7 @@ namespace SomerenUI
             this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordBox.Location = new System.Drawing.Point(196, 186);
             this.passwordBox.Name = "passwordBox";
+            this.passwordBox.PasswordChar = '*';
             this.passwordBox.Size = new System.Drawing.Size(299, 28);
             this.passwordBox.TabIndex = 10;
             // 
