@@ -58,19 +58,18 @@ namespace SomerenUI
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(192, 77);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(96, 20);
+            this.label9.Size = new System.Drawing.Size(273, 20);
             this.label9.TabIndex = 7;
-            this.label9.Text = "User name:";
+            this.label9.Text = "User e-mail (example@email.com):";
             // 
             // userIdBox
             // 
             this.userIdBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userIdBox.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.userIdBox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.userIdBox.Location = new System.Drawing.Point(196, 109);
             this.userIdBox.Name = "userIdBox";
             this.userIdBox.Size = new System.Drawing.Size(299, 28);
             this.userIdBox.TabIndex = 8;
-            this.userIdBox.Text = "example@email.com";
             // 
             // registerButton
             // 
