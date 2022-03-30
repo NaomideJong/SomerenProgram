@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using SomerenLogic;
 using SomerenModel;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace SomerenUI
 {
@@ -22,14 +23,21 @@ namespace SomerenUI
         private void logInButton_Click(object sender, EventArgs e)
         {
             LogInService logInService = new LogInService();
-            LogIn logIn = new LogIn();
-            logIn.UserId = userIdBox.Text;
-            logIn.UserPassword = passwordBox.Text;
+            LogIn logIn = logInService.GetById(userIdBox.Text);
+            if (logInService.CheckPassword(logIn.UserId, passwordBox.Text, logIn.PasswordSalt, logIn.PasswordDigest, SHA256.Create()))
+            {
+                MessageBox.Show("yeh");
+            }
+            else
+            {
+                MessageBox.Show("nop");
+            }
+
             if (IsValid())
             {
-                SomerenUI SomerenUI = new SomerenUI();
-                this.Hide();
-                SomerenUI.Show();
+               // SomerenUI SomerenUI = new SomerenUI();
+               // this.Hide();
+               // SomerenUI.Show();
             }
         }
 

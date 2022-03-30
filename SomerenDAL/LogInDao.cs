@@ -13,32 +13,32 @@ namespace SomerenDAL
     {
         public LogIn GetById(string userId)
         {
-            string query = $"SELECT userId, adminStatus, userPassword FROM [Users] " +
+            string query = $"SELECT userId, adminStatus, passwordSalt, passwordDigest FROM [Users] " +
                 $"WHERE userId = @userId";
             SqlParameter[] sqlParameters = new SqlParameter[1]
             {
                 new SqlParameter("@userId", userId)
             };
 
-            return ReadTable(ExecuteSelectQuery(query, sqlParameters))[0];
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
         }
-        private List<LogIn> ReadTable(DataTable dataTable)
+        private LogIn ReadTable(DataTable dataTable)
         {
-            List<LogIn> logIns = new List<LogIn>();
-
-            // check each row of the DataTable
-            foreach (DataRow dr in dataTable.Rows)
+            LogIn logIn = null;
+            if (dataTable.Rows.Count > 0)
             {
-                LogIn logIn = new LogIn()
+                DataRow dr = dataTable.Rows[0];
+
+                logIn = new LogIn()
                 {
                     UserId = (string)dr["userId"],
                     AdminStatus = (string)dr["adminStatus"],
-                    UserPassword = (string)dr["userPassword"]
+                    PasswordSalt = (string)dr["passwordSalt"],
+                    PasswordDigest = (string)dr["passwordDigest"]
                 };
-                // add the drink to the list
-                logIns.Add(logIn);
             }
-            return logIns;
+            
+            return logIn;
         }
     }
 }

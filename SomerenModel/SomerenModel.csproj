@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Activity.cs" />
     <Compile Include="Drink.cs" />
+    <Compile Include="HashWithSaltResult.cs" />
     <Compile Include="LogIn.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
