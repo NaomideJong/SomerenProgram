@@ -24,13 +24,13 @@ namespace SomerenLogic
         }
         public bool CheckPassword(string user, string password, string passwordSalt, string passwordDigest, HashAlgorithm hashAlgo)
         {
-            byte[] saltBytes = Encoding.UTF8.GetBytes(passwordSalt);
+            //byte[] saltBytes = Encoding.UTF8.GetBytes(passwordSalt);
             byte[] passwordAsBytes = Encoding.UTF8.GetBytes(password);
-            List<byte> passwordWithSaltBytes = new List<byte>();
-            passwordWithSaltBytes.AddRange(passwordAsBytes);
-            passwordWithSaltBytes.AddRange(saltBytes);
-            byte[] digestBytes = hashAlgo.ComputeHash(passwordWithSaltBytes.ToArray());
-            if(passwordDigest == Convert.ToBase64String(digestBytes))
+            //List<byte> passwordWithSaltBytes = new List<byte>();
+            //passwordWithSaltBytes.AddRange(passwordAsBytes);
+            //passwordWithSaltBytes.AddRange(saltBytes);
+            //byte[] digestBytes = hashAlgo.ComputeHash(passwordWithSaltBytes.ToArray());
+            if(passwordDigest == Convert.ToBase64String(passwordAsBytes) + passwordSalt)
             {
                 return true;
             }
