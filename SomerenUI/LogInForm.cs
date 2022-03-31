@@ -23,21 +23,21 @@ namespace SomerenUI
         private void logInButton_Click(object sender, EventArgs e)
         {
             LogInService logInService = new LogInService();
-            LogIn logIn = logInService.GetById(userIdBox.Text);
-            if (logInService.CheckPassword(logIn.UserId, passwordBox.Text, logIn.PasswordSalt, logIn.PasswordDigest, SHA256.Create()))
-            {
-                MessageBox.Show("yeh");
-            }
-            else
-            {
-                MessageBox.Show("nop");
-            }
-
+            LogIn logIn = logInService.CheckPassword(userIdBox.Text, passwordBox.Text, SHA256.Create());
             if (IsValid())
             {
-               // SomerenUI SomerenUI = new SomerenUI();
-               // this.Hide();
-               // SomerenUI.Show();
+                if (logIn != null)
+                {
+                    bool adminStatus = false;
+                    if (logIn.AdminStatus == "admin") adminStatus = true;
+                    SomerenUI SomerenUI = new SomerenUI(adminStatus);
+                    this.Hide();
+                    SomerenUI.Show();
+                }
+                else
+                {
+                    MessageBox.Show("User email or password are inccorect.");
+                }
             }
         }
 

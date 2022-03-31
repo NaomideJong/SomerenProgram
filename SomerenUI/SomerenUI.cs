@@ -14,12 +14,33 @@ namespace SomerenUI
         {
             InitializeComponent();
         }
+        public SomerenUI(bool adminStatus)
+        {
+            InitializeComponent();
+            AdminStatus(adminStatus);
+        }
 
         private void SomerenUI_Load(object sender, EventArgs e)
         {
             // call method showpanel and send the panel name
             showPanel("Dashboard");
         }
+        private void AdminStatus(bool admin)
+        {
+            if (!admin)
+            {
+                buttonCheckout.Hide();
+                buttonUpdate.Hide();
+                buttonDrinkDelete.Hide();
+                buttonDrinkAdd.Hide();
+                buttonUpdateActivities.Hide();
+                buttonDeleteActivity.Hide();
+                buttonAddActivity.Hide();
+                addSelectedSupervisor.Hide();
+                deleteSupervisorButton.Hide();
+            }
+        }
+
 
         private void showPanel(string panelName)
         {

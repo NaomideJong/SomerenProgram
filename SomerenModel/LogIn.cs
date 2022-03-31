@@ -10,8 +10,5 @@ namespace SomerenModel
     {
         public string UserId { get; set; }
         public string AdminStatus { get; set; }
-        public string PasswordSalt { get; set; }
-        public string PasswordDigest { get; set; }
-
     }
 }

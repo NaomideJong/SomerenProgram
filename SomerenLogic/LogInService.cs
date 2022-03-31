@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Configuration;
 
 namespace SomerenLogic
 {
@@ -22,19 +23,19 @@ namespace SomerenLogic
         {
             return logIndb.GetById(user);
         }
-        public bool CheckPassword(string user, string password, string passwordSalt, string passwordDigest, HashAlgorithm hashAlgo)
+        public LogIn ValidatePassword(string id, string password)
         {
-            //byte[] saltBytes = Encoding.UTF8.GetBytes(passwordSalt);
+            return logIndb.ValidatePassword(id, password);
+        }
+        public LogIn CheckPassword(string id, string password, HashAlgorithm hashAlgo)
+        {
+            byte[] saltBytes = Convert.FromBase64String(ConfigurationManager.AppSettings["Salt"]);
             byte[] passwordAsBytes = Encoding.UTF8.GetBytes(password);
-            //List<byte> passwordWithSaltBytes = new List<byte>();
-            //passwordWithSaltBytes.AddRange(passwordAsBytes);
-            //passwordWithSaltBytes.AddRange(saltBytes);
-            //byte[] digestBytes = hashAlgo.ComputeHash(passwordWithSaltBytes.ToArray());
-            if(passwordDigest == Convert.ToBase64String(passwordAsBytes) + passwordSalt)
-            {
-                return true;
-            }
-            return false;
+            List<byte> passwordWithSaltBytes = new List<byte>();
+            passwordWithSaltBytes.AddRange(passwordAsBytes);
+            passwordWithSaltBytes.AddRange(saltBytes);
+            byte[] digestBytes = hashAlgo.ComputeHash(passwordWithSaltBytes.ToArray());
+            return ValidatePassword(id, Convert.ToBase64String(digestBytes));
         }
     }
 }

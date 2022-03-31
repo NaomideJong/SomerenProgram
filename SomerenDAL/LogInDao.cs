@@ -13,11 +13,24 @@ namespace SomerenDAL
     {
         public LogIn GetById(string userId)
         {
-            string query = $"SELECT userId, adminStatus, passwordSalt, passwordDigest FROM [Users] " +
+            string query = $"SELECT userId, adminStatus, passwordDigest FROM [Users] " +
                 $"WHERE userId = @userId";
             SqlParameter[] sqlParameters = new SqlParameter[1]
             {
                 new SqlParameter("@userId", userId)
+            };
+
+            return ReadTable(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public LogIn ValidatePassword(string id, string password)
+        {
+            string query = $"SELECT userId, adminStatus FROM [Users] " +
+                $"WHERE passwordDigest = @passwordDigest AND " +
+                $"userId = @userId";
+            SqlParameter[] sqlParameters = new SqlParameter[2]
+            {
+                new SqlParameter(("@userId"), id),
+                new SqlParameter("@passwordDigest", password)
             };
 
             return ReadTable(ExecuteSelectQuery(query, sqlParameters));
@@ -33,11 +46,8 @@ namespace SomerenDAL
                 {
                     UserId = (string)dr["userId"],
                     AdminStatus = (string)dr["adminStatus"],
-                    PasswordSalt = (string)dr["passwordSalt"],
-                    PasswordDigest = (string)dr["passwordDigest"]
                 };
             }
-            
             return logIn;
         }
     }

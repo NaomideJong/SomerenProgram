@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
@@ -46,8 +47,6 @@
     <Compile Include="DrinkService.cs" />
     <Compile Include="LogInService.cs" />
     <Compile Include="OrderService.cs" />
-    <Compile Include="PasswordWithSaltHasher.cs" />
-    <Compile Include="RandomNumberGenerator.cs" />
     <Compile Include="RoomService.cs" />
     <Compile Include="StudentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
