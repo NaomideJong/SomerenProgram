@@ -66,6 +66,7 @@ namespace SomerenUI
                 // check if the correct licensekey has been entered
                 if (textBoxRegisterLicenseKey.Text != LicenseKey)
                 {
+                    // show message
                     MessageBox.Show("Please enter valid license key");
                 } else
                 {
