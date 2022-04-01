@@ -62,8 +62,8 @@ namespace SomerenUI
         {
             try
             {
-                //change decription, start time and end time
                 LogInService logInUserService = new LogInService();
+                // check if the correct licensekey has been entered
                 if (textBoxRegisterLicenseKey.Text != LicenseKey)
                 {
                     MessageBox.Show("Please enter valid license key");
